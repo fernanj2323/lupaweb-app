@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "ng": "ng",
     "dev": "nodemon backend/index.js",
-    "build3": "cross-env NODE_ENV=production webpack --config build/webpack.config.js",
-    "build": "cd frontend && npm install && ng build --prod ",
-    "postinstall": "npm run build",
+    "build": "cd frontend && ng build --prod",
+    "build1": "cross-env NODE_ENV=production webpack --config build/webpack.config.js",
+    "build2": "cd frontend && npm install && ng build --prod ",
+    "postinstall": "npm run build --output-path angularapp  --aot --prod",
+    "postinstall2": "npm run build",
     "start": "node backend/index.js"
   },
   "keywords": [],
@@ -39,7 +42,8 @@
     "web-push": "^3.3.5",
     "@types/express": "^4.17.1",
     "nodemon": "^1.19.4",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.3",
+    "cross-env": "^7.0.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.1",
