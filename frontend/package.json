@@ -4,8 +4,6 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "postinstall": "ng build --prod --aot",
-    "postinstall2": "ng build --aot -prod",
     "build": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
@@ -19,7 +17,7 @@
   "dependencies": {
     "@angular/cli": "^1.0.1",
     "@angular/compiler-cli": "^2.3.1",
-    "typescript": "^2.3.0",
+    "typescript": "^2.0.3",
     "@angular/animations": "^8.2.14",
     "@angular/cdk": "^8.2.3",
     "@angular/common": "^8.2.14",
