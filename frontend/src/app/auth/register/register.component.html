@@ -1,0 +1,122 @@
+<div class="container">
+        <div class="login">
+          <div class="login-triangle"></div>
+          <h2 class="login-header">Registrar Usuario</h2>
+        <!--  <form [formGroup]="contactForm" class="login-container" (ngSubmit)="onRegister()"> -->
+
+          <form #frmLogin="ngForm" class="login-container" (ngSubmit)="onRegister(frmLogin)"> 
+           
+            <div class="input-field col s6">
+                    <input type="text"  name="firstName" id="firstName" type="text" class="validate" ngModel required>
+                    <label for="last_name">Nombres</label>
+                       
+            </div>
+
+            <div class="input-field col s6">
+              <input type="text"  name="lastName" id="lastName" type="text" class="validate" ngModel required>
+              <label for="last_name">Apellidos</label>
+                 
+           </div>
+            <div class="input-field col s12">
+             <input id="email" type="email" class="validate" name="email" ngModel required>
+                <label for="email">Email</label>
+            </div>
+                     
+            <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" name="password" ngModel required>
+                    <label for="password"  minlength="5">Contraseña</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="" type="password" class="validate" name="passwordConfirm" ngModel required>
+                <label for="password">Confirmar Contraseña</label>
+
+                <div [ngSwitch]="tab" >  
+                    <div *ngSwitchCase='1' >  
+                        <div class="alert-danger">
+                          <div class="container-error-message" >
+                              Contraseñas diferentes 
+                          </div>
+                       </div>
+                   </div>
+              </div>
+        </div>
+
+            <br>
+            <div class="input-field col s12">
+                   <span> Departamento </span>
+                    <select  (change)="captureDepartment($event)" class="browser-default"  name="department" ngModel required>
+                      <option value="" disabled selected>Seleccione un departamento..</option>
+                      <option *ngFor="let department of  this.departmentService.departments " value="{{department.name}}" > {{department.name}}</option>
+                    </select>
+                    <!-- D -->
+            </div>
+            <br>
+
+            <div class="input-field col s12"  [ngSwitch] ="showServiceLIne">
+                 <div class="col s12"  *ngSwitchCase = '1'  > 
+                      <div class="col s4"> 
+                          <p>
+                              <label title="WellTesting">
+                                     <input type="checkbox"  name="WT"   ngModel required />
+                                            <span>WT</span>
+                              </label>
+                          </p>
+                      </div>
+                      <div class="col s4"> 
+                          <p>
+                              <label title="WellTesting">
+                                     <input type="checkbox"  name="SL"   ngModel required />
+                                            <span>SL</span>
+                              </label>
+                          </p>
+                       </div>
+                       <div class="col s4"> 
+                          <p>
+                              <label title="WellTesting">
+                                     <input type="checkbox"  name="WL"   ngModel required />
+                                            <span>WL</span>
+                              </label>
+                          </p>
+                      </div>
+                  
+                 </div>
+                 <div class="col s12 "  *ngSwitchCase = '1'> 
+                    <div class="col s4"> 
+                        <p>
+                            <label title="WellTesting">
+                                   <input type="checkbox"  name="CT"   ngModel required />
+                                          <span>CT</span>
+                            </label>
+                        </p>
+                        
+                    </div>
+                    <div class="col s4"> 
+                        <p>
+                            <label title="WellTesting">
+                                   <input type="checkbox"  name="FI"   ngModel required />
+                                          <span>FI</span>
+                            </label>
+                        </p>
+                    </div>
+                 </div>
+            </div>
+            <div class="input-field col s12">
+                   
+                    <select   class="select-default"  name="role" ngModel required>
+                      <option value="" disabled selected>Seleccione un rol..</option>
+                      <option value="Basico">Basico</option>
+                      <option value="Lider">Lider</option>
+                      <option value="Gerencia">Gerencia</option>
+                      <option value="Administrador">Administrador</option>
+                    </select>
+                    <label>Rol</label>
+            </div>
+            <br>
+            <div class="divider"></div> 
+             <p>
+            <br>
+                <input type="submit" value="Continuar"  href="/Auth/register">
+            </p>
+          </form>
+        </div>
+      </div>

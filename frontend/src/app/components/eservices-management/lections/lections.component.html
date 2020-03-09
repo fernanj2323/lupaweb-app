@@ -1,0 +1,429 @@
+<form #lectionsF = 'ngForm'  (ngSubmit)=  'saveLection(lectionsF)'> 
+    <div [ngSwitch]="aprobationMode" class="row">
+        <div class='col s12'>
+            <!-- side nav  -->
+            <div class="col s12 m4 l4">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header "  id='linkeable' >
+                            <a  routerLink='../../../../../eservices/home'  title="Adjuntar Archivo">
+                                <i class="material-icons">memory</i>DashBoard
+                            </a>
+                           
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header modal-trigger " href="#modal2"><i class="material-icons">reorder</i>Actividades Regulares</div>
+                    </li> 
+                    
+                    <li>
+                        <div class="collapsible-header  modal-trigger " href="#modal3" ><i class="material-icons">memory</i>Actividades en Proceso</div>
+                    </li> 
+                        
+                    <li>
+                        <div class="collapsible-header modal-trigger " href="#modal4" ><i class="material-icons">offline_pin</i>Actividades Finalizadas</div>
+                    </li>      
+              
+                    <!-- <li>
+                        <div class="collapsible-header"><i class="material-icons">apps</i>Ticketes y KPIS</div>
+                    </li> 
+                                             -->
+                </ul>
+            </div>
+            <!-- side nav  -->
+
+
+
+
+
+            <div class='content col s12 m8 l8'>
+<!-- create -->  
+  <input type='hidden' name="_id" #_id='ngModel'
+[(ngModel)]='this.LectionsService.selectedLection._id' > 
+
+                    <div *ngSwitchCase=0 style="margin:0;">
+                        <app-breadcum-nav></app-breadcum-nav>
+                        
+                        <div  class="col s12 m8 l12 questions-block " style="margin:0;"> 
+                            <div class="row switch-container card hoverable"   > 
+
+                                <div class="col s6 input-box"   >
+                                    <div class="col s12 m12 l12 question-box blue accent-4">
+                                      Cambio Propuesto o requerido
+                                    </div>
+                                    <div class="col s12 m12 l12 answer-box  ">
+                                        <!-- name="title" #title='ngModel'
+                                        [(ngModel)]='this.selectedLection.title'  -->
+                                        <input id="text_inline" placeholder="Titulo" type="text" name="title" #title='ngModel'
+                                        [(ngModel)]='this.LectionsService.selectedLection.title'  class="validate" ngModel required>
+                                    </div>
+                                 
+                                </div>
+                                <div class="col s6 input-box"   >
+                                    <div class="col s12 m12 l12 question-box blue accent-4">
+                                     Justificación 
+                                    </div>
+                                    <div class="col s12 m12 l12 answer-box  ">
+                                        <textarea id="textarea1" placeholder="Justificación" name="justification" #justification='ngModel'
+                                        [(ngModel)]='this.LectionsService.selectedLection.justification'  class="materialize-textarea"   ngModel required ></textarea>
+                                     
+                                    </div>
+                                 
+                                </div>
+
+                                <div> 
+                                    <div  class="col s12 question-box2 blue accent-4" >
+                                        IDENTIFICACIÓN DE PELIGROS Y MEDIDAS DE CONTROL RIESGOS- PREVENTIVAS
+                                    </div>
+                                    <div class="col s12">
+                                        <div class="col s12 m4 l3 question-box blue accent-4">
+                                            Competencia de personal
+                                         </div>
+                                         <div class="col s12 m8 l9 answer-box  ">
+                                             <input id="text_inline" placeholder="" type="text" name="perosnalCompetences1" #perosnalCompetences1='ngModel'
+                                             [(ngModel)]='this.LectionsService.selectedLection.perosnalCompetences1'  class="validate" ngModel required>
+                                         </div>
+                                    </div>
+                                    <div class="col s12"> 
+                                        <div class="col s12 m3 l3 question-box blue accent-4">
+                                            Equipos y mantenimiento
+                                        </div>
+                                        <div class="col s9 m6 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text" name="toolsAndMan1" #toolsAndMan1='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.toolsAndMan1'  class="validate" ngModel required>
+                                        </div>
+                                    </div>
+                                    <div class="col s12"> 
+                                        <div class="col s12 m3 l3 question-box blue accent-4">
+                                            Procedimientos
+                                        </div>
+                                        <div class="col s9 m6 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text" name="process1" #process1='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.process1'  class="validate" ngModel required>
+                                        </div>
+                                    </div>
+                                    <div class="col s12"> 
+                                        <div class="col s12 m3 l3 question-box blue accent-4">
+                                            Inspecciones o pruebas
+                                        </div>
+                                        <div class="col s9 m6 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text" name="inspection1" #inspection1='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.inspection1'  class="validate" ngModel required>
+                                        </div>
+                                    </div>
+                                    <div class="col s12"> 
+                                        <div class="col s12 m3 l3 question-box blue accent-4">
+                                            Herramientas
+                                        </div>
+                                        <div class="col s9 m6 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text" name="tools1" #tools1='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.tools1' class="validate" ngModel required>
+                                        </div>
+                                    </div>
+                                    <div class="col s12"> 
+                                        <div class="col s12 m3 l3 question-box blue accent-4">
+                                            Otros
+                                        </div>
+                                        <div class="col s9 m6 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text" name="others1" #others1='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.others1'  class="validate" ngModel required>
+                                        </div>
+                                    </div>
+    
+                                </div>
+
+
+                                <div> 
+                                    <div  class="col s12 question-box2 blue accent-4" >
+                                        IDENTIFICACIÓN DE PELIGROS Y MEDIDAS DE CONTROL RIESGOS- MITIGACIÓN
+                                    </div>
+
+                                    <div class="col s12">
+                                        <div class="col s12 m4 l3 question-box blue accent-4">
+                                            Competencia de personal
+                                        </div>
+                                        <div class="col s12 m6 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text" name="perosnalCompetences2" #perosnalCompetences2='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.perosnalCompetences2'  class="validate" ngModel required>
+                                        </div>
+                                    </div>
+                                   
+                                      
+                                   
+                                    <div class="col s12">
+                                        <div class="col s12 m4 l3 question-box blue accent-4">
+                                            Equipos y mantenimiento
+                                        </div>
+                                        <div class="col s12 m8 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text"name="toolsAndMan2" #toolsAndMan2='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.toolsAndMan2' class="validate" ngModel required>
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="col s12">
+                                        <div class="col s12 m4 l3 question-box blue accent-4">
+                                            Procedimientos
+                                        </div>
+                                        <div class="col s12 m8 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text" name="process2" #process2='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.process2'  class="validate" ngModel required>
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="col s12">
+                                        <div class="col s12 m4 l3 question-box blue accent-4">
+                                            Inspecciones o pruebas
+                                        </div>
+                                        <div class="col s12 m8 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text" name="inspection2" #inspection2='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.inspection2'  class="validate" ngModel required>
+                                        </div>
+                                    </div>
+                                 
+                                    <div class="col s12">
+                                        <div class="col s12 m4 l3 question-box blue accent-4">
+                                            Herramientas
+                                        </div>
+                                        <div class="col s12 m8 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text" name="tools2" #tools2='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.tools2'  class="validate" ngModel required>
+                                        </div>
+                                    </div>
+                                    <div class="col s12">
+                                        <div class="col s12 m4 l3 question-box blue accent-4">
+                                            Otros
+                                        </div>
+                                        <div class="col s12 m8 l9 answer-box  ">
+                                            <input id="text_inline" placeholder="" type="text" name="others2" #others2='ngModel'
+                                            [(ngModel)]='this.LectionsService.selectedLection.others2' class="validate" ngModel required>
+                                        </div>
+                                    </div>
+    
+                                </div>
+
+
+                                <td class="col s12" style="text-align: center;">
+                                            <div class="divider"></div>
+                                            <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                                            (click)="back()" title="Regresar"> Regresar </a>
+                                        
+                                            <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                                            (click)="saveLection(lectionsF)" title="Guardar" > Guardar </a>
+                                </td>
+                        
+                        
+                               
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+<!-- view -->
+<div *ngSwitchCase=1 style="margin:0;">
+    <app-breadcum-nav></app-breadcum-nav>
+    
+    <div  class="col s12 m8 l12 questions-block " style="margin:0;"> 
+        <div class="row switch-container card hoverable"   > 
+
+            <div class="col s6 input-box"   >
+                <div class="col s12 m12 l12 question-box blue accent-4">
+                  Cambio Propuesto o requerido
+                </div>
+                <div class="col s12 m12 l12 answer-box  ">
+                    <!-- name="title" #title='ngModel'
+                    [(ngModel)]='this.selectedLection.title'  -->
+                    <input disabled id="text_inline" placeholder="Titulo" type="text" name="title" #title='ngModel'
+                    [(ngModel)]='this.LectionsService.selectedLection.title'  class="validate" ngModel required>
+                </div>
+             
+            </div>
+            <div class="col s6 input-box"   >
+                <div class="col s12 m12 l12 question-box blue accent-4">
+                 Justificación 
+                </div>
+                <div class="col s12 m12 l12 answer-box  ">
+                    <textarea disabled id="textarea1" placeholder="Justificación" name="justification" #justification='ngModel'
+                    [(ngModel)]='this.LectionsService.selectedLection.justification'  class="materialize-textarea"   ngModel required ></textarea>
+                 
+                </div>
+             
+            </div>
+
+            <div> 
+                <div  class="col s12 question-box2 blue accent-4" >
+                    IDENTIFICACIÓN DE PELIGROS Y MEDIDAS DE CONTROL RIESGOS- PREVENTIVAS
+                </div>
+                <div class="col s12">
+                    <div class="col s12 m4 l3 question-box blue accent-4">
+                        Competencia de personal
+                     </div>
+                     <div class="col s12 m8 l9 answer-box  ">
+                         <input disabled id="text_inline" placeholder="" type="text" name="perosnalCompetences1" #perosnalCompetences1='ngModel'
+                         [(ngModel)]='this.LectionsService.selectedLection.perosnalCompetences1'  class="validate" ngModel required>
+                     </div>
+                </div>
+                <div class="col s12"> 
+                    <div class="col s12 m3 l3 question-box blue accent-4">
+                        Equipos y mantenimiento
+                    </div>
+                    <div class="col s9 m6 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text" name="toolsAndMan1" #toolsAndMan1='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.toolsAndMan1'  class="validate" ngModel required>
+                    </div>
+                </div>
+                <div class="col s12"> 
+                    <div class="col s12 m3 l3 question-box blue accent-4">
+                        Procedimientos
+                    </div>
+                    <div class="col s9 m6 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text" name="process1" #process1='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.process1'  class="validate" ngModel required>
+                    </div>
+                </div>
+                <div class="col s12"> 
+                    <div class="col s12 m3 l3 question-box blue accent-4">
+                        Inspecciones o pruebas
+                    </div>
+                    <div class="col s9 m6 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text" name="inspection1" #inspection1='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.inspection1'  class="validate" ngModel required>
+                    </div>
+                </div>
+                <div class="col s12"> 
+                    <div class="col s12 m3 l3 question-box blue accent-4">
+                        Herramientas
+                    </div>
+                    <div class="col s9 m6 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text" name="tools1" #tools1='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.tools1' class="validate" ngModel required>
+                    </div>
+                </div>
+                <div class="col s12"> 
+                    <div class="col s12 m3 l3 question-box blue accent-4">
+                        Otros
+                    </div>
+                    <div class="col s9 m6 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text" name="others1" #others1='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.others1'  class="validate" ngModel required>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div> 
+                <div  class="col s12 question-box2 blue accent-4" >
+                    IDENTIFICACIÓN DE PELIGROS Y MEDIDAS DE CONTROL RIESGOS- MITIGACIÓN
+                </div>
+
+                <div class="col s12">
+                    <div class="col s12 m4 l3 question-box blue accent-4">
+                        Competencia de personal
+                    </div>
+                    <div class="col s12 m6 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text" name="perosnalCompetences2" #perosnalCompetences2='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.perosnalCompetences2'  class="validate" ngModel required>
+                    </div>
+                </div>
+               
+                  
+               
+                <div class="col s12">
+                    <div class="col s12 m4 l3 question-box blue accent-4">
+                        Equipos y mantenimiento
+                    </div>
+                    <div class="col s12 m8 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text"name="toolsAndMan2" #toolsAndMan2='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.toolsAndMan2' class="validate" ngModel required>
+                    </div>
+                </div>
+              
+                <div class="col s12">
+                    <div class="col s12 m4 l3 question-box blue accent-4">
+                        Procedimientos
+                    </div>
+                    <div class="col s12 m8 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text" name="process2" #process2='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.process2'  class="validate" ngModel required>
+                    </div>
+                </div>
+              
+                <div class="col s12">
+                    <div class="col s12 m4 l3 question-box blue accent-4">
+                        Inspecciones o pruebas
+                    </div>
+                    <div class="col s12 m8 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text" name="inspection2" #inspection2='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.inspection2'  class="validate" ngModel required>
+                    </div>
+                </div>
+             
+                <div class="col s12">
+                    <div class="col s12 m4 l3 question-box blue accent-4">
+                        Herramientas
+                    </div>
+                    <div class="col s12 m8 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text" name="tools2" #tools2='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.tools2'  class="validate" ngModel required>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="col s12 m4 l3 question-box blue accent-4">
+                        Otros
+                    </div>
+                    <div class="col s12 m8 l9 answer-box  ">
+                        <input disabled id="text_inline" placeholder="" type="text" name="others2" #others2='ngModel'
+                        [(ngModel)]='this.LectionsService.selectedLection.others2' class="validate" ngModel required>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <td class="col s12" style="text-align: center;">
+                        <div class="divider"></div>
+                        <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                        (click)="back()" title="Regresar"> Regresar </a>
+                    
+                        <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                        (click)="saveLection(lectionsF)" title="Guardar" > Guardar </a>
+            </td>
+    
+    
+           
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+<div>
+    <app-super-float-button></app-super-float-button>
+ </div>

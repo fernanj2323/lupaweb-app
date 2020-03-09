@@ -1,0 +1,529 @@
+<form #closingForm = 'ngForm' (ngSubmit)= 'saveClose(closingForm)'>
+    <div [ngSwitch]="aprobationMode" class="row">
+        <div class='col s12 m12 l12'>
+            <div class="col s12 m4 l4">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header "  id='linkeable' >
+                            <a  href='/eservices/home'  title="home">
+                                <i class="material-icons">memory</i>DashBoard
+                            </a>
+                           
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header modal-trigger " href="#modal2"><i class="material-icons">reorder</i>Actividades Regulares</div>
+                    </li> 
+                    
+                    <li>
+                        <div class="collapsible-header  modal-trigger " href="#modal3" ><i class="material-icons">memory</i>Actividades en Proceso</div>
+                    </li> 
+                        
+                    <li>
+                        <div class="collapsible-header modal-trigger " href="#modal4" ><i class="material-icons">offline_pin</i>Actividades Finalizadas</div>
+                    </li>      
+              
+                    <!-- <li>
+                        <div class="collapsible-header"><i class="material-icons">apps</i>Ticketes y KPIS</div>
+                    </li> 
+                                             -->
+                </ul>
+            </div>
+        
+            <div class='content col s12 m8 l8'>
+            
+
+
+                 <!-- modo de creador -->
+                 <div *ngSwitchCase=0 style="margin:0;">
+                    <app-breadcum-nav></app-breadcum-nav>
+    
+                    <div  class="col s12 m8 l12 questions-block " style="margin:0;">
+                        <div class="row switch-container card hoverable"   > 
+     
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                   Porcentaje de calificación de KPI 
+                                </div>
+                                <div class="col s9 m6 l3 answer-box  ">
+                                    <input id="text_inline" placeholder="%" type="number" name="KPIcalification" #KPIcalification='ngModel'
+                                    [(ngModel)]=' this.selected.KPIcalification'  class="validate" ngModel required>
+                                </div>
+                             
+                            </div>
+
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                   Número de horas de NPT 
+                                </div>
+                                <div class="col s9 m4 l4 answer-box  ">
+                                    <!-- <label for="textarea1">observaciones</label> -->
+                                    <input id="text_inline" placeholder="%" type="number" name="NPThours"  #NPThours='ngModel'
+                                    [(ngModel)]=' this.selected.NPThours'  class="validate" ngModel required>
+                                </div>
+                                <div class="col s3 m4 l4 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s12">
+                                     
+                                        <input  id="input1"  type="number" name="NPThoursLupaCard"  class="materialize-textarea" ngModel required>
+                                        <label for="input1"># de Tarjeta Lupa</label>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                   Valor del descuento por NPT ($)
+                                </div>
+                                <div class="col s9 m6 l8 answer-box  ">
+                                    <input id="text_inline" placeholder="$" type="number" name="NPTvalue"  #NPTvalue='ngModel'
+                                    [(ngModel)]=' this.selected.NPTvalue' class="validate" ngModel required>
+                                </div>
+                                <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s6">
+                                        <!-- <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger"  href="#clientObjetivesModal" title="Ayuda">
+                                                <i class="Large material-icons">beenhere</i>
+                                             </a> -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                   Valor del tikete en dolares $
+                                </div>
+                                <div class="col s9 m6 l8 answer-box  ">
+                                    <input id="text_inline" placeholder="$" type="number" name="ticketValue" #ticketValue='ngModel'
+                                    [(ngModel)]=' this.selected.ticketValue'  class="validate" ngModel required>
+                                </div>
+                                <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s6">
+                                        <!-- <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger"  href="#clientObjetivesModal" title="Ayuda">
+                                            <i class="Large material-icons">beenhere</i>
+                                        </a> -->
+                                    </div>
+                                </div>
+                            </div>  
+
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                   Comentarios del cliente
+                                </div>
+                                <div class="col s9 m6 l6 answer-box  ">
+                                    <!-- <label for="textarea1">observaciones</label> -->
+                                    <textarea  id="textarea1" placeholder="observaciones" name="clientComments"  #clientComments='ngModel'
+                                    [(ngModel)]=' this.selected.clientComments' class="materialize-textarea" ngModel required>
+                                    </textarea>
+                                </div>
+                                <div class="col s3 m3 l3 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s12">
+                                     
+                                        <input  id="input1"  type="number" name="clientCommentsLupaCard" #clientCommentsLupaCard='ngModel'
+                                        [(ngModel)]=' this.selected.clientCommentsLupaCard'  class="materialize-textarea" ngModel required>
+                                        <label for="input1"># de Tarjeta Lupa</label>
+                                       
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m12 l12 question-box2 blue accent-4">
+                                    <div class="divider"> </div>
+                                  Soportes
+                                </div>
+                            </div>
+
+                            <div  [ngSwitch]='showImage1'  class="col s12" style="margin:0; padding:0;">
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                    Ticketes
+                                 </div>
+
+                                 <div class="col s5 m3 l3" >
+                                    <div class="col s12 m12 l12">
+                                        <div class="file-field input-field " >
+                                          <div class="btn">
+                                            <span>Ticketes</span>
+                                            <input type="file" class="d-none" (change)="savePhoto(1,$event)"  >
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input class="file-path validate" placeholder="adjunte soporte" type="text">
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>  
+
+                                <div *ngSwitchCase='1' href="#TicketesModal"  class="col s4 m4 l4 modal-trigger" style="border-style: solid; border-width: 0,1;">
+                                    <img class="img col s10"  style="zoom: 1%;" [src]="'http://localhost:3000/' + imagePath1 " >
+                                </div>
+
+                                <div *ngSwitchCase='1' class="col s3 m2 l2 ">
+                                    <i  (click)="deletePhoto(1)" class=" btn-floating btn waves-effect waves-light red">
+                                        <i class="material-icons">close</i>
+                                    </i>
+                                    <i href="#TicketesModal" class=" btn-floating btn modal-trigger waves-effect waves-light blue accent-4">
+                                        <i class="material-icons">aspect_ratio</i>
+                                    </i>
+                                </div>
+                             
+
+                            </div>
+                             
+                            <div  [ngSwitch]='showImage2'  class="col s12" style="margin:0; padding:0;">
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                    KPI
+                                 </div>
+
+                                 <div class="col s5 m3 l3" >
+                                    <div class="col s12 m12 l12">
+                                        <div class="file-field input-field " >
+                                          <div class="btn">
+                                            <span>KPI</span>
+                                            <input type="file" class="d-none" (change)="savePhoto(2,$event)"  >
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input class="file-path validate" placeholder="adjunte soporte" type="text">
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+
+
+                                <div *ngSwitchCase='1'  class="col s4 m4 l4 modal-trigger"   href="#kpiModal"  style="border-style: solid; border-width: 0,1;">
+                                    <img class="img col s10"  style="zoom: 1;" [src]="'http://localhost:3000/' + imagePath2 " >
+                                </div>
+
+                                <div *ngSwitchCase='1'   class="col s3 m2 l2  ">
+                                    <i (click)="deletePhoto(2)" class="btn-floating btn waves-effect waves-light red">
+                                        <i class="material-icons">close</i>
+                                    </i>
+
+                                    <i href="#kpiModal" class=" btn-floating btn modal-trigger waves-effect waves-light blue accent-4">
+                                        <i class="material-icons">aspect_ratio</i>
+                                    </i>
+                                </div>
+
+
+
+                            </div>
+
+                                <div  [ngSwitch]='showImage3'  class="col s12" style="margin:0; padding:0;">
+                                    <div class="col s12 m3 l3 question-box blue accent-4">
+                                        Acta de descuento por NPT
+                                     </div>
+    
+                                     <div class="col s5 m3 l3" >
+                                        <div class="col s12 m12 l12">
+                                            <div class="file-field input-field " >
+                                              <div class="btn">
+                                                <span>NPT</span>
+                                                <input type="file" class="d-none" (change)="savePhoto(3,$event)"  >
+                                              </div>
+                                              <div class="file-path-wrapper">
+                                                <input class="file-path validate" placeholder="adjunte soporte" type="text">
+                                              </div>
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                    <div *ngSwitchCase='1' href="#nptModal"   class="col s4 m4 l4 modal-trigger"  style="border-style: solid; border-width: 0,1;">
+                                        <img class="img col s10"  style="zoom: 1;" [src]="'http://localhost:3000/' + imagePath3 " >
+                                    </div>
+    
+                                    <div *ngSwitchCase='1'  class="col s3 m2 l2 ">
+                                        <i (click)="deletePhoto(3)"  class="btn-floating btn waves-effect waves-light red">
+                                            <i class="material-icons">close</i>
+                                        </i>
+
+                                        <i href="#nptModal" class=" btn-floating btn modal-trigger waves-effect waves-light blue accent-4">
+                                            <i class="material-icons">aspect_ratio</i>
+                                        </i>
+                                    </div>
+
+                                </div>
+
+
+            
+                               
+                               
+                            <td class="col s12" style="text-align: center;">
+                                <div class="divider"></div>
+                                        <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                                        (click)="back()" title="Regresar"> Regresar </a>
+                                    
+                                        <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                                        (click)="saveClose(closingForm)" title="Guardar" > Guardar </a>
+                               </td>
+
+                        </div>
+                    </div>
+           
+                </div>
+
+
+                <!-- solo vista -->
+                <div *ngSwitchCase=1 style="margin:0;">
+                 
+                    <app-breadcum-nav></app-breadcum-nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div  class="col s12 m8 l12 questions-block " style="margin:0;">
+                        <div class="row switch-container card hoverable"   > 
+     
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                   Porcentaje de calificación de KPI 
+                                </div>
+                                <div class="col s9 m6 l3 answer-box  ">
+                                    <input disabled id="text_inline" placeholder="%" type="number" name="KPIcalification" #KPIcalification='ngModel'
+                                    [(ngModel)]=' this.selected.KPIcalification'  class="validate" ngModel required>
+                                </div>
+                             
+                            </div>
+
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                   Número de horas de NPT 
+                                </div>
+                                <div class="col s9 m4 l4 answer-box  ">
+                                    <!-- <label for="textarea1">observaciones</label> -->
+                                    <input disabled id="text_inline" placeholder="%" type="number" name="NPThours"  #NPThours='ngModel'
+                                    [(ngModel)]=' this.selected.NPThours'  class="validate" ngModel required>
+                                </div>
+                                <div class="col s3 m4 l4 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s12">
+                                     
+                                        <input  disabled id="input1"  type="number" name="NPThoursLupaCard"  class="materialize-textarea" ngModel required>
+                                        <label for="input1"># de Tarjeta Lupa</label>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                   Valor del descuento por NPT ($)
+                                </div>
+                                <div class="col s9 m6 l8 answer-box  ">
+                                    <input disabled id="text_inline" placeholder="$" type="number" name="NPTvalue"  #NPTvalue='ngModel'
+                                    [(ngModel)]=' this.selected.NPTvalue' class="validate" ngModel required>
+                                </div>
+                                <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s6">
+                                        <!-- <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger"  href="#clientObjetivesModal" title="Ayuda">
+                                                <i class="Large material-icons">beenhere</i>
+                                             </a> -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                   Valor del tikete en dolares $
+                                </div>
+                                <div class="col s9 m6 l8 answer-box  ">
+                                    <input disabled id="text_inline" placeholder="$" type="number" name="ticketValue" #ticketValue='ngModel'
+                                    [(ngModel)]=' this.selected.ticketValue'  class="validate" ngModel required>
+                                </div>
+                                <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s6">
+                                        <!-- <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger"  href="#clientObjetivesModal" title="Ayuda">
+                                            <i class="Large material-icons">beenhere</i>
+                                        </a> -->
+                                    </div>
+                                </div>
+                            </div>  
+
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                   Comentarios del cliente
+                                </div>
+                                <div class="col s9 m6 l6 answer-box  ">
+                                    <!-- <label for="textarea1">observaciones</label> -->
+                                    <textarea disabled id="textarea1" placeholder="observaciones" name="clientComments"  #clientComments='ngModel'
+                                    [(ngModel)]=' this.selected.clientComments' class="materialize-textarea" ngModel required>
+                                    </textarea>
+                                </div>
+                                <div class="col s3 m3 l3 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s12">
+                                     
+                                        <input disabled id="input1"  type="number" name="clientCommentsLupaCard" #clientCommentsLupaCard='ngModel'
+                                        [(ngModel)]=' this.selected.clientCommentsLupaCard'  class="materialize-textarea" ngModel required>
+                                        <label for="input1"># de Tarjeta Lupa</label>
+                                       
+                                    </div>
+                                </div>
+                            </div>  
+                               
+
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m12 l12 question-box2 blue accent-4">
+                                    <div class="divider"> </div>
+                                  Soportes
+                                </div>
+                            </div>
+
+                            <div  [ngSwitch]='showImage1'  class="col s12" style="margin:0; padding:0;">
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                    Ticketes
+                                 </div>
+
+                                 <div class="col s5 m3 l3" >
+                                    <div class="col s12 m12 l12">
+                                        <div class="file-field input-field " >
+                                          <div class="btn">
+                                            <span>Ticketes</span>
+                                            <input disabled type="file" class="d-none" (change)="savePhoto(1,$event)"  >
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input class="file-path validate" placeholder="adjunte soporte" type="text">
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>  
+
+                                <div *ngSwitchCase='1' href="#TicketesModal"  class="col s4 m4 l4 modal-trigger" style="border-style: solid; border-width: 0,1;">
+                                    <img class="img col s10"  style="zoom: 1%;" [src]="'http://localhost:3000/' + imagePath1 " >
+                                </div>
+
+                                <div *ngSwitchCase='1' class="col s3 m2 l2 ">
+                                    <i  (click)="deletePhoto(1)" class=" btn-floating btn waves-effect waves-light red">
+                                        <i class="material-icons">close</i>
+                                    </i>
+                                    <i href="#TicketesModal" class=" btn-floating btn modal-trigger waves-effect waves-light blue accent-4">
+                                        <i class="material-icons">aspect_ratio</i>
+                                    </i>
+                                </div>
+                             
+
+                            </div>
+                             
+                            <div  [ngSwitch]='showImage2'  class="col s12" style="margin:0; padding:0;">
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                    KPI
+                                 </div>
+
+                                 <div class="col s5 m3 l3" >
+                                    <div class="col s12 m12 l12">
+                                        <div class="file-field input-field " >
+                                          <div class="btn">
+                                            <span>KPI</span>
+                                            <input disabled type="file" class="d-none" (change)="savePhoto(2,$event)"  >
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input class="file-path validate" placeholder="adjunte soporte" type="text">
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+
+
+                                <div *ngSwitchCase='1'  class="col s4 m4 l4 modal-trigger"   href="#kpiModal"  style="border-style: solid; border-width: 0,1;">
+                                    <img class="img col s10"  style="zoom: 1;" [src]="'http://localhost:3000/' + imagePath2 " >
+                                </div>
+
+                                <div *ngSwitchCase='1'   class="col s3 m2 l2  ">
+                                    <i (click)="deletePhoto(2)" class="btn-floating btn waves-effect waves-light red">
+                                        <i class="material-icons">close</i>
+                                    </i>
+
+                                    <i href="#kpiModal" class=" btn-floating btn modal-trigger waves-effect waves-light blue accent-4">
+                                        <i class="material-icons">aspect_ratio</i>
+                                    </i>
+                                </div>
+
+
+
+                            </div>
+
+                                <div  [ngSwitch]='showImage3'  class="col s12" style="margin:0; padding:0;">
+                                    <div class="col s12 m3 l3 question-box blue accent-4">
+                                        Acta de descuento por NPT
+                                     </div>
+    
+                                     <div class="col s5 m3 l3" >
+                                        <div class="col s12 m12 l12">
+                                            <div class="file-field input-field " >
+                                              <div class="btn">
+                                                <span>NPT</span>
+                                                <input disabled  type="file" class="d-none" (change)="savePhoto(3,$event)"  >
+                                              </div>
+                                              <div class="file-path-wrapper">
+                                                <input class="file-path validate" placeholder="adjunte soporte" type="text">
+                                              </div>
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                    <div *ngSwitchCase='1' href="#nptModal"   class="col s4 m4 l4 modal-trigger"  style="border-style: solid; border-width: 0,1;">
+                                        <img class="img col s10"  style="zoom: 1;" [src]="'http://localhost:3000/' + imagePath3 " >
+                                    </div>
+    
+                                    <div *ngSwitchCase='1'  class="col s3 m2 l2 ">
+                                        <i (click)="deletePhoto(3)"  class="btn-floating btn waves-effect waves-light red">
+                                            <i class="material-icons">close</i>
+                                        </i>
+
+                                        <i href="#nptModal" class=" btn-floating btn modal-trigger waves-effect waves-light blue accent-4">
+                                            <i class="material-icons">aspect_ratio</i>
+                                        </i>
+                                    </div>
+
+                                </div>
+
+                               
+                            <td class="col s12" style="text-align: center;">
+                                <div class="divider"></div>
+                                        <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                                        (click)="back()" title="Regresar"> Regresar </a>
+                                    
+                                        <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                                        (click)="saveClose(closingForm)" title="Guardar" > Guardar </a>
+                               </td>
+        
+                        </div>
+                    </div>
+           
+                </div>
+            </div>
+       </div>
+    </div>
+</form>
+
+<!-- ----------------- -->
+<!-- ----- MODALES -- -->
+<!-- ---------------- -->
+
+ <!-- Modal TicketesModal -->
+ <div id="TicketesModal" class="modal" style="margin: 0; padding: 0;">
+    <img class="img"  style="zoom: 50%;" [src]="'http://localhost:3000/' + imagePath1 " >
+</div>
+  
+ <!-- Modal kpiModal -->
+ <div id="kpiModal" class="modal" style="margin: 0; padding: 0;">
+    <img class="img"  style="zoom: 50%;" [src]="'http://localhost:3000/' + imagePath2 " >
+</div>
+          
+ <!-- Modal nptModal -->
+ <div id="nptModal" class="modal" style="margin: 0; padding: 0;">
+    <img class="img" style="zoom: 50%;"  [src]="'http://localhost:3000/' + imagePath3 " >
+</div>
+          
+
+
+
+<div>
+    <app-super-float-button></app-super-float-button>
+ </div>

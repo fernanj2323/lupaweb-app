@@ -1,0 +1,51 @@
+.card-header{ 
+    font-size: 150%;
+}
+
+.card-content{
+    font-size: 250%;
+}
+
+.modal-fixed-footer{
+    height: 170%; 
+    width: 100%;
+    /* right: 200%; */
+}
+
+.card-content{
+    cursor: pointer;
+}
+
+.modal{
+    height: 170%; 
+    width: 100%;
+    /* right: 200%; */
+}
+
+
+.card-subheader{ 
+    font-size: 45%;
+}
+
+.card-subcontent{
+    font-size: 100%;
+}
+.card-subfooter{
+    font-size: 50%;
+}
+
+/* .card-footer{
+
+} */
+
+.card{
+    margin: 10px;
+    height: 120%;
+}
+    
+
+
+.material-icons{
+
+   color: rgb(104, 104, 104);
+}

@@ -1,0 +1,531 @@
+
+
+
+
+
+<div class="row">
+    <div class='card col s12'>
+            <div class='col s12 header-clients indigo lighten-2'>
+                <h4>
+                    Administracion de Locaciones 
+                </h4>
+            </div>
+            <div class="miniColmena">
+                <div class="hexagon hoverable" (click)='enableLocation(1)' title="Un Pais solo requiere nombre" style="background-color: #f9a41f; " >
+                    <span class="titleHexagon " > Pais </span>
+                </div>
+                <div class="hexagon hoverable" (click)='enableLocation(2)' style="background-color: #2a60ac; left: 348px; top:-30px; position: relative; z-index: 10" >
+                    <span class="titleHexagon " > Distrito </span>
+                </div>
+                <div class="hexagon hoverable" (click)='enableLocation(3)' style="background-color: #009447 ; left: 275px; top:-30px; position: relative; z-index: 10" >
+                        <span class="titleHexagon " > Campo </span>
+                </div>
+                <div class="hexagon hoverable" (click)='enableLocation(4)'  style="background-color: #003c4d ; left: 425px; top:-161px; position: relative; z-index: 10" >
+                    <span class="titleHexagon " > Cluster </span>
+                </div>
+                <div class="hexagon hoverable" (click)='enableLocation(5)' style="background-color: #78d0e7 ; left: 125px; top:-290px; position: relative; z-index: 10" >
+                    <span class="titleHexagon " > Pozo </span>
+                </div>
+            </div>
+    </div>
+
+
+
+
+    <div id='countryModule'  [ngSwitch] = "moduleSelected" >
+        <!-- indicio de country module -->
+        <div *ngSwitchCase='1' style='border-style:solid; border-width: 0.35px; border-color:gray;'>
+            <table class="highlight"> 
+                        <caption class="indigo lighten-2">
+                                <h3>{{ModuleName}}  </h3> 
+                                  <!-- {{ArrayOfSelect2[0].name}} -->
+                                <a title="Ocultar Modulo" style='top:-70px'class="btn-floating waves-effect waves-light btn-small right  pink accent-3" (click)="enableLocation(0)"><i class="material-icons right">arrow_drop_up</i>ocultar</a>
+                        </caption>      
+                        <div class="container"  >
+                    
+                                <div  class="col s12 form-content" style="margin-top:20px;">
+                                    <form #locationForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(1,locationForm)" class="col s12 form-clientForm">
+                                            <div class="row">
+                                                    <div class="input-field col s12">
+                                                        <!-- <input type="hidden" name="{{ModuleName}}"  value="{{ModuleName}}" ngModel required> -->
+                                                        <input type="text" name = "name" class="validate" #name="ngModel" placeholder="{{placeholder}}" ngModel required>
+                                                    </div>
+                                                    <br> 
+                                                     
+                                                     <!-- <div   *ngFor="let options1 of ArrayOfSelect2"  class="col s12"  >
+                                                        <div class="input-field col s6" >
+                                                            <select class="browser-default"  name="{{options1.name}}" ngModel required style="border-style: solid;">
+                                                                    <option value="" disabled selected> seleccione... </option>
+                                                                    <option *ngFor="let options2 of ArrayOfSelect" value="{{options2.name}}"> 
+                                                                        {{options2.name}} 
+                                                                    </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>  -->
+                                                    <div style="margin-top:30px;" class="input_field col s12">
+                                                        <button title="guardar" class=" blue darken-4 btn waves-effect waves-light btn-small btn-save-clientForm right"><i class="material-icons right">send</i>Guardar</button>
+                                                        <a title="limpiar" class="  blue-grey lighten-1 waves-effect waves-light btn-small left" (click)="resetForm(locationForm)"><i class="material-icons right">clear</i>Limpiar</a>
+                                                    </div>
+                                            </div>
+                                    </form>
+                                </div>
+                        </div>
+                        <thead>
+                            <!-- <th>Nombre</th> -->
+                        </thead>
+                        <tbody >   
+                            <div class="divider"></div>     
+                            <tr  class="hoverable" *ngFor="let location of this.ArrayOfService">
+                                    <td>
+                                    <form #editLocationForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(2,editLocationForm)" class="col s12 form-departments"> 
+                                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] ="location._id">
+                                            <div class="input-field col s12">
+                                                    <input  id="name" type="text" class="validate" [(ngModel)] ="location.name"  name="name" class="validate"  ngModel required>
+                                                   
+                                                    <!-- <div *ngFor="let options1 of ArrayOfSelect2"  class="col s12"  >
+                                                            <div class="input-field col s6" >
+                                                                <select class="browser-default"  name="{{options1.name}}" [(ngModel)]="options1.ngmodel"  style="border-style: solid;">
+                                                                        <option value="" disabled selected> seleccione... </option>
+                                                                        <option *ngFor="let options2 of ArrayOfSelect" value="{{options2.name}}"> 
+                                                                            {{options2.name}} 
+                                                                        </option>
+                                                                </select>
+                                                            </div>
+                                                    </div> -->
+                                            </div>
+                                            <div class="col s5">
+                                                    <button style='top:20px' type='submit' class="btn  green darken-4 waves-effect waves-light btn-small btn-save-departments ">
+                                                        <i  class="material-icons right">save</i>
+                                                                        Guardar
+                                                    </button>
+                                            </div>
+                                            
+                                    </form>
+                                    </td> 
+                            </tr>
+                        </tbody>
+            </table>
+        </div> 
+        <!-- FIN de country module -->
+
+
+
+
+
+
+
+             <!-- indicio de district module -->
+             <div *ngSwitchCase='2' style='border-style:solid; border-width: 0.35px; border-color:gray;'>
+                    <table class="highlight"> 
+                                <caption class="indigo lighten-2">
+                                        <h3>{{ModuleName}}  </h3> 
+                                          <!-- {{ArrayOfSelect2[0].name}} -->
+                                        <a title="Ocultar Modulo" style='top:-70px'class="btn-floating waves-effect waves-light btn-small right  pink accent-3" (click)="enableLocation(0)"><i class="material-icons right">arrow_drop_up</i>ocultar</a>
+                                </caption>      
+                                <div class="container"  >
+                            
+                                        <div  class="col s12 form-content" style="margin-top:20px;">
+                                            <form #locationForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(1,locationForm)" class="col s12 form-clientForm">
+                                                    <div class="row">
+                                                            <div class="input-field col s12">
+                                                                <!-- <input type="hidden" name="{{ModuleName}}"  value="{{ModuleName}}" ngModel required> -->
+                                                                <input type="text" name = "name" class="validate" #name="ngModel" placeholder="{{placeholder}}" ngModel required>
+                                                            </div>
+                                                            <br> 
+                                                             
+                                                              <div class="col s12"  >
+                                                                <div class="input-field col s6" >
+                                                                    <select class="browser-default"  name="county" ngModel required style="border-style: solid;">
+                                                                            <option value="" disabled selected> seleccione un pais... </option>
+                                                                            <option *ngFor="let options2 of this.locationsService.country" value="{{options2.name}}"> 
+                                                                                {{options2.name}} 
+                                                                            </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div> 
+                                                            <div style="margin-top:30px;" class="input_field col s12">
+                                                                <button title="guardar" class=" blue darken-4 btn waves-effect waves-light btn-small btn-save-clientForm right"><i class="material-icons right">send</i>Guardar</button>
+                                                                <a title="limpiar" class="  blue-grey lighten-1 waves-effect waves-light btn-small left" (click)="resetForm(locationForm)"><i class="material-icons right">clear</i>Limpiar</a>
+                                                            </div>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                </div>
+                                <thead>
+                                    <!-- <th>Nombre</th> -->
+                                </thead>
+                                <tbody >   
+                                    <div class="divider"></div>     
+                                    <tr  class="hoverable" *ngFor="let location of this.ArrayOfService">
+                                            <td>
+                                            <form #editLocationForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(2,editLocationForm)" class="col s12 form-departments"> 
+                                                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] ="location._id">
+                                                    <div class="input-field col s12">
+                                                            <input  id="name" type="text" class="validate" [(ngModel)] ="location.name"  name="name" class="validate"  ngModel required>
+                                                           
+                                                            <div   class="col s12"  >
+                                                                    <div class="input-field col s6" >
+                                                                        <select class="browser-default"  name="country" [(ngModel)]="location.country"  style="border-style: solid;">
+                                                                                <option value="" disabled selected> seleccione... </option>
+                                                                                <option *ngFor="let options2 of locationsService.country" value="{{options2.name}}"> 
+                                                                                    {{options2.name}} 
+                                                                                </option>
+                                                                        </select>
+                                                                    </div>
+                                                            </div> 
+                                                    </div>
+                                                    <div class="col s5">
+                                                            <button style='top:20px' type='submit' class="btn  green darken-4 waves-effect waves-light btn-small btn-save-departments ">
+                                                                <i  class="material-icons right">save</i>
+                                                                                Guardar
+                                                            </button>
+                                                    </div>
+                                                    
+                                            </form>
+                                            </td> 
+                                    </tr>
+                                </tbody>
+                    </table>
+                </div> 
+                <!-- FIN de distrcit module -->
+
+
+                        <!-- indicio de Camp module -->
+             <div *ngSwitchCase='3' style='border-style:solid; border-width: 0.35px; border-color:gray;'>
+                    <table class="highlight"> 
+                                <caption class="indigo lighten-2">
+                                        <h3>{{ModuleName}}  </h3> 
+                    
+                                        <a title="Ocultar Modulo" style='top:-70px'class="btn-floating waves-effect waves-light btn-small right  pink accent-3" (click)="enableLocation(0)"><i class="material-icons right">arrow_drop_up</i>ocultar</a>
+                                </caption>      
+                                <div class="container"  >
+                            
+                                        <div  class="col s12 form-content" style="margin-top:20px;">
+                                            <form #locationForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(1,locationForm)" class="col s12 form-clientForm">
+                                                    <div class="row">
+                                                            <div class="input-field col s12">
+                                                                <!-- <input type="hidden" name="{{ModuleName}}"  value="{{ModuleName}}" ngModel required> -->
+                                                                <input type="text" name = "name" class="validate" #name="ngModel" placeholder="{{placeholder}}" ngModel required>
+                                                            </div>
+                                                            <br> 
+                                                             
+                                                              <div class="col s12"  >
+                                                                <div class="input-field col s6" >
+                                                                    <select class="browser-default"  name="country" ngModel required style="border-style: solid;">
+                                                                            <option value="" disabled selected> seleccione un pais... </option>
+                                                                            <option *ngFor="let options2 of locationsService.country" value="{{options2.name}}"> 
+                                                                                {{options2.name}} 
+                                                                            </option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="input-field col s6" >
+                                                                        <select class="browser-default"  name="district" ngModel required style="border-style: solid;">
+                                                                                <option value="" disabled selected> seleccione un Distrito... </option>
+                                                                                <option *ngFor="let options2 of locationsService.district" value="{{options2.name}}"> 
+                                                                                    {{options2.name}} 
+                                                                                </option>
+                                                                        </select>
+                                                                    </div>
+                                                            </div> 
+                                                            <div style="margin-top:30px;" class="input_field col s12">
+                                                                <button title="guardar" class=" blue darken-4 btn waves-effect waves-light btn-small btn-save-clientForm right"><i class="material-icons right">send</i>Guardar</button>
+                                                                <a title="limpiar" class="  blue-grey lighten-1 waves-effect waves-light btn-small left" (click)="resetForm(locationForm)"><i class="material-icons right">clear</i>Limpiar</a>
+                                                            </div>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                </div>
+                                <thead>
+                                    
+                                </thead>
+                                <!-- editar -->
+                                <tbody >   
+                                    <div class="divider"></div>     
+                                    <tr  class="hoverable" *ngFor="let location of this.ArrayOfService">
+                                            <td>
+                                            <form #editLocationForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(2,editLocationForm)" class="col s12 form-departments"> 
+                                                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] ="location._id">
+                                                    <div class="input-field col s12">
+                                                            <input  id="name" type="text" class="validate" [(ngModel)] ="location.name"  name="name" class="validate"  ngModel required>
+                                                           
+                                                            <div   class="col s12"  >
+                                                                    <div class="input-field col s6" >
+                                                                        <select class="browser-default"  name="country" [(ngModel)]="location.country"  style="border-style: solid;">
+                                                                                <option value="" disabled selected> seleccione... </option>
+                                                                                <option *ngFor="let options2 of locationsService.country" value="{{options2.name}}"> 
+                                                                                    {{options2.name}} 
+                                                                                </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="input-field col s6" >
+                                                                            <select class="browser-default"  name="district" [(ngModel)]="location.district"  style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.district" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                        </div>
+                                                            </div> 
+                                                    </div>
+                                                    <div class="col s5">
+                                                            <button style='top:20px' type='submit' class="btn  green darken-4 waves-effect waves-light btn-small btn-save-departments ">
+                                                                <i  class="material-icons right">save</i>
+                                                                                Guardar
+                                                            </button>
+                                                    </div>
+                                                    
+                                            </form>
+                                            </td> 
+                                    </tr>
+                                </tbody>
+                    </table>
+                </div> 
+                <!-- FIN de camp module -->
+
+
+
+
+                          <!-- indicio de Camp closter -->
+             <div *ngSwitchCase='4' style='border-style:solid; border-width: 0.35px; border-color:gray;'>
+                    <table class="highlight"> 
+                                <caption class="indigo lighten-2">
+                                        <h3>{{ModuleName}}  </h3> 
+                    
+                                        <a title="Ocultar Modulo" style='top:-70px'class="btn-floating waves-effect waves-light btn-small right  pink accent-3" (click)="enableLocation(0)"><i class="material-icons right">arrow_drop_up</i>ocultar</a>
+                                </caption>      
+                                <div class="container"  >
+                            
+                                        <div  class="col s12 form-content" style="margin-top:20px;">
+                                            <form #locationForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(1,locationForm)" class="col s12 form-clientForm">
+                                                    <div class="row">
+                                                            <div class="input-field col s12">
+                                                                <!-- <input type="hidden" name="{{ModuleName}}"  value="{{ModuleName}}" ngModel required> -->
+                                                                <input type="text" name = "name" class="validate" #name="ngModel" placeholder="{{placeholder}}" ngModel required>
+                                                            </div>
+                                                            <br> 
+                                                             
+                                                              <div class="col s12"  >
+                                                                    <div class="input-field col s4" >
+                                                                        <select class="browser-default"  name="country" ngModel required style="border-style: solid;">
+                                                                                <option value="" disabled selected> seleccione un pais... </option>
+                                                                                <option *ngFor="let options2 of locationsService.country" value="{{options2.name}}"> 
+                                                                                    {{options2.name}} 
+                                                                                </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="input-field col s4" >
+                                                                            <select class="browser-default"  name="district" ngModel required style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione un Distrito... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.district" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                    </div>
+                                                                    <div class="input-field col s4" >
+                                                                            <select class="browser-default"  name="camp" ngModel required style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione un Distrito... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.camp" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                    </div>
+                                                            </div> 
+                                                            <div style="margin-top:30px;" class="input_field col s12">
+                                                                <button title="guardar" class=" blue darken-4 btn waves-effect waves-light btn-small btn-save-clientForm right"><i class="material-icons right">send</i>Guardar</button>
+                                                                <a title="limpiar" class="  blue-grey lighten-1 waves-effect waves-light btn-small left" (click)="resetForm(locationForm)"><i class="material-icons right">clear</i>Limpiar</a>
+                                                            </div>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                </div>
+                                <thead>
+                                    
+                                </thead>
+                                <!-- editar -->
+                                <tbody >   
+                                    <div class="divider"></div>     
+                                    <tr  class="hoverable" *ngFor="let location of this.ArrayOfService">
+                                            <td>
+                                            <form #editLocationForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(2,editLocationForm)" class="col s12 form-departments"> 
+                                                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] ="location._id">
+                                                    <div class="input-field col s12">
+                                                            <input  id="name" type="text" class="validate" [(ngModel)] ="location.name"  name="name" class="validate"  ngModel required>
+                                                           
+                                                            <div   class="col s12"  >
+                                                                    <div class="input-field col s4" >
+                                                                        <select class="browser-default"  name="country" [(ngModel)]="location.country"  style="border-style: solid;">
+                                                                                <option value="" disabled selected> seleccione... </option>
+                                                                                <option *ngFor="let options2 of locationsService.country" value="{{options2.name}}"> 
+                                                                                    {{options2.name}} 
+                                                                                </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="input-field col s4" >
+                                                                            <select class="browser-default"  name="district" [(ngModel)]="location.district"  style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.district" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                    </div>
+                                                                    <div class="input-field col s4" >
+                                                                            <select class="browser-default"  name="camp" [(ngModel)]="location.camp"  style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.camp" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                    </div>
+                                                            </div> 
+                                                    </div>
+                                                    <div class="col s5">
+                                                            <button style='top:20px' type='submit' class="btn  green darken-4 waves-effect waves-light btn-small btn-save-departments ">
+                                                                <i  class="material-icons right">save</i>
+                                                                                Guardar
+                                                            </button>
+                                                    </div>
+                                                    
+                                            </form>
+                                            </td> 
+                                    </tr>
+                                </tbody>
+                    </table>
+                </div> 
+                <!-- FIN de closter module -->
+
+
+
+
+
+                              <!-- indicio de well module  -->
+             <div *ngSwitchCase='5' style='border-style:solid; border-width: 0.35px; border-color:gray;'>
+                    <table class="highlight"> 
+                                <caption class="indigo lighten-2">
+                                        <h3>{{ModuleName}}  </h3> 
+                    
+                                        <a title="Ocultar Modulo" style='top:-70px'class="btn-floating waves-effect waves-light btn-small right  pink accent-3" (click)="enableLocation(0)"><i class="material-icons right">arrow_drop_up</i>ocultar</a>
+                                </caption>      
+                                <div class="container"  >
+                            
+                                        <div  class="col s12 form-content" style="margin-top:20px;">
+                                            <form #locationForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(1,locationForm)" class="col s12 form-clientForm">
+                                                    <div class="row">
+                                                            <div class="input-field col s12">
+                                                                <!-- <input type="hidden" name="{{ModuleName}}"  value="{{ModuleName}}" ngModel required> -->
+                                                                <input type="text" name = "name" class="validate" #name="ngModel" placeholder="{{placeholder}}" ngModel required>
+                                                            </div>
+                                                            <br> 
+                                                             
+                                                              <div class="col s12"  >
+                                                                    <div class="input-field col s3" >
+                                                                        <select class="browser-default"  name="country" ngModel required style="border-style: solid;">
+                                                                                <option value="" disabled selected> seleccione un pais... </option>
+                                                                                <option *ngFor="let options2 of locationsService.country" value="{{options2.name}}"> 
+                                                                                    {{options2.name}} 
+                                                                                </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="input-field col s3" >
+                                                                            <select class="browser-default"  name="district" ngModel required style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione un Distrito... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.district" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                    </div>
+                                                                    <div class="input-field col s3" >
+                                                                            <select class="browser-default"  name="camp" ngModel required style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione un Distrito... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.camp" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                    </div>
+                                                                    <div class="input-field col s3" >
+                                                                            <select class="browser-default"  name="closter" ngModel required style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione un Cluster... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.closter" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                    </div>
+                                                            </div> 
+                                                            <div style="margin-top:30px;" class="input_field col s12">
+                                                                <button title="guardar" class=" blue darken-4 btn waves-effect waves-light btn-small btn-save-clientForm right"><i class="material-icons right">send</i>Guardar</button>
+                                                                <a title="limpiar" class="  blue-grey lighten-1 waves-effect waves-light btn-small left" (click)="resetForm(locationForm)"><i class="material-icons right">clear</i>Limpiar</a>
+                                                            </div>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                </div>
+                                <thead>
+                                    
+                                </thead>
+                                <!-- editar -->
+                                <tbody >   
+                                    <div class="divider"></div>     
+                                    <tr  class="hoverable" *ngFor="let location of this.ArrayOfService">
+                                            <td>
+                                            <form #editLocationForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(2,editLocationForm)" class="col s12 form-departments"> 
+                                                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] ="location._id">
+                                                    <div class="input-field col s12">
+                                                            <input  id="name" type="text" class="validate" [(ngModel)] ="location.name"  name="name" class="validate"  ngModel required>
+                                                           
+                                                            <div   class="col s12"  >
+                                                                    <div class="input-field col s3" >
+                                                                        <select class="browser-default"  name="country" [(ngModel)]="location.country"  style="border-style: solid;">
+                                                                                <option value="" disabled selected> seleccione... </option>
+                                                                                <option *ngFor="let options2 of locationsService.country" value="{{options2.name}}"> 
+                                                                                    {{options2.name}} 
+                                                                                </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="input-field col s3" >
+                                                                            <select class="browser-default"  name="district" [(ngModel)]="location.district"  style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.district" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                    </div>
+                                                                    <div class="input-field col s3" >
+                                                                            <select class="browser-default"  name="camp" [(ngModel)]="location.camp"  style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.camp" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                    </div>
+                                                                    <div class="input-field col s3" >
+                                                                            <select class="browser-default"  name="closter" [(ngModel)]="location.closter" style="border-style: solid;">
+                                                                                    <option value="" disabled selected> seleccione un Cluster... </option>
+                                                                                    <option *ngFor="let options2 of locationsService.closter" value="{{options2.name}}"> 
+                                                                                        {{options2.name}} 
+                                                                                    </option>
+                                                                            </select>
+                                                                    </div>
+                                                            </div> 
+                                                    </div>
+                                                    <div class="col s5">
+                                                            <button style='top:20px' type='submit' class="btn  green darken-4 waves-effect waves-light btn-small btn-save-departments ">
+                                                                <i  class="material-icons right">save</i>
+                                                                                Guardar
+                                                            </button>
+                                                    </div>
+                                                    
+                                            </form>
+                                            </td> 
+                                    </tr>
+                                </tbody>
+                    </table>
+                </div> 
+                <!-- FIN de well module -->
+
+
+
+<button style='top:20px' (click)='updatePreviousComponent()' type='submit' class="btn  green darken-4 waves-effect waves-light btn-small btn-save-departments ">
+                        <i  class="material-icons right">save</i>
+                                        Actualizar
+</button>
+    </div> 
+</div> 

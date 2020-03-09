@@ -1,0 +1,534 @@
+<div class="row">
+        <form #profileForm="ngForm" (ngSubmit)="editProfile(profileForm)">
+
+     
+        <!-- <div class=" col s12 m4 l3"> 
+                <div class="sidenavv">
+                        <app-sidenav titulo = 'titulos'></app-sidenav>
+                </div>
+        </div>   -->
+        <div class='content col s12 m8 l12' >
+                <div class="header">
+                        <h4>  Editar Usuario </h4>
+                        <br>
+                        <!-- <div class="divider"></div> -->
+                </div>
+        
+                <div class="card col s12 hoverable">
+                    <div class="header">
+                        Datos Personales 
+                        <div class="divider"></div>
+                    </div>
+                    <div class="col s12">
+                          <div class="col s6 m4 l4">
+                                <div class="input-field inline">
+                                    <input title="first_name" type="text"  class="validate" name="firstName" #firstName='ngModel' [(ngModel)]="UserService.selectedProfile.firstName">
+                                    <span class="helper-text" data-error="wrong" data-success="Primer Nombre">Primer Nombre</span>
+                                </div>
+                          </div>
+                          <div class="col s6 m4 l4">
+                                <div class="input-field inline">
+                                        
+                                      <input type="text" class="validate" name="lastName" #lastName='ngModel' [(ngModel)]="UserService.selectedProfile.lastName">
+                                      <span class="helper-text" data-error="wrong" data-success="Segundo Nombre">Segundo Nombre</span>
+                                </div>
+                           </div>
+
+                           <div class="col s12 m12 l4">
+                                <div class="input-field inline">
+                                        
+                                      <input type="text" class="validate" name="email" #email='ngModel' [(ngModel)]="UserService.selectedProfile.email">
+                                      <span class="helper-text" data-error="wrong" data-success="email">email</span>
+                                </div>
+                           </div>
+                    </div>
+                    <div class="col s12">
+                           <div class="col s6 m4 l4">
+                                <div class="input-field inline">
+                                       <select name='sex' #sex='ngModel'   [(ngModel)]="UserService.selectedProfile.sex"> 
+                                                <option value="" disabled>Seleccione...</option>
+                                                <option value="male"> Masculino </option>
+                                                <option value="female"> Femenino </option>
+                                        </select>
+                                </div>
+                           </div>
+                           <div class="col s6 m4 l4">
+                                <div class="input-field inline">
+                                        <input type="number" class="validate" name="phone" #phone='ngModel' [(ngModel)]="UserService.selectedProfile.phone">
+                                        <span class="helper-text" data-error="wrong" data-success="phone">Telefono</span>
+                                </div>
+                           </div>
+                           <div class="col s6 m4 l4">
+                                <div class="input-field inline">
+                                        <input type="number" class="validate" name="identification" #identification='ngModel' [(ngModel)]="UserService.selectedProfile.identification">
+                                        <span class="helper-text" data-error="wrong" data-success="Cedula">Cedula</span>
+                                </div>
+                           </div>
+                    </div>
+                    <div class="col s12">
+                            <div class="col s6 m6 l6">
+                                <span>Estado</span>
+                            <p>  
+                                    <label title="Estatus de usuario">
+                                           <input type="checkbox"   name="status" #status='ngModel' [(ngModel)] = "UserService.selectedProfile.status" ngModel required />
+                                                  <span>Activo</span>
+                                    </label>
+                             </p>
+                            </div>
+                            <div class="col s6 m6 l6">
+                                    <span>Reiniciar contraseña</span>
+                                <p>  
+                                        <label title="Estatus de usuario">
+                                               <input type="checkbox"   name="restorePass"  ngModel required />
+                                                      <span>Si</span>
+                                        </label>
+                                 </p>
+                                </div>
+                    </div>
+                </div> 
+
+                <div class="card col s12 hoverable" style="margin-top: 5px;">
+                        <div class="header">
+                                Datos Laborales 
+                                <div class="divider"></div>
+                        </div>
+                        <div class="col s12">
+                            <div class="col s12 m4 l4">
+                                    <span>
+                                            País
+                                    </span>
+                                    <select   (change)="captureCountry($event.target.value)" class="browser-default" name='country' #country='ngModel'   [(ngModel)]="UserService.selectedProfile.country"> 
+                                               <option value="" disabled selected>Seleccione...</option>
+                                               <option *ngFor='let country of this.locationsService.country'value="{{country.name}}"> {{country.name}} </option>
+                                    </select>
+                            </div>
+                            <div class="col s12 m4 l4">
+                                    <span>
+                                            Distrito
+                                    </span>
+                                    <select   class="browser-default" name='district' #district='ngModel'   [(ngModel)]="UserService.selectedProfile.district"> 
+                                               <option value="" disabled selected>Seleccione...</option>
+                                               <option *ngFor='let country of this.locationsService.district'value="{{country.name}}"> {{country.name}} </option>
+                                    </select>
+                            </div>
+                            <div class="col s12 m4 l4">
+                                    <span>
+                                            Compañia
+                                    </span>
+                                    <select    class="browser-default" name='company' #company='ngModel'   [(ngModel)]="UserService.selectedProfile.company"> 
+                                               <option value="" disabled selected>Seleccione...</option>
+                                               <option > Lupatech</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="col s12">
+                                <div class="col s12 m4 l4">
+                                        <span>
+                                                Depatamento
+                                        </span>
+                                        <select  (change)="captureDepartment($event)"  class="browser-default" name='department' #department='ngModel'   [(ngModel)]="UserService.selectedProfile.department"> 
+                                                   <option value="" disabled selected>Seleccione...</option>
+                                                   <option *ngFor='let department of this.departmentService.departments'value="{{department.name}}"> {{department.name}} </option>
+                                        </select>
+                                </div>
+                                <div class="col s12 m4 l4">
+                                        <span>
+                                                Cargo
+                                        </span>
+                                        <select   class="browser-default" name='department' #department='ngModel'   [(ngModel)]="UserService.selectedProfile.department"> 
+                                                   <option value="" disabled selected>Seleccione...</option>
+                                                   <option *ngFor='let department of this.departmentService.departments'value="{{department.name}}"> {{department.name}} </option>
+                                        </select>
+                                </div>
+                        </div>
+                        <div class="col s12" [ngSwitch] = "showServicesLine">
+                                <div class="col s12 m12 l12" *ngSwitchCase = '1'>
+                                        <span>
+                                                Seleccione Linea de servicio
+                                        </span>
+                                </div>
+                                <div class="col s12 m4 l4" *ngSwitchCase = '1'>
+                                        <div class="col s4 m4 l4 ">
+
+                                        <!-- <p>
+                                                <label>
+                                                       <input name="viewKomPermisology"  #viewKomPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.kom.observe"  id="emailNotification" type="checkbox"  ngModel required />
+                                                       <span>ver</span>
+                                                </label>
+                                            </p>  
+ -->
+
+
+
+                                                <p>
+                                                    <label>
+<!--              <input name="view
+        
+        
+        Permisology"  #viewKomPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.kom.observe"  id="emailNotification" type="checkbox"  ngModel required /> -->
+
+                                                           <input name="wt" #wtService='ngModel' [(ngModel)]="UserService.selectedProfile.serviceLine.operations.wt" id="wt"  type="checkbox"   ngModel    />
+                                                           <span>WT</span>
+                                                    </label>
+                                                </p>  
+                                        </div>
+                                        <div class="col s4 m4 l4 ">
+                                                <p>
+                                                    <label>
+                                                           <input name="sl" #sl='ngModel' [(ngModel)]="UserService.selectedProfile.serviceLine.operations.sl" type="checkbox"  ngModel  />
+                                                           <span>SL</span>
+                                                    </label>
+                                                </p>  
+                                        </div>
+                                        <div class="col s4 m4 l4 ">
+                                                <p>
+                                                    <label>
+                                                           <input name="wl" #wl='ngModel' [(ngModel)]="UserService.selectedProfile.serviceLine.operations.wl" type="checkbox"  ngModel />
+                                                           <span>WL</span>
+                                                    </label>
+                                                </p>  
+                                        </div>
+                                </div>
+                                <div class="col s12 m4 l4" *ngSwitchCase = '1'>
+                                        <div class="col s4 m4 l4 ">
+                                                <p>
+                                                    <label>
+                                                           <input name="ct"  #ct='ngModel' [(ngModel)]="UserService.selectedProfile.serviceLine.operations.ct" type="checkbox"  ngModel  />
+                                                           <span>CT</span>
+                                                    </label>
+                                                </p>  
+                                        </div>
+                                        <div class="col s4 m4 l4 ">
+                                                <p>
+                                                    <label>
+                                                           <input name="fi"  #fi='ngModel' [(ngModel)]="UserService.selectedProfile.serviceLine.operations.fi" type="checkbox"  ngModel  />
+                                                           <span>FI</span>
+                                                    </label>
+                                                </p>  
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+
+
+
+                <div class="card col s12 hoverable" style="margin-top: 5px;" [ngSwitch] = "permisology">
+                        <span>
+                                    Permisología
+                                    <div class="divider"></div>
+                        </span>
+                        <div class="col s12">
+                                <div class="col s12 m4 l4">
+                                        <span>
+                                               Modulo
+                                        </span>
+                                        <select   (change)="captureModule($event)" class="browser-default"> 
+                                                <option value="" disabled selected>Seleccione...</option>
+                                                <option value="E-learning"> E-learning </option>
+                                                <option value="E-services"> E-services </option>
+                                                <option value="E-HSEQ"> E-HSEQ </option>
+                                                <option value="E-Journey"> E-Journey </option>
+                                                <option value="Usuarios"> Usuarios </option>
+                                     </select>
+                                </div>   
+                        </div>
+                        <!-- ELEARNING PERMISOLOGIAS  -->
+                        <div class="col s12" *ngSwitchCase = '1'>
+                                ELEARNING
+                        </div>
+                          <!-- ESERVICES PERMISOLOGIAS  -->
+                        <div class="col s12" *ngSwitchCase = '2'>
+                            <div class="col s12 solid" style="margin-top: 10px;">
+                                <div class="cardpermisology col s12 m3 l3" >
+                                    Iniciar Gestion KOM 
+                                    <div class="divier"></div>
+                                    <div class="col s12 m12 l12 ">
+                                            <p>
+                                                <label>
+                                                       <input name="viewKomPermisology"  #viewKomPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.kom.observe"  id="emailNotification" type="checkbox" ngModel required />
+                                                       <span>ver</span>
+                                                </label>
+                                            </p>  
+                                    </div>
+                                    <div class="col s12 m12 l12 ">
+                                            <p>
+                                                <label>
+                                                       <input name="createKomPermisology" #createKomPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.kom.create" id="emailNotification" type="checkbox"  ngModel required />
+                                                       <span>crear</span>
+                                                </label>
+                                            </p>  
+                                    </div>
+                                    <div class="col s12 m12 l12 ">
+                                            <p>
+                                                <label>
+                                                       <input name="editKomPermisology" #editKomPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.kom.edit" id="emailNotification" type="checkbox"  ngModel required />
+                                                       <span>editar</span>
+                                                </label>
+                                            </p>  
+                                    </div>
+                                    <div class="col s12 m12 l12 ">
+                                        <p>
+                                            <label>
+                                                   <input name="aprobationKomPermisology" #aprobationKomPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.kom.aprobation" id="emailNotification" type="checkbox"  ngModel required />
+                                                   <span>aprobar</span>
+                                            </label>
+                                        </p>  
+                                </div>
+                                </div>
+                                <div class="col s12 m3 l3 cardpermisology">
+                                    Preparación de trabajo por linea de servicio 
+                                    <div class="divier"></div>
+                                    <div class="col s12 m12 l12 ">
+                                            <p>
+                                                <label>
+                                                       <input name="viewWorkPreparationPermisology" #viewWorkPreparationPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.WorkPreparation.observe" id="emailNotification" type="checkbox"  ngModel required />
+                                                       <span>ver</span>
+                                                </label>
+                                            </p>  
+                                    </div>
+                                    <div class="col s12 m12 l12 ">
+                                            <p>
+                                                <label>
+                                                       <input name="createWorkPreparationPermisology" #createWorkPreparationPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.WorkPreparation.create" id="emailNotification" type="checkbox"  ngModel required />
+                                                       <span>crear</span>
+                                                </label>
+                                            </p>  
+                                    </div>
+                                    <div class="col s12 m12 l12 ">
+                                            <p>
+                                                <label>
+                                                       <input name="editWorkPreparationPermisology" #editWorkPreparationPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.WorkPreparation.edit" id="emailNotification" type="checkbox"  ngModel required />
+                                                       <span>editar</span>
+                                                </label>
+                                            </p>  
+                                    </div>
+                                    <div class="col s12 m12 l12 ">
+                                        <p>
+                                            <label>
+                                                   <input name="aprobationWPermisology" #aprobationWPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.WorkPreparation.aprobation" id="emailNotification" type="checkbox"  ngModel required />
+                                                   <span>aprobar</span>
+                                            </label>
+                                        </p>  
+                                </div>
+                                </div>
+                                <div class="col s12 m3 l3 cardpermisology">
+                                        Indice de riesgo operacional. IRO
+                                        <div class="divier"></div>
+                                    <div class="col s12 m12 l12 ">
+                                            <p>
+                                                <label>
+                                                       <input name="viewIROPermisology" #viewPrejobIndexPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.IRO.observe" id="emailNotification" type="checkbox"  ngModel required />
+                                                       <span>ver</span>
+                                                </label>
+                                            </p>  
+                                    </div>
+                                    <div class="col s12 m12 l12 ">
+                                            <p>
+                                                <label>
+                                                       <input name="createIROPermisology" #createPrejobIndexPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.IRO.create" id="emailNotification" type="checkbox"  ngModel required />
+                                                       <span>crear</span>
+                                                </label>
+                                            </p>  
+                                    </div>
+                                    <div class="col s12 m12 l12 ">
+                                            <p>
+                                                <label>
+                                                       <input name="editIROPermisology" #editPrejobIndexPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.IRO.edit" id="indeterminate-checkbox" type="checkbox"  ngModel required />
+                                                       <span>editar</span>
+                                                </label>
+                                            </p>  
+                                    </div>
+
+                                    <div class="col s12 m12 l12 ">
+                                        <p>
+                                            <label>
+                                                   <input name="aprobationIROPermisology" #aprobationPreJobPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.IRO.aprobation" id="emailNotification" type="checkbox"  ngModel required />
+                                                   <span>aprobar</span>
+                                            </label>
+                                        </p>  
+                                   </div>
+                                </div>
+                              
+                            </div>
+                            <div class="col s12 solid" style="margin-top: 10px;">                        
+                                <div class="col s12 m3 l3 cardpermisology">
+                                        <div class="col s12 m3 l3 cardpermisology">
+                                                Fase de Cierre.
+                                                <div class="divier"></div>
+                                            <div class="col s12 m12 l12 ">
+                                                    <p>
+                                                        <label>
+                                                               <input name="viewClosingPermisology" #viewClosingPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.closing.observe" id="emailNotification" type="checkbox"  ngModel required />
+                                                               <span>ver</span>
+                                                        </label>
+                                                    </p>  
+                                            </div>
+                                            <div class="col s12 m12 l12 ">
+                                                    <p>
+                                                        <label>
+                                                               <input name="createClosingPermisology" #createClosingPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.closing.create" id="emailNotification" type="checkbox"  ngModel required />
+                                                               <span>crear</span>
+                                                        </label>
+                                                    </p>  
+                                            </div>
+                                            <div class="col s12 m12 l12 ">
+                                                    <p>
+                                                        <label>
+                                                               <input name="editClosingPermisology" #editClosingPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.closing.edit" id="indeterminate-checkbox" type="checkbox"  ngModel required />
+                                                               <span>editar</span>
+                                                        </label>
+                                                    </p>  
+                                            </div>
+        
+                                            <div class="col s12 m12 l12 ">
+                                                <p>
+                                                    <label>
+                                                           <input name="aprobationClosingPermisology" #aprobationClosingPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.closing.aprobation" id="emailNotification" type="checkbox"  ngModel required />
+                                                           <span>aprobar</span>
+                                                    </label>
+                                                </p>  
+                                           </div>
+                                        </div>
+                                </div>
+
+                                <div class="col s12 m3 l3 cardpermisology">
+                                        <div class="col s12 m3 l3 cardpermisology">
+                                                Lecciones aprendidas.
+                                                <div class="divier"></div>
+                                            <div class="col s12 m12 l12 ">
+                                                    <p>
+                                                        <label>
+                                                               <input name="viewLectionsPermisology" #viewLectionsPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.lections.observe" id="emailNotification" type="checkbox"  ngModel required />
+                                                               <span>ver</span>
+                                                        </label>
+                                                    </p>  
+                                            </div>
+                                            <div class="col s12 m12 l12 ">
+                                                    <p>
+                                                        <label>
+                                                               <input name="createLectionsPermisology" #createLectionsPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.lections.create" id="emailNotification" type="checkbox"  ngModel required />
+                                                               <span>crear</span>
+                                                        </label>
+                                                    </p>  
+                                            </div>
+                                            <div class="col s12 m12 l12 ">
+                                                    <p>
+                                                        <label>
+                                                               <input name="editLectionsgPermisology" #editLectionsgPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.lections.edit" id="indeterminate-checkbox" type="checkbox"  ngModel required />
+                                                               <span>editar</span>
+                                                        </label>
+                                                    </p>  
+                                            </div>
+        
+                                            <div class="col s12 m12 l12 ">
+                                                <p>
+                                                    <label>
+                                                           <input name="aprobationLectionsPermisology" #aprobationLectionsPermisology='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.eservices.lections.aprobation" id="emailNotification" type="checkbox"  ngModel required />
+                                                           <span>aprobar</span>
+                                                    </label>
+                                                </p>  
+                                           </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  E-HSEQ PERMISOLOGIAS  -->
+                        <div class="col s12" *ngSwitchCase = '3'>
+                                    E-HSEQ
+                        </div>
+                        <!-- E-Journey -->
+                        <div class="col s12" *ngSwitchCase = '4'>
+                                <!-- <div class="col s12 solid" style="margin-top: 10px;">
+                                        <div class="cardpermisology col s12 m3 l3" >
+                                                Permisos básicos
+                                                <div class="divier"></div>
+                                                <div class="col s12 m12 l12 ">
+                                                        <p>
+                                                        <label>
+                                                                <input name="ejourneyView"  #ejourneyView='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.ejourney.basic.observe"  type="checkbox" ngModel required />
+                                                                <span>ver</span>
+                                                        </label>
+                                                        </p>  
+                                                </div>
+                                                <div class="col s12 m12 l12 ">
+                                                        <p>
+                                                        <label>
+                                                                <input name="ejourneyCreate" #ejourneyCreate='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.ejourney.basic.create" type="checkbox"  ngModel required />
+                                                                <span>crear</span>
+                                                        </label>
+                                                        </p>  
+                                                </div>
+                                                <div class="col s12 m12 l12 ">
+                                                        <p>
+                                                        <label>
+                                                                <input name="ejourneyEdit" #ejourneyEdit='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.ejourney.basic.edit" type="checkbox"  ngModel required />
+                                                                <span>editar</span>
+                                                        </label>
+                                                        </p>  
+                                                </div>
+                                        </div>
+                                        <div class="cardpermisology col s12 m3 l3" >
+                                                Aprobación
+                                                <div class="divier"></div>
+                                                <div class="col s12 m12 l12 ">
+                                                        <p>
+                                                        <label>
+                                                                <input name="ejourneydispatcher" #ejourneydispatcher='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.ejourney.aprobation.dispatcher" type="checkbox"  ngModel />
+                                                                <span>Dispatcher</span>
+                                                        </label>
+                                                        </p>  
+                                                </div>
+                                                <div class="col s12 m12 l12 ">
+                                                        <p>
+                                                        <label>
+                                                                <input name="ejourneyChiefDistrict"  #ejourneyChiefDistrict='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.ejourney.aprobation.chiefDistrict"  type="checkbox" ngModel />
+                                                                <span>Nivel 1. Jefe de Distrito</span>
+                                                        </label>
+                                                        </p>  
+                                                </div>
+                                                <div class="col s12 m12 l12 ">
+                                                        <p>
+                                                        <label>
+                                                                <input name="ejourneyOpManager" #ejourneyOpManager='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.ejourney.aprobation.operationsManager" type="checkbox"  ngModel />
+                                                                <span>Nivel 2. Gerente de Operaciones</span>
+                                                        </label>
+                                                        </p>  
+                                                </div>
+                                                <div class="col s12 m12 l12 ">
+                                                        <p>
+                                                        <label>
+                                                                <input name="ejourneyGeneralManager" #ejourneyGeneralManager='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.ejourney.aprobation.generalManager" type="checkbox"  ngModel />
+                                                                <span>Nivel 3. Gerente General</span>
+                                                        </label>
+                                                        </p>  
+                                                </div>
+                                                <div class="col s12 m12 l12 ">
+                                                        <p>
+                                                        <label>
+                                                                <input name="ejourneyIndustrialProtectionSupervisor" #ejourneyIndustrialProtectionSupervisor='ngModel' [(ngModel)] = "UserService.selectedProfile.permisology.ejourney.aprobation.industrialProtectionSupervisor" type="checkbox"  ngModel />
+                                                                <span>Supervisor de Protección Industrial</span>
+                                                        </label>
+                                                        </p>  
+                                                </div>
+                                        </div>
+                                </div> -->
+                        </div>
+                        <div class="col s12" *ngSwitchCase = '5'>
+                                USUARIOS
+                        </div>
+                 </div>
+
+                <td class="col s12" style="text-align: center;" >
+                        <a type="button" title="Guardar" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                        (click)="editProfile(profileForm)">
+                                Guardar 
+                        </a>   
+                        <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                       href="javascript:window.history.go(-1);">
+                                Regresar 
+                        </a>   
+                        <!-- <input type="submit"> -->
+                </td> 
+<!-- </form>  -->
+
+</div>

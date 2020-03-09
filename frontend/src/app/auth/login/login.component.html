@@ -1,0 +1,36 @@
+<br>
+<br>
+<br>
+<img src='https://i.postimg.cc/BbHRMqQb/footer-5.png' border='0' alt='lupatech' width="300"
+  height="65" style="left: 700px; top:0px;  position: relative; z-index: 4;"/>
+<div class="container">
+
+  <div class="login" >
+    <div class="login-triangle"></div>
+
+    <h2 class="login-header ">Inicio de Sesion</h2>
+    
+    <form #frmLogin="ngForm" class="login-container" (ngSubmit)="onLogin(frmLogin)" >
+     
+        <div class="input-field inline col s12" >
+                        
+            <input id="text_inline" type="email" class="validate"  name="email" ngModel required>
+            <label for="text_inline">Email</label>
+       
+         </div>
+    
+      <div class="input-field inline col s12" >
+                        
+          <input id="text_inline" type="password" class="validate"  name="password" ngModel required>
+         <label for="text_inline">Contraseña</label> 
+       </div>      
+        <input class='button' type="submit" value="Continuar">
+   
+    </form>
+    
+  </div>
+</div>
+
+  
+
+ 

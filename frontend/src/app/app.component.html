@@ -1,0 +1,24 @@
+<div class="row">
+    <nav class="light-blue lighten-1" role="navigation">
+        <app-navbar></app-navbar>
+    </nav>
+</div>
+
+
+<div class="row "   style="margin:0; padding:0;">
+    <router-outlet></router-outlet>
+</div>
+
+<footer class="page-footer" style="margin-top:-20px" >
+    <div class="footer" >
+        <app-footer></app-footer>
+    </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+</script>
+<script src="https://kit.fontawesome.com/63e3f2041b.js" crossorigin="anonymous"></script>

@@ -1,0 +1,288 @@
+<div class="col s12 m12 l12">
+
+        <app-work-phase1> </app-work-phase1>
+ 
+    <form #workForm = "ngForm" (ngSubmit)="saveWork(workForm)">
+            <div class="col s5 " title="Lineas de servicio que aplican "   style="display: inline" >
+                        <div class="col s2"  [ngSwitch] = "wtslM"> 
+                            <div *ngSwitchCase='1'>
+                                WT
+                            </div>
+                        </div> 
+                        <div class="col s2" [ngSwitch] = "ctslM"> 
+                            <div  *ngSwitchCase='1'>
+                                CT
+                            </div>
+                        </div> 
+                        <div class="col s2" [ngSwitch] = "slslM"> 
+                            <div  *ngSwitchCase='1'>
+                                SL
+                            </div>
+                        </div> 
+                        <div class="col s2" [ngSwitch] = "fislM"> 
+                            <div  *ngSwitchCase='1'>
+                                FI
+                            </div>
+                        </div> 
+                        <div class="col s2"[ngSwitch] = "wlslM" > 
+                            <div  *ngSwitchCase='1'>
+                             <b>  WL </b> 
+                            </div>
+                        </div> 
+                        
+         </div>
+
+
+         <!--  preguntas de WT -->
+         <div class="col s12" [ngSwitch] = "wtslM">
+            <table>
+                   <thead>
+                          <tr>
+                              <td class="col s12"> 
+                                    <div>
+                                          Preparacion de trabajo para linea WT
+                                          <div class="divider"></div>
+                                    </div>
+                              </td>
+                          </tr>
+                   </thead>
+                   <tbody>
+                       <!-- tratando de hacer el formulario dinamico  -->
+                       <!--   <div class="col s12" *ngFor="let question of this.jpactivityService.selectedWorkPreparationQuestions "> -->
+                          
+                <!-- primera pregunta -->
+                        <div class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                                <div class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                    Formato de planeacion de trabajo MS
+                                </div>
+                                <div class="input-field1 inline col s2" >                                       
+                                    <p>
+                                        <label>
+                                               <input name="approved" id="emailNotification" type="checkbox" checked="checked" ngModel required />
+                                               <span>Completado </span>
+                                        </label>
+                                    </p>  
+                               </div>
+                                <div class="input-field1 inline col s9"    >                                       
+                                    <input id="text_inline" placeholder="observaciones" type="text" name="observation1"   class="validate"  ngModel required>
+                               </div>
+                               <div class="input-field inline col s1">
+                                    <a  (click)='addObservation(1)'  style=" z-index:10;" class="btn-floating blue hoverable"  title="Agregar Observacion">
+                                           <i class="material-icons">add</i>
+                                    </a>
+                                </div>
+
+                                <!-- observaciones 2 -->
+                                <div  [ngSwitch]="showOb2q1" class="col s12">
+                                       <div  *ngSwitchCase='1' class="col s2">
+
+                                       </div>
+                                       <div *ngSwitchCase='1' class="col s9">
+                                            <input id="text_inline" placeholder="observaciones" type="text" name="observation2"   class="validate" ngModel required>
+                                       </div>
+                                       <div *ngSwitchCase='1' class="col s1">
+
+                                       </div>
+                                </div>
+                                <!--  fin observaciones 2 -->
+
+                                  <!-- observaciones 3 -->
+                                  <div class="col s12"   [ngSwitch]="showOb3q1">
+                                        <div  *ngSwitchCase='1' class="col s2">
+ 
+                                        </div>
+                                        <div *ngSwitchCase='1' class="col s9">
+                                             <input id="text_inline" placeholder="observaciones" type="text" name="observation3"   class="validate" ngModel required>
+                                        </div>
+                                        <div *ngSwitchCase='1' class="col s1">
+ 
+                                        </div>
+                                 </div>
+                                 <!--  fin observaciones 3 -->
+                                 <div class="divider col s12"></div>
+                                <!-- responsable -->
+                                <div class="col s12">
+                                   
+                                    <div class="col s6">
+                                            <span>
+                                                    Responsable
+                                             </span>
+                                            <select class="browser-default" name='responsableAction1' ngModel required>
+                                                    <option value="" disabled selected>Seleccione un Responsable...</option>
+                                                    <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                                    {{users.firstName}} {{users.lastName }}
+                                                    </option> 
+                                             </select>
+                                    </div>
+                                </div>
+                          </div>
+                          <!-- fin de pregunta 1 -->
+
+
+                            <!-- pregunta  2  -->
+                        <div class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                                <div class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                    Simulacion (tensión, presiones, penetración de cargas, etc)
+                                </div>
+                                <div class="input-field1 inline col s2" >                                       
+                                    <p>
+                                        <label>
+                                               <input name="approved" id="emailNotification" type="checkbox" checked="checked" ngModel required />
+                                               <span>Completado </span>
+                                        </label>
+                                    </p>  
+                               </div>
+                                <div class="input-field1 inline col s9"    >                                       
+                                    <input id="text_inline" placeholder="observaciones" type="text" name="observation1"   class="validate"  ngModel required>
+                               </div>
+                               <div class="input-field inline col s1">
+                                    <a  (click)='addObservation(1)'  style=" z-index:10;" class="btn-floating blue hoverable"  title="Agregar Observacion">
+                                           <i class="material-icons">add</i>
+                                    </a>
+                                </div>
+
+                                <!-- observaciones 2 -->
+                                <div  [ngSwitch]="showOb2q1" class="col s12">
+                                       <div  *ngSwitchCase='1' class="col s2">
+
+                                       </div>
+                                       <div *ngSwitchCase='1' class="col s9">
+                                            <input id="text_inline" placeholder="observaciones" type="text" name="observation2"   class="validate" ngModel required>
+                                       </div>
+                                       <div *ngSwitchCase='1' class="col s1">
+
+                                       </div>
+                                </div>
+                                <!--  fin observaciones 2 -->
+
+                                  <!-- observaciones 3 -->
+                                  <div class="col s12"   [ngSwitch]="showOb3q1">
+                                        <div  *ngSwitchCase='1' class="col s2">
+ 
+                                        </div>
+                                        <div *ngSwitchCase='1' class="col s9">
+                                             <input id="text_inline" placeholder="observaciones" type="text" name="observation3"   class="validate" ngModel required>
+                                        </div>
+                                        <div *ngSwitchCase='1' class="col s1">
+ 
+                                        </div>
+                                 </div>
+                                 <!--  fin observaciones 3 -->
+                                 <div class="divider col s12"></div>
+                                <!-- responsable -->
+                                <div class="col s12">
+                                   
+                                    <div class="col s6">
+                                            <span>
+                                                    Responsable
+                                             </span>
+                                            <select class="browser-default" name='responsableAction1' ngModel required>
+                                                    <option value="" disabled selected>Seleccione un Responsable...</option>
+                                                    <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                                    {{users.firstName}} {{users.lastName }}
+                                                    </option> 
+                                             </select>
+                                    </div>
+                                </div>
+                          </div>
+                          <!-- fin de pregunta 2 -->
+
+
+
+                                      <!-- pregunta  3  -->
+                        <div class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                                <div class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                    Diagrama especifico del equipo de control de presion (tamaño externo, tipo de conexión, lonngitudes, rating de presión, cantidad)
+                                </div>
+                                <div class="input-field1 inline col s2" >                                       
+                                    <p>
+                                        <label>
+                                               <input name="approved" id="emailNotification" type="checkbox" checked="checked" ngModel required />
+                                               <span>Completado </span>
+                                        </label>
+                                    </p>  
+                               </div>
+                                <div class="input-field1 inline col s9"    >                                       
+                                    <input id="text_inline" placeholder="observaciones" type="text" name="observation1"   class="validate"  ngModel required>
+                               </div>
+                               <div class="input-field inline col s1">
+                                    <a  (click)='addObservation(1)'  style=" z-index:10;" class="btn-floating blue hoverable"  title="Agregar Observacion">
+                                           <i class="material-icons">add</i>
+                                    </a>
+                                </div>
+
+                                <!-- observaciones 2 -->
+                                <div  [ngSwitch]="showOb2q1" class="col s12">
+                                       <div  *ngSwitchCase='1' class="col s2">
+
+                                       </div>
+                                       <div *ngSwitchCase='1' class="col s9">
+                                            <input id="text_inline" placeholder="observaciones" type="text" name="observation2"   class="validate" ngModel required>
+                                       </div>
+                                       <div *ngSwitchCase='1' class="col s1">
+
+                                       </div>
+                                </div>
+                                <!--  fin observaciones 2 -->
+
+                                  <!-- observaciones 3 -->
+                                  <div class="col s12"   [ngSwitch]="showOb3q1">
+                                        <div  *ngSwitchCase='1' class="col s2">
+ 
+                                        </div>
+                                        <div *ngSwitchCase='1' class="col s9">
+                                             <input id="text_inline" placeholder="observaciones" type="text" name="observation3"   class="validate" ngModel required>
+                                        </div>
+                                        <div *ngSwitchCase='1' class="col s1">
+ 
+                                        </div>
+                                 </div>
+                                 <!--  fin observaciones 3 -->
+                                 <div class="divider col s12"></div>
+                                <!-- responsable -->
+                                <div class="col s12">
+                                   
+                                    <div class="col s6">
+                                            <span>
+                                                    Responsable
+                                             </span>
+                                            <select class="browser-default" name='responsableAction1' ngModel required>
+                                                    <option value="" disabled selected>Seleccione un Responsable...</option>
+                                                    <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                                    {{users.firstName}} {{users.lastName }}
+                                                    </option> 
+                                             </select>
+                                    </div>
+                                </div>
+                          </div>
+                          <!-- fin de pregunta 3 -->
+
+
+
+
+
+
+                   </tbody>
+            </table>
+         </div>
+
+
+
+         <!-- botones de final  -->
+
+        <td class="col s9" style="text-align: center;">
+                <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                routerLink='../../../eservices/dashboard'> Regresar </a>
+            
+                <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                (click)="saveWork(workForm)"> Guardar </a>
+  
+                <!-- <a *ngSwitchCase = true type="button" class="btn waves-effect yellow darken-3"   style="margin: 15px; color:white; "
+                (click)="continue(managementForm)"> Continuar </a>  -->
+        </td>   
+
+         <!-- botones de final  -->
+   
+      <br> 
+    </form>
+</div>

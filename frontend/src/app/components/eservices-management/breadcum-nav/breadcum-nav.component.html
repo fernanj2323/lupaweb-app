@@ -1,0 +1,88 @@
+<nav [ngSwitch] = "tab">
+    <!-- mode views -->
+    <div class="nav-wrapper blue accent-4" *ngSwitchCase = '1'>
+        <div class="col s12">
+             <a class="breadcrumb" style='color: #A0FF5D'> <b>Kick of Meeting </b></a>
+             <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/start/2/{{this.managementId}}/1" >Deff de actividades criticas</a>
+             <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/workpreparation/1/{{this.managementId}}/1" >Requerimientos
+              Claves de preparación y planeación</a>
+             <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/IRO/CT/{{this.managementId}}/1" >IRO</a>
+        </div>
+    </div>
+ 
+    <!-- mode views -->
+   <div class="nav-wrapper blue accent-4" *ngSwitchCase = '2'>
+     <div class="col s12">
+         <a class="breadcrumb" style='color: #E7E6E6'routerLink="/eservices-management/start/1/{{this.managementId}}/1">Kick of Meeting</a>
+         <a class="breadcrumb" style='color: #A0FF5D' > <b> Deff de actividades criticas </b></a>
+         <a class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/workpreparation/1/{{this.managementId}}/1">Requerimientos
+          Claves de preparación y planeación</a>
+         <a class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/IRO/CT/{{this.managementId}}/1" >IRO</a>
+     </div>
+   </div>
+
+      <!-- mode views -->
+     <div class="nav-wrapper blue accent-4" *ngSwitchCase = '3'>
+        <div class="col s12">
+            <!-- <a class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/start/1/{{this.managementId}}/1" >Kick of Meeting</a> -->
+            <a class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/start/2/{{this.managementId}}/1" > Deff de actividades criticas</a>
+            <a class="breadcrumb" style='color: #A0FF5D'> <b>Requerimientos
+              Claves de preparación y planeación </b></a>
+            <a class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/IRO/CT/{{this.managementId}}/1" >IRO</a>
+               <!-- <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/JobBrief/{{this.managementId}}/2" >Job Brief Gerencial</a> -->
+       </div>
+     </div>
+
+     <div class="nav-wrapper blue accent-4" *ngSwitchCase = '4'>
+        <div class="col s12">
+          <!-- <a class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/start/1/{{this.managementId}}/1" > Kick of Meeting </a> -->
+          <!-- <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/start/2/{{this.managementId}}/1" >Deff de actividades criticas</a> -->
+          <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/workpreparation/1/{{this.managementId}}/1" >Preparación y planeación</a>
+          <a  class="breadcrumb" style='color: #A0FF5D' > <b> Indice de Riesgo Operacional </b> </a>
+          <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/JobBrief/{{this.managementId}}/2" >Job Brief Gerencial</a>
+          <!-- <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/closingPhase/{{this.managementId}}/1" > Resultados de desempeño </a> -->
+       </div>
+   </div>
+  
+   <div class="nav-wrapper blue accent-4" *ngSwitchCase = '5'>
+      <div class="col s12">
+        <!-- <a class="breadcrumb" style='color: #E7E6E6' href="/eservices-management/start-management/1/{{this.managementId}}" > Kick of Meeting </a> -->
+
+        <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/workpreparation/1/{{this.managementId}}/1" >Preparación y planeación</a>
+        <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/IRO/CT/{{this.managementId}}/1"  >  IRO  </a>
+        <a  class="breadcrumb" style='color: #A0FF5D'  > <b> Job Brief Gerencial  </b></a>
+        <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/closingPhase/{{this.managementId}}/1" > Resultados de desempeño </a>
+        <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/lections/{{this.managementId}}/1" > Lecciones Aprendidas </a>
+      </div>
+  </div>
+
+
+
+  <div class="nav-wrapper blue accent-4" *ngSwitchCase = '6'>
+    <div class="col s12">
+                            
+      <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/workpreparation/1/{{this.managementId}}/1" >Preparación y
+        planeación</a>
+      <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/IRO/CT/{{this.managementId}}/1"  >  IRO  </a>
+      <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/JobBrief/{{this.managementId}}/2"  >  Job Brief   </a>
+      <a  class="breadcrumb" style='color: #A0FF5D'  >  <b> Resultados de desempeño </b> </a>
+      <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/lections/{{this.managementId}}/1" > Lecciones Aprendidas </a>
+  </div>
+</div>
+
+
+<div class="nav-wrapper blue accent-4" *ngSwitchCase = '7'>
+      <div class="col s12">
+        
+          <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/workpreparation/1/{{this.managementId}}/1" >Preparación
+  y planeación </a>
+          <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/IRO/CT/{{this.managementId}}/1"  >  IRO  </a>
+          <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/JobBrief/{{this.managementId}}/2"  >  Job Brief   </a>
+          <a  class="breadcrumb" style='color: #E7E6E6' routerLink="/eservices-management/closingPhase/{{this.managementId}}/1">  Resultados de desempeño </a>
+          <a  class="breadcrumb" style='color: #A0FF5D'  > <b>  Lecciones Aprendidas </b></a>
+      </div>
+</div>
+
+
+
+</nav>

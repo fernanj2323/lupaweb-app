@@ -1,0 +1,1241 @@
+<form #jobForm = 'ngForm' (ngSubmit)= 'saveJob(jobForm)'>
+<div  [ngSwitch]="aprobationMode" class='row' >
+    <div class='col s12 ' >
+        <div class="col s12 m4 l3">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header "  id='linkeable' >
+                        <a  routerLink='../../../../../eservices/home'  title="Adjuntar Archivo">
+                            <i class="material-icons">memory</i>DashBoard
+                        </a>
+                       
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header modal-trigger " href="#modal2"><i class="material-icons">reorder</i>Actividades Regulares</div>
+                </li> 
+                
+                <li>
+                    <div class="collapsible-header  modal-trigger " href="#modal3" ><i class="material-icons">memory</i>Actividades en Proceso</div>
+                </li> 
+                    
+                <li>
+                    <div class="collapsible-header modal-trigger " href="#modal4" ><i class="material-icons">offline_pin</i>Actividades Finalizadas</div>
+                </li>      
+          
+                <!-- <li>
+                    <div class="collapsible-header"><i class="material-icons">apps</i>Ticketes y KPIS</div>
+                </li> 
+                                         -->
+            </ul>
+       </div>
+
+        <div   class='content col s12 m8 l9'>
+            <app-breadcum-nav></app-breadcum-nav>
+        </div>
+
+<!-- style="position: absolute; top: 500px; z-index: 25; " -->
+<!-- <div class="col s1"></div> -->
+<div   [ngSwitch] = "selectCase"  class="input-field inline col s3  orange accent-4"  style="padding:0; margin:0; margin-left: 10px; padding-top:-50px; margin-top:0px;">
+    <span>
+      <br>
+    </span>
+    
+    <div  *ngSwitchCase=" selectCase === '1'  ? selectCase : '' ">
+            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                <option  value="wl">
+                                Well Login
+                </option>`
+        </select>   
+    </div>   
+
+        <div  *ngSwitchCase=" selectCase === '2'  ? selectCase : '' ">
+            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                <option  value="sl">
+                    Slickline
+                </option>
+        </select>   
+        </div>  
+
+        <div  *ngSwitchCase=" selectCase === '3'  ? selectCase : '' ">
+            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                <option  value="sl">
+                    Slickline
+                </option>
+                <option  value="wl">
+                    Well Login
+                </option>
+        </select>   
+        </div>  
+
+
+        <div  *ngSwitchCase=" selectCase === '4'  ? selectCase : '' ">
+                <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                    <option value="" disabled selected>Seleccione Linea de servicio...</option>
+
+                    <option  value="ct">
+                        Coiled tubing
+                    </option>
+                </select>   
+            </div>
+
+            <div  *ngSwitchCase=" selectCase === '5'  ? selectCase : '' ">
+                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                        <option  value="ct">
+                            Coiled tubing
+                        </option>
+                        <option  value="wl">
+                                Well Login
+                        </option>
+                    </select>   
+            </div>
+            <div  *ngSwitchCase=" selectCase === '6'  ? selectCase : '' ">
+                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                        <option  value="ct">
+                            Coiled tubing
+                        </option>
+                        <option  value="sl">
+                                Slickline
+                            </option>
+                    </select>   
+            </div>
+            <div  *ngSwitchCase=" selectCase === '7'  ? selectCase : '' ">
+                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                        <option  value="ct">
+                            Coiled tubing
+                        </option>
+                        <option  value="sl">
+                                Slickline
+                        </option>
+                        <option  value="wl">
+                                    Well Login
+                        </option>
+                    </select>   
+            </div>
+
+
+            <div  *ngSwitchCase=" selectCase === '8'  ? selectCase : '' ">
+                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                        <option  value="fi">
+                            Frente de inyección
+                        </option>
+                        <!-- <option  value="wl">
+                                Well Login
+                       </option> -->
+                    </select>   
+            </div>
+
+            <div  *ngSwitchCase=" selectCase === '9'  ? selectCase : '' ">
+                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                        <option  value="wl">
+                           Well Loggin
+                        </option>
+                        <option  value="fi">
+                                Frente de inyección
+                        </option>
+                    </select>   
+            </div>
+
+
+            <div  *ngSwitchCase=" selectCase === '10'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <!-- <option  value="ct">
+                                       Coiled tubing
+                                </option> -->
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <!-- <option  value="wl">
+                                       Well Loggin
+                                </option> -->
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <!-- <option  value="wt">
+                                       WellTesting
+                                </option> -->
+                  </select>   
+           </div>
+
+
+
+           <div  *ngSwitchCase=" selectCase === '11'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <!-- <option  value="ct">
+                                       Coiled tubing
+                                </option> -->
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <!-- <option  value="wt">
+                                       WellTesting
+                                </option> -->
+                  </select>   
+           </div>
+
+
+
+           <div  *ngSwitchCase=" selectCase === '12'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <!-- <option  value="sl">
+                                       Slickline
+                                </option> -->
+                                <!-- <option  value="wl">
+                                       Well Loggin
+                                </option> -->
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <!-- <option  value="wt">
+                                       WellTesting
+                                </option> -->
+                  </select>   
+           </div>
+
+
+            
+           <div  *ngSwitchCase=" selectCase === '13'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <!-- <option  value="sl">
+                                       Slickline
+                                </option> -->
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <!-- <option  value="wt">
+                                       WellTesting
+                                </option> -->
+                  </select>   
+           </div>
+
+
+
+           <div  *ngSwitchCase=" selectCase === '14'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <!-- <option  value="wl">
+                                       Well Loggin
+                                </option> -->
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <!-- <option  value="wt">
+                                       WellTesting
+                                </option> -->
+                  </select>   
+           </div>
+
+
+
+           <div  *ngSwitchCase=" selectCase === '15'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <!-- <option  value="wt">
+                                       WellTesting
+                                </option> -->
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '16'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <!-- <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option> -->
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+
+           <div  *ngSwitchCase=" selectCase === '17'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <!-- <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <option  value="sl">
+                                       Slickline
+                                </option> -->
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <!-- <option  value="fi">
+                                       Frente de inyección
+                                </option> -->
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+
+           <div  *ngSwitchCase=" selectCase === '18'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <!-- <option  value="ct">
+                                       Coiled tubing
+                                </option> -->
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <!-- <option  value="wl">
+                                       Well Loggin
+                                </option> -->
+                                <!-- <option  value="fi">
+                                       Frente de inyección
+                                </option> -->
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+
+           <div  *ngSwitchCase=" selectCase === '19'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <!-- <option  value="ct">
+                                       Coiled tubing
+                                </option> -->
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <!-- <option  value="fi">
+                                       Frente de inyección
+                                </option> -->
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '20'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <!-- <option  value="sl">
+                                       Slickline
+                                </option> -->
+                                <!-- <option  value="wl">
+                                       Well Loggin
+                                </option> -->
+                                <!-- <option  value="fi">
+                                       Frente de inyección
+                                </option> -->
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '21'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <!-- <option  value="sl">
+                                       Slickline
+                                </option> -->
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <!-- <option  value="fi">
+                                       Frente de inyección
+                                </option> -->
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '22'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <!-- <option  value="wl">
+                                       Well Loggin
+                                </option> -->
+                                <!-- <option  value="fi">
+                                       Frente de inyección
+                                </option> -->
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '23'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <!-- <option  value="fi">
+                                       Frente de inyección
+                                </option> -->
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+
+           <div  *ngSwitchCase=" selectCase === '24'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <!-- <option  value="ct">
+                                       Coiled tubing
+                                </option> -->
+                                <!-- <option  value="sl">
+                                       Slickline
+                                </option> -->
+                                <!-- <option  value="wl">
+                                       Well Loggin
+                                </option> -->
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '25'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <!-- <option  value="ct">
+                                       Coiled tubing
+                                </option> -->
+                                <!-- <option  value="sl">
+                                       Slickline
+                                </option> -->
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '26'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <!-- <option  value="ct">
+                                       Coiled tubing
+                                </option> -->
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <!-- <option  value="wl">
+                                       Well Loggin
+                                </option> -->
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '27'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <!-- <option  value="ct">
+                                       Coiled tubing
+                                </option> -->
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '28'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <!-- <option  value="sl">
+                                       Slickline
+                                </option> -->
+                                <!-- <option  value="wl">
+                                       Well Loggin
+                                </option> -->
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '29'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <!-- <option  value="sl">
+                                       Slickline
+                                </option> -->
+                                <option  value="wl">
+                                       Well Loggin
+                                </option>
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+           <div  *ngSwitchCase=" selectCase === '30'  ? selectCase : '' ">
+                  <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                <option  value="ct">
+                                       Coiled tubing
+                                </option>
+                                <option  value="sl">
+                                       Slickline
+                                </option>
+                                <!-- <option  value="wl">
+                                       Well Loggin
+                                </option> -->
+                                <option  value="fi">
+                                       Frente de inyección
+                                </option>
+                                <option  value="wt">
+                                       WellTesting
+                                </option>
+                  </select>   
+           </div>
+
+
+    <div  *ngSwitchCase=" selectCase === '31'  ? selectCase : '' ">
+           <select (change)="captureServiceSelected($event.target)" class="browser-default" name='well4' ngModel required >
+                         <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                         <option  value="ct">
+                                Coiled tubing
+                         </option>
+                         <option  value="sl">
+                                Slickline
+                         </option>
+                         <option  value="wl">
+                                Well Loggin
+                         </option>
+                         <option  value="fi">
+                                Frente de inyección
+                         </option>
+                         <option  value="wt">
+                                WellTesting
+                         </option>
+           </select>   
+    </div>
+</div>
+
+<div *ngIf='showCompoonent' >
+
+        <!-- modo creador -->
+        <div *ngSwitchCase='0' >
+          
+                    <div [ngSwitch]="aprobationMode" class="col s12 m8 l9 questions-block ">
+                        <div class="row switch-container card hoverable"   > 
+     
+                            <div class="col s12 input-box"   >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                    Objetivos (cliente) y expectativa del Trabajo/Servicio
+                                </div>
+                                <div class="col s9 m6 l8 answer-box  ">
+                                    <textarea id="text_inline" placeholder="observaciones" type="text" name="clientObjetivs"  #clientObjetivs='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.clientObjetivs' class="validate" ngModel required> </textarea>
+                                </div>
+                                <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s6">
+                                        <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger"  href="#clientObjetivesModal" title="Ayuda">
+                                            <i class="Large material-icons">beenhere</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                               
+    
+    
+                            <div class="col s12 input-box " >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                    Programa de trabajo, equipos y herramientas
+                                </div>
+                                <div class="col s9 m6 l8 answer-box ">
+                                 
+                                    <textarea  id="text_inline" placeholder="observaciones" type="text" name="workProgramObservation" #workProgramObservation='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.workProgramObservation'   class="validate" ngModel required> </textarea>
+                                </div>
+                                <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s6">
+                                        <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger"  href="#workProgramModal" title="Ayuda">
+                                            <i class="Large material-icons">beenhere</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+    
+                            <div class="col s12 input-box ">
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                    Competencia y Roles del personal
+                                </div>
+                                <div class="col s9 m6 l8 answer-box ">
+                                    
+                                    <textarea id="text_inline" placeholder="observaciones" type="text" name="competencesAndRolesObservation" #competencesAndRolesObservation='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.competencesAndRolesObservation'   class="validate" ngModel required> </textarea>
+                                </div>
+                                <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s6">
+                                        <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger" href="#personalRulesModal" title="Ayuda">
+                                            <i class="Large material-icons">beenhere</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+    
+                            <div class="col s12 input-box" >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                    Definición de Parámetros operacionales críticos
+                                </div>
+                                <div class="col s9 m6 l8 answer-box ">
+                                    
+                                    <textarea id="text_inline" placeholder="observaciones" type="text" name="operationalsParameters" #operationalsParameters='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.operationalsParameters'   class="validate" ngModel required> </textarea> 
+                                </div>
+                                <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s6">
+                                        <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger" href="#definitionsOfParametersModal" title="Ayuda">
+                                            <i class="Large material-icons">beenhere</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+    
+                            <div class="col s12 input-box "  >
+                                <div class="col s12 m3 l3 question-box blue accent-4">
+                                    Problemas Potenciales, riesgos y controles (HSE & SQ)
+                                </div>
+                                <div class="col s9 m6 l8 answer-box ">
+                                    
+                                    <textarea  placeholder="observaciones" type="text" name="potentialsProblems" #potentialsProblems='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.potentialsProblems'   class="validate" ngModel required>
+                                    </textarea>
+                                        
+                                </div>
+                                <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s6">
+                                        <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger" href="#potencialProblemsModal" title="Ayuda">
+                                            <i class="Large material-icons">beenhere</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+                             <div class="col s12 question-box blue accent-4 center " style="text-align: center; align-items: center; align-content:center; ">
+                                Revision post Trabajo (DEBRIEF)
+                            </div>
+    
+    
+                            <div class="col s12 input-box"  >
+                                <div class="col s12 m3 l3 question-box orange accent-4">
+                                    Lecciones aprendidas, pendientes críticos en repuestos, Evaluación del cliente
+                                </div>
+                                <div class="col s9 m6 l8 answer-box ">
+                                    
+                                    <textarea  id="text_inline" placeholder="Lecciones Aprendidas" type="text" name="learnedLessons" #learnedLessons='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.learnedLessons'   class="validate" ngModel required>
+                                    </textarea>
+                                </div>
+                                <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                    <div class="col s6">
+                                        <a   style=" z-index:10;" class="btn-floating  orange accent-4 hoverable modal-trigger" href="#learnedLessonsModal" title="Ayuda">
+                                            <i class="Large material-icons">beenhere</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+                            <td class="col s12" style="text-align: center;"  >
+                                <div class="divider"></div>
+                                    <div class="col s3" style="padding-top:20px;">
+                                        <span for="aprobador"> Aprobador: </span>
+                                    </div>
+                                    <div class='col s3'> 
+                                        <input disabled placeholder="aprobador" id="aprobador" type="text" name="aprovatorName" #aprovatorName='ngModel' [(ngModel)]='this.UserService.selectedProfile'   class="validate" ngModel required>
+                                   
+                                    </div>
+                                    <div [ngSwitch]='isMyUserAprover' class="col s3">
+                                        <div *ngSwitchCase=true > 
+                                            <p>
+                                            <label>
+                                              <input  type="checkbox" name="approved" #approved='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.approved' class="validate" ngModel required />
+                                              <span>Aprobado</span>
+                                            </label>
+                                        </p>
+                                        </div> 
+                                        <div *ngSwitchCase=false > 
+                                            <p>
+                                            <label>
+                                              <input disabled  type="checkbox" name="approved" #approved='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.approved' class="validate" ngModel required />
+                                              <span>Aprobado</span>
+                                            </label>
+                                        </p>
+                                        </div> 
+                                      
+                                    </div>
+                                   
+    
+                                <div class="divider"></div>
+                           </td> 
+    
+                           <td class="col s12" style="text-align: center;">
+                            <div class="divider"></div>
+                                    <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                                    (click)="back()" title="Regresar"> Regresar </a>
+                                
+                                    <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                                    (click)="saveJob(jobForm)" title="Guardar" > Guardar </a>
+                           </td>
+                        </div>
+                    </div>
+           
+        </div>
+
+
+        <!-- modo aprobador -->
+        <div  *ngSwitchCase='1'  >
+            <!-- <h1> modo aprobador  </h1> -->
+            <!-- <form #jobForm = 'ngForm' (ngSubmit)= 'saveJob(jobForm)'> -->
+                <div [ngSwitch]="aprobationMode" class="col s12 m8 l9 questions-block ">
+                    <div class="row switch-container card hoverable"  > 
+ 
+                        <div class="col s12 input-box"   >
+                            <div class="col s12 m3 l3 question-box blue accent-4">
+                                Objetivos (cliente) y expectativa del Trabajo/Servicio
+                            </div>
+                            <div class="col s9 m6 l8 answer-box  ">
+                                <textarea disabled id="text_inline" placeholder="observaciones" type="text" name="clientObjetivs"  #clientObjetivs='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.clientObjetivs' class="validate" ngModel required> </textarea>
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger"  href="#clientObjetivesModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                           
+
+
+                        <div class="col s12 input-box " >
+                            <div class="col s12 m3 l3 question-box blue accent-4">
+                                Programa de trabajo, equipos y herramientas
+                            </div>
+                            <div class="col s9 m6 l8 answer-box ">
+                             
+                                <textarea  disabled id="text_inline" placeholder="observaciones" type="text" name="workProgramObservation" #workProgramObservation='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.workProgramObservation'   class="validate" ngModel required> </textarea>
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger"  href="#workProgramModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col s12 input-box ">
+                            <div class="col s12 m3 l3 question-box blue accent-4">
+                                Competencia y Roles del personal
+                            </div>
+                            <div class="col s9 m6 l8 answer-box ">
+                                
+                                <textarea disabled id="text_inline" placeholder="observaciones" type="text" name="competencesAndRolesObservation" #competencesAndRolesObservation='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.competencesAndRolesObservation'   class="validate" ngModel required> </textarea>
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger" href="#personalRulesModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col s12 input-box" >
+                            <div class="col s12 m4 l3 question-box blue accent-4">
+                                Definición de Parámetros operacionales críticos
+                            </div>
+                            <div class="col s10 m7 l8 answer-box ">
+                                
+                                <textarea disabled id="text_inline" placeholder="observaciones" type="text" name="operationalsParameters" #operationalsParameters='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.operationalsParameters'   class="validate" ngModel required> </textarea>
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger" href="#definitionsOfParametersModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col s12 input-box "  >
+                            <div class="col s12 m4 l3 question-box blue accent-4">
+                                Problemas Potenciales, riesgos y controles (HSE & SQ)
+                            </div>
+                            <div class="col s10 m7 l8 answer-box ">
+                                
+                                <textarea disabled placeholder="observaciones" type="text" name="potentialsProblems" #potentialsProblems='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.potentialsProblems'   class="validate" ngModel required> </textarea>
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger" href="#potencialProblemsModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                         <div class="col s12 question-box blue accent-4 center " style="text-align: center; align-items: center; align-content:center; ">
+                            Revision post Trabajo (DEBRIEF)
+                        </div>
+
+
+                        <div class="col s12 input-box"  >
+                            <div class="col s12 m4 l3 question-box orange accent-4">
+                                Lecciones aprendidas, pendientes críticos en repuestos, Evaluación del cliente
+                            </div>
+                            <div class="col s10 m7 l8 answer-box ">
+                                
+                                <textarea disabled id="text_inline" placeholder="Lecciones Aprendidas" type="text" name="learnedLessons" #learnedLessons='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.learnedLessons'   class="validate" ngModel required>
+                                </textarea> 
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  orange accent-4 hoverable modal-trigger" href="#learnedLessonsModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <td class="col s12" style="text-align: center;"  >
+                            <div class="divider"></div>
+                                <div class="col s3" style="padding-top:20px;">
+                                    <span for="aprobador"> Aprobador: </span>
+                                </div>
+                                <div class='col s3'> 
+                                    <input disabled placeholder="aprobador" id="aprobador" type="text" name="aprovatorName" #aprovatorName='ngModel' [(ngModel)]='this.UserService.selectedProfile'   class="validate" ngModel required> 
+                                </div>
+                                <div [ngSwitch]='isMyUserAprover' class="col s3">
+                                    <div *ngSwitchCase=true > 
+                                        <p>
+                                        <label>
+                                          <input  type="checkbox" name="approved" #approved='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.approved' class="validate" ngModel required />
+                                          <span>Aprobado</span>
+                                        </label>
+                                    </p>
+                                    </div> 
+                                    <div *ngSwitchCase=false > 
+                                        <p>
+                                        <label>
+                                          <input disabled type="checkbox" name="approved" #approved='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.approved' class="validate" ngModel required />
+                                          <span>Aprobado</span>
+                                        </label>
+                                    </p>
+                                    </div> 
+                                  
+                                </div>
+
+                            <div class="divider"></div>
+                       </td> 
+
+                       <td class="col s12" style="text-align: center;">
+                        <div class="divider"></div>
+                                <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                                (click)="back()" title="Regresar"> Regresar </a>
+                            
+                                <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                                (click)="saveJob(jobForm)" title="Guardar" > Guardar </a>
+                       </td>
+                    </div>
+                </div>
+        <!-- </form> -->
+        </div> 
+
+    
+
+<!-- modo solo visor no editor no aprobador -->
+        <div  *ngSwitchCase='2'  >
+            <!-- <h1> no editor no aprobador  </h1> -->
+            <!-- <form #jobForm = 'ngForm' (ngSubmit)= 'saveJob(jobForm)'> -->
+                <div [ngSwitch]="aprobationMode" class="col s12 m8 l9 questions-block ">
+                    <div class="row switch-container card hoverable"  > 
+ 
+                        <div class="col s12 input-box"   >
+                            <div class="col s12 m3 l3 question-box blue accent-4">
+                                Objetivos (cliente) y expectativa del Trabajo/Servicio
+                            </div>
+                            <div class="col s9 m6 l8 answer-box  ">
+                                <textarea disabled id="text_inline" placeholder="observaciones" type="text" name="clientObjetivs"  #clientObjetivs='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.clientObjetivs' class="validate" ngModel required> </textarea>
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger"  href="#clientObjetivesModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                           
+
+
+                        <div class="col s12 input-box " >
+                            <div class="col s12 m3 l3 question-box blue accent-4">
+                                Programa de trabajo, equipos y herramientas
+                            </div>
+                            <div class="col s9 m6 l8 answer-box ">
+                             
+                                <textarea  disabled id="text_inline" placeholder="observaciones" type="text" name="workProgramObservation" #workProgramObservation='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.workProgramObservation'   class="validate" ngModel required> </textarea> 
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger"  href="#workProgramModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col s12 input-box ">
+                            <div class="col s12 m3 l3 question-box blue accent-4">
+                                Competencia y Roles del personal
+                            </div>
+                            <div class="col s9 m6 l8 answer-box ">
+                                
+                                <textarea disabled id="text_inline" placeholder="observaciones" type="text" name="competencesAndRolesObservation" #competencesAndRolesObservation='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.competencesAndRolesObservation'   class="validate" ngModel required> </textarea> 
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger" href="#personalRulesModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col s12 input-box" >
+                            <div class="col s12 m4 l3 question-box blue accent-4">
+                                Definición de Parámetros operacionales críticos
+                            </div>
+                            <div class="col s10 m7 l8 answer-box ">
+                                
+                                <textarea disabled id="text_inline" placeholder="observaciones" type="text" name="operationalsParameters" #operationalsParameters='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.operationalsParameters'   class="validate" ngModel required> </textarea> 
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger" href="#definitionsOfParametersModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col s12 input-box "  >
+                            <div class="col s12 m4 l3 question-box blue accent-4">
+                                Problemas Potenciales, riesgos y controles (HSE & SQ)
+                            </div>
+                            <div class="col s10 m7 l8 answer-box ">
+                                
+                                <textarea disabled placeholder="observaciones" type="text" name="potentialsProblems" #potentialsProblems='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.potentialsProblems'   class="validate" ngModel required> </textarea> 
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  blue hoverable modal-trigger" href="#potencialProblemsModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                         <div class="col s12 question-box blue accent-4 center " style="text-align: center; align-items: center; align-content:center; ">
+                            Revision post Trabajo (DEBRIEF)
+                        </div>
+
+
+                        <div class="col s12 input-box"  >
+                            <div class="col s12 m4 l3 question-box orange accent-4">
+                                Lecciones aprendidas, pendientes críticos en repuestos, Evaluación del cliente
+                            </div>
+                            <div class="col s10 m7 l8 answer-box ">
+                                
+                                <textarea disabled id="text_inline" placeholder="Lecciones Aprendidas" type="text" name="learnedLessons" #learnedLessons='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.learnedLessons'   class="validate" ngModel required>
+                                </textarea> 
+                            </div>
+                            <div class="col s3 m3 l1 " style="align-items: center; align-content: center; text-align: center;">
+                                <div class="col s6">
+                                    <a   style=" z-index:10;" class="btn-floating  orange accent-4 hoverable modal-trigger" href="#learnedLessonsModal" title="Ayuda">
+                                        <i class="Large material-icons">beenhere</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <td class="col s12" style="text-align: center;"  >
+                            <div class="divider"></div>
+                                <div class="col s3" style="padding-top:20px;">
+                                    <span for="aprobador"> Aprobador: </span>
+                                </div>
+                                <div class='col s3'> 
+                                    <input disabled placeholder="aprobador" id="aprobador" type="text" name="aprovatorName" #aprovatorName='ngModel' [(ngModel)]='this.UserService.selectedProfile'   class="validate" ngModel required>
+                                </div>
+                                <div [ngSwitch]='isMyUserAprover' class="col s3">
+                                    <div *ngSwitchCase=true > 
+                                        <p>
+                                        <label>
+                                          <input  type="checkbox" name="approved" #approved='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.approved' class="validate" ngModel required />
+                                          <span>Aprobado</span>
+                                        </label>
+                                    </p>
+                                    </div> 
+                                    <div *ngSwitchCase=false > 
+                                        <p>
+                                        <label>
+                                          <input disabled type="checkbox" name="approved" #approved='ngModel' [(ngModel)]='this.JobBriefService.selectedJob.approved' class="validate" ngModel required />
+                                          <span>Aprobado</span>
+                                        </label>
+                                    </p>
+                                    </div> 
+                                  
+                                </div>
+                               
+
+                            <div class="divider"></div>
+                       </td> 
+
+                       <td class="col s12" style="text-align: center;">
+                        <div class="divider"></div>
+                                <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                                (click)="back()" title="Regresar"> Regresar </a>
+                            
+                                <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                                (click)="saveJob(jobForm)" title="Guardar" > Guardar </a>
+                       </td>
+                    </div>
+                </div>
+        <!-- </form> -->
+        </div> 
+
+</div>
+
+
+                
+    </div>
+</div>
+</form>
+
+<!-- ---------- -->
+<!-- MODALES  -->
+
+  <!-- competencias y roles  -->
+<div id="clientObjetivesModal" class="modal">
+            <div class="modal-content">
+            <h4>Objetivos (cliente) y expectativa del Trabajo/Servicio</h4>
+            <p> Contra estos objetivos se debe evaluar la ejecución del trabajo </p>
+            </div>
+            <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+            </div>
+</div>
+
+<!-- equipos y herramientas -->
+<div id="workProgramModal" class="modal">
+            <div class="modal-content">
+            <h4>Programa de trabajo</h4>
+            <p>Highlights programa de trabajo y recursos requeridos (equipos y herramientas propios, rentados, productos químicos), documentación especial y requerimientos específicos del cliente. Identifique procedimientos claves aplicables</p>
+            </div>
+            <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+            </div>
+</div>
+
+<!-- competencias y roles -->
+<div id="personalRulesModal" class="modal">
+            <div class="modal-content">
+            <h4>Competencias y Roles</h4>
+            <p> Debe incluirse analisis de experiencia específica en el rol mas certificaciones y emitir alerta temprana si hay potencial incumplimiento </p>
+            </div>
+            <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+            </div>
+</div>
+
+
+  <!--  Definición de Parámetros operacionales críticos  -->
+<div id="definitionsOfParametersModal" class="modal">
+    <div class="modal-content">
+    <h4> Definición de Parámetros operacionales críticos</h4>
+    <p>Analizar parámetros operacionales críticos (presión, tensión, velocidades, profundidades, etc) y como se asegurarán los mismos(límites, dispostivos calibrados /certificados de medición y moniroreo). </p>
+    </div>
+    <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+</div>
+
+
+<!--  Problemas Potenciales, riesgos y controles (HSE & SQ) -->
+<div id="potencialProblemsModal" class="modal">
+    <div class="modal-content">
+    <h4> Problemas Potenciales, riesgos y controles (HSE & SQ) </h4>
+      <p>Qué ocurrió en el pasado? Qué podría pasar si cambian las condiciones o falla algo? Conocemos las contingencias? Tenemos potencial de falla o accidente derivado de condiciones críticas de algun recurso (personal, equipos, heramientas, terceras partes)? Ya hemos revisado los análisis de riesgo y conocemos en detalle cuáles son las medidas de prevención/mitigación? Hay alguna desviación a procedimientos, directrices o politicas de Lupatech o del cliente? </p>
+    </div>
+    <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+</div>
+
+<!--   Lecciones aprendidas, pendientes críticos en repuestos, Evaluación del cliente -->
+<div id="learnedLessonsModal" class="modal">
+    <div class="modal-content">
+    <h4> Lecciones aprendidas, pendientes críticos en repuestos, Evaluación del cliente) </h4>
+      <p>Qué aprendimos? Qué no repetiremos para evitar un evento? Cómo nos vió el cliente en su evaluación según formatos Calificación de Servicio y Factor de Servicio? Cuáles son las Tarjetas Lupa críticas que debemos considerar para el siguiente trabajo? </p>
+    </div>
+    <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+</div>
+
+<!-- FIN MODALES  -->
+<!-- ---------- -->
+
+
+
+
+<div>
+    <app-super-float-button></app-super-float-button>
+ </div>

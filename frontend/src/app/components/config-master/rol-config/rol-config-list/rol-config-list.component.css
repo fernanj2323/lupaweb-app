@@ -1,0 +1,20 @@
+nav .nav-wrapper{
+    margin-top: -20px;
+ }
+ nav{
+    background-color: #003c4d;
+ }
+.href-pointer{
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.href-pointer:hover{
+    color: green;
+}
+.href-pointer-delete{
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.href-pointer-delete:hover{
+    color: red;
+}

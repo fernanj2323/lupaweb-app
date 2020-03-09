@@ -1,0 +1,422 @@
+<div class="row"> 
+
+
+<div class="col s12 m4 l4">
+       <ul class="collapsible">
+           <li>
+               <div class="collapsible-header "  id='linkeable' >
+                     <a  routerLink='../../../../../eservices/home'  title="Adjuntar Archivo">
+                            <i class="material-icons">memory</i>DashBoard
+                        </a>
+                  
+               </div>
+           </li>
+           <li>
+               <div class="collapsible-header modal-trigger " href="#modal2"><i class="material-icons">reorder</i>Actividades Regulares</div>
+           </li> 
+           
+           <li>
+               <div class="collapsible-header  modal-trigger " href="#modal3" ><i class="material-icons">memory</i>Actividades en Proceso</div>
+           </li> 
+               
+           <li>
+               <div class="collapsible-header modal-trigger " href="#modal4" ><i class="material-icons">offline_pin</i>Actividades Finalizadas</div>
+           </li>      
+     
+           <!-- <li>
+               <div class="collapsible-header"><i class="material-icons">apps</i>Ticketes y KPIS</div>
+           </li> 
+                                    -->
+       </ul>
+</div>
+
+<div class="card hoverable col s12 m8 l8"> 
+       <div class="col s12">
+              <app-breadcum-nav></app-breadcum-nav>
+       </div>
+       <form [ngSwitch] = "viewOrEdit" #managementForm = "ngForm" (ngSubmit) = "saveManagement(managementForm)" >        
+       
+       <!-- edit -->
+       <table *ngSwitchCase = '0'>
+                     <input   type="hidden" name="hrisk" #hrisk="ngModel" [(ngModel)]="jpactivityService.selectedJpactivity.hrisk">
+              <thead>                                   
+                            <tr>                                    
+                                   <!-- <div class="progress indigo lighten-3">
+                                          <div class="determinate" style="width: 56%; background-color:#009447" ></div>
+                                   </div> -->
+                            </tr>
+                     </thead>
+
+              <!-- <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="jpactivityService.selectedJpactivity._id"> -->
+              <tbody>
+              <div class="col s12 blue accent-3" style="color: #E7E6E6 ;text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+                     <!-- <b> <h3> Requerimientos críticos del proyecto : '{{name}}' </h3></b> -->
+                     <h5>
+                            Indíque si la actividad contiene uno de los siguientes aspectos críticos: 
+                     </h5> 
+                     </div>
+                     <div class="col s12 blue accent-3" style="color: #E7E6E6 ; margin-top:25px; text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+                     <h5>
+                     Aspectos Tecnologicos:
+                     </h5> 
+              </div>
+              <tr>
+                     <td class="col s12 "  title="Si no aplica seleccione N/A">
+                     
+                     <!-- ASPECTOS TECNOLOGICOS  -->
+
+                            <div class="tableleftname col s3 center" style="font-size:80%;" title="Si no aplica seleccione N/A" >                                               
+                                   <b>   Trabajos con herramienta o tecnologia, seleccione: </b> 
+                            </div>  
+                                                               
+                            <div   class="input-field1 inline col s4" style="margin-top:0px"  title="Si no aplica seleccione N/A"   >                                       
+                                   <select class="browser-default" name='technologyReq'  #technologyReq='ngModel' [(ngModel)]="jpactivityService.selectedCriticalReq.technologyReq"   style='margin-top:20px'>
+                                          <option value="" disabled selected>Seleccione...</option>
+                                          <option value="N/A">N/A</option>
+                                          <option *ngFor="let technology of CriticalRequirementsService.technologyCondition" value="{{technology.title}}">
+                                                 {{technology.title}}
+                                          </option>
+                                   </select> 
+                            </div>
+                            <div class="input-field1 inline col s5" style="margin-top:0px;">
+                                          <textarea id="text_inline" name='moreTechnologyDetails' #moreTechnologyDetails="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.moreTechnologyDetails"  type="text" class="materialize-textarea">
+                                          </textarea>
+                                          <label for="text_inline">Mas detalles *opcional* </label> 
+                            </div>  
+                     </td>
+                     <!-- ASPECTOS DE HSE HSEQ -->
+                     <div class="col s12 blue accent-3" style="color: #E7E6E6 ;text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+                                   <h5>
+                                   Aspectos - Condiciones de HSE &  HSEQ:
+                                   </h5> 
+                     </div>
+                     <td class="col s12 " style="margin-top:0px;" title="Si no aplica seleccione N/A">
+                            <div class="tableleftname col s3 center"   style="font-size:80%;"  title="Si no aplica seleccione N/A" >                                               
+                                   <b>  Trabajos con unidades con un historial de evento de calidad, seleccione </b> 
+                            </div>  
+                            <div class="input-field1 inline col s4" style="margin-top:0px;">
+                                   <select name='hseReq'  #hseReq='ngModel' [(ngModel)]="jpactivityService.selectedCriticalReq.hseReq" class="browser-default" style='margin-top:20px'>
+                                          <option value="" disabled selected>Seleccione...</option>
+                                          <option value="N/A">N/A</option>
+                                          <option *ngFor="let condition of CriticalRequirementsService.hseConditicon" value="{{condition.title}}">
+                                                               {{condition.title}}
+                                          </option>
+                                   </select> 
+                            </div>  
+                            <div class="input-field1 inline col s5" style="margin-top:0px;">
+                                   <textarea name='moreHseDetails'  #moreHseDetails='ngModel' [(ngModel)]="jpactivityService.selectedCriticalReq.moreHseDetails" id="text_inline" type="text" class="materialize-textarea" >
+                                   </textarea>
+                                   <label for="text_inline">Mas detalles *opcional* </label> 
+                            </div>  
+                     </td>
+
+                     <td class="col s12 " style="margin-top:-40px;" title="Si no aplica seleccione N/A">
+                            <div class="tableleftname col s3 center"  style="font-size:80%;"  title="Si no aplica seleccione N/A" >                                               
+                                   <b>  Trabajos en zona de alto riesgo de seguridad física </b> 
+                            </div>  
+                            <div class="input-field1 inline col s4 center" style="margin-top:0px;">
+                                   <label>  
+                                          <div class="switch" style="margin-top:40px;">
+                                                 <label>
+                                                        Riesgo inexistente
+                                                               <input name='riskZone' type="checkbox" #riskZone='ngModel'  [(ngModel)]="jpactivityService.selectedCriticalReq.riskZone">
+                                                               <span class="lever"></span>
+                                                        Riesgo existente
+                                                 </label>
+                                          </div> 
+                                   </label>
+                            </div>  
+                            <div class="input-field1 inline col s5" style="margin-top:0px;">
+                                   <textarea id="text_inline" type="text" class="materialize-textarea" name="moreRiskDetails" #moreRiskDetails="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.moreRiskDetails">
+                                   </textarea>
+                                   <label for="text_inline">Mas detalles *opcional* </label> 
+                            </div>  
+                     </td>
+
+
+                     <!-- FIN ASPECTOS DE HSE HSEQ -->
+                     <!-- aspectos de pozo  -->
+                     <div class="col s12 blue accent-3" style="color: #E7E6E6 ;text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+                            <h5>
+                                   Aspectos – Condiciones de Pozo:
+                            </h5> 
+                     </div>
+
+                     <td class="col s12 " style="margin-top:0px;" title="Si no aplica seleccione N/A">
+                            <div class="tableleftname col s3 center"  style="font-size:80%;" title="Si no aplica seleccione N/A" >                                               
+                                   <b>  Indique si la operación en pozo contiene las siguientes características:   </b> 
+                            </div>  
+                            <div class="input-field1 inline col s4"    style="margin-top:0px;">
+                                          <select class="browser-default"    name="wellReq" #wellReq="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.wellReq" style='margin-top:20px'>
+                                                 <option value="" disabled selected>Seleccione...</option>
+                                                 <option value="N/A">N/A</option>
+                                                 <option *ngFor="let condition of CriticalRequirementsService.wellCondition" value="{{condition.title}}">
+                                                                      {{condition.title}}
+                                                 </option>
+                                          </select> 
+                            </div>  
+                            
+                            <div class="input-field1 inline col s5" style="margin-top:0px;">
+                                   <textarea id="text_inline" type="text" class="materialize-textarea" name="moreWellDetails" #moreWellDetails="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.moreWellDetails">
+                                   </textarea>
+                                   <label for="text_inline">Mas detalles *opcional* </label> 
+                            </div>  
+                     </td> 
+
+                     <!--fin de aspectos de pozo  -->
+
+                     <!-- de aspectos de operación  -->
+
+                     <div class="col s12 blue accent-3" style="color: #E7E6E6 ;text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+                            <h5>
+                                          Aspectos – Condiciones de operación: 
+                            </h5> 
+                     </div>
+
+
+                     <td class="col s12 " style="margin-top: 0px;" title="Si no aplica seleccione N/A">
+                            <div class="tableleftname col s3 center"  style="font-size:80%;" title="Si no aplica seleccione N/A" >                                               
+                                   <b>  Indique si la operación contiene las siguientes características – condiciones:    </b> 
+                            </div>  
+                            <div class="input-field1 inline col s4" style="margin-top:0px;">
+                                   <select  name="operationReq" #operationReq="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.operationReq" class="browser-default" style='margin-top:20px'>
+                                          <option value="" disabled selected>Seleccione...</option>
+                                          <option value="N/A">N/A</option>
+                                          <option *ngFor="let condition of CriticalRequirementsService.operationCondition" value="{{condition.title}}">
+                                                        {{condition.title}}
+                                          </option>
+                                   </select> 
+                            </div>  
+                            
+                            <div class="input-field1 inline col s5" style="margin-top:0px;">
+                                   <textarea id="text_inline" type="text" class="materialize-textarea" name="moreOperationDetails" #moreOperationDetails="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.moreOperationDetails">
+                                   </textarea>
+                                   <label for="text_inline">Mas detalles *opcional* </label> 
+                            </div>  
+                     </td>       
+                     <!--fin de aspectos de operación  -->            
+                     <br>
+              </tr> 
+              <br> 
+       <!--FIN  DEFINICION DE REQUISITOS  -->
+                     <input type="hidden" name="managementId" #managementId="ngModel" [(ngModel)]="jpactivityService.selectedJpactivity._id">
+              </tbody>  
+       </table>
+
+       <!-- view -->
+       <table *ngSwitchCase = '1'>
+              <input disabled  type="hidden" name="hrisk" #hrisk="ngModel" [(ngModel)]="jpactivityService.selectedJpactivity.hrisk">
+       <thead>                                   
+                     <tr>                                    
+                            <!-- <div class="progress indigo lighten-3">
+                                   <div class="determinate" style="width: 56%; background-color:#009447" ></div>
+                            </div> -->
+                     </tr>
+              </thead>
+
+       <!-- <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="jpactivityService.selectedJpactivity._id"> -->
+       <tbody>
+       <div class="col s12 blue accent-3" style="color: #E7E6E6 ;text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+              <!-- <b> <h3> Requerimientos críticos del proyecto : '{{name}}' </h3></b> -->
+              <h5>
+                     Indíque si la actividad conlleva uno de los siguientes aspectos críticos: 
+              </h5> 
+              </div>
+              <div class="col s12 blue accent-3" style="color: #E7E6E6 ; margin-top:25px; text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+              <h5>
+              Aspectos Tecnologicos:
+              </h5> 
+       </div>
+       <tr>
+              <td class="col s12 "  title="Si no aplica seleccione N/A">
+              
+              <!-- ASPECTOS TECNOLOGICOS  -->
+
+                     <div class="tableleftname col s3 center" style="font-size:80%;" title="Si no aplica seleccione N/A" >                                               
+                            <b>   Trabajos con herramienta o tecnologia, seleccione: </b> 
+                     </div>  
+                                                        
+                     <div   class="input-field1 inline col s4" style="margin-top:0px"  title="Si no aplica seleccione N/A"   >                                       
+                            <select  disabled class="browser-default" name='technologyReq'  #technologyReq='ngModel' [(ngModel)]="jpactivityService.selectedCriticalReq.technologyReq"   style='margin-top:20px'>
+                                   <option value="" disabled selected>Seleccione...</option>
+                                   <option value="N/A">N/A</option>
+                                   <option *ngFor="let technology of CriticalRequirementsService.technologyCondition" value="{{technology.title}}">
+                                          {{technology.title}}
+                                   </option>
+                            </select> 
+                     </div>
+                     <div class="input-field1 inline col s5" style="margin-top:0px;">
+                                   <textarea disabled id="text_inline" name='moreTechnologyDetails' #moreTechnologyDetails="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.moreTechnologyDetails"  type="text" class="materialize-textarea">
+                                   </textarea>
+                                   <label for="text_inline">Mas detalles *opcional* </label> 
+                     </div>  
+              </td>
+              <!-- ASPECTOS DE HSE HSEQ -->
+              <div class="col s12 blue accent-3" style="color: #E7E6E6 ;text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+                            <h5>
+                            Aspectos - Condiciones de HSE &  HSEQ:
+                            </h5> 
+              </div>
+              <td class="col s12 " style="margin-top:0px;" title="Si no aplica seleccione N/A">
+                     <div class="tableleftname col s3 center"   style="font-size:80%;"  title="Si no aplica seleccione N/A" >                                               
+                            <b>  Trabajos con unidades con un historial de evento de calidad, seleccione </b> 
+                     </div>  
+                     <div class="input-field1 inline col s4" style="margin-top:0px;">
+                            <select disabled name='hseReq'  #hseReq='ngModel' [(ngModel)]="jpactivityService.selectedCriticalReq.hseReq" class="browser-default" style='margin-top:20px'>
+                                   <option value="" disabled selected>Seleccione...</option>
+                                   <option value="N/A">N/A</option>
+                                   <option *ngFor="let condition of CriticalRequirementsService.hseConditicon" value="{{condition.title}}">
+                                                        {{condition.title}}
+                                   </option>
+                            </select> 
+                     </div>  
+                     <div class="input-field1 inline col s5" style="margin-top:0px;">
+                            <textarea disabled name='moreHseDetails'  #moreHseDetails='ngModel' [(ngModel)]="jpactivityService.selectedCriticalReq.moreHseDetails" id="text_inline" type="text" class="materialize-textarea" >
+                            </textarea>
+                            <label for="text_inline">Mas detalles *opcional* </label> 
+                     </div>  
+              </td>
+
+              <td class="col s12 " style="margin-top:-40px;" title="Si no aplica seleccione N/A">
+                     <div class="tableleftname col s3 center"  style="font-size:80%;"  title="Si no aplica seleccione N/A" >                                               
+                            <b>  Trabajos en zona de alto riesgo de seguridad física </b> 
+                     </div>  
+                     <div class="input-field1 inline col s4 center" style="margin-top:0px;">
+                            <label>  
+                                   <div class="switch" style="margin-top:40px;">
+                                          <label>
+                                                 Riesgo inexistente
+                                                        <input disabled name='riskZone' type="checkbox" #riskZone='ngModel'  [(ngModel)]="jpactivityService.selectedCriticalReq.riskZone">
+                                                        <span class="lever"></span>
+                                                 Riesgo existente
+                                          </label>
+                                   </div> 
+                            </label>
+                     </div>  
+                     <div class="input-field1 inline col s5" style="margin-top:0px;">
+                            <textarea disabled id="text_inline" type="text" class="materialize-textarea" name="moreRiskDetails" #moreRiskDetails="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.moreRiskDetails">
+                            </textarea>
+                            <label for="text_inline">Mas detalles *opcional* </label> 
+                     </div>  
+              </td>
+
+
+              <!-- FIN ASPECTOS DE HSE HSEQ -->
+              <!-- aspectos de pozo  -->
+              <div class="col s12 blue accent-3" style="color: #E7E6E6 ;text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+                     <h5>
+                            Aspectos – Condiciones de Pozo:
+                     </h5> 
+              </div>
+
+              <td class="col s12 " style="margin-top:0px;" title="Si no aplica seleccione N/A">
+                     <div class="tableleftname col s3 center"  style="font-size:80%;" title="Si no aplica seleccione N/A" >                                               
+                            <b>  Indique si la operación en pozo contiene las siguientes características:   </b> 
+                     </div>  
+                     <div class="input-field1 inline col s4"    style="margin-top:0px;">
+                                   <select disabled class="browser-default"    name="wellReq" #wellReq="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.wellReq" style='margin-top:20px'>
+                                          <option value="" disabled selected>Seleccione...</option>
+                                          <option value="N/A">N/A</option>
+                                          <option *ngFor="let condition of CriticalRequirementsService.wellCondition" value="{{condition.title}}">
+                                                               {{condition.title}}
+                                          </option>
+                                   </select> 
+                     </div>  
+                     
+                     <div class="input-field1 inline col s5" style="margin-top:0px;">
+                            <textarea disabled id="text_inline" type="text" class="materialize-textarea" name="moreWellDetails" #moreWellDetails="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.moreWellDetails">
+                            </textarea>
+                            <label for="text_inline">Mas detalles *opcional* </label> 
+                     </div>  
+              </td> 
+
+              <!--fin de aspectos de pozo  -->
+
+              <!-- de aspectos de operación  -->
+
+              <div class="col s12 blue accent-3" style="color: #E7E6E6 ;text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+                     <h5>
+                                   Aspectos – Condiciones de operación: 
+                     </h5> 
+              </div>
+
+
+              <td class="col s12 " style="margin-top: 0px;" title="Si no aplica seleccione N/A">
+                     <div class="tableleftname col s3 center"  style="font-size:80%;" title="Si no aplica seleccione N/A" >                                               
+                            <b>  Indique si la operación contiene las siguientes características – condiciones:    </b> 
+                     </div>  
+                     <div class="input-field1 inline col s4" style="margin-top:0px;">
+                            <select disabled  name="operationReq" #operationReq="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.operationReq" class="browser-default" style='margin-top:20px'>
+                                   <option value="" disabled selected>Seleccione...</option>
+                                   <option value="N/A">N/A</option>
+                                   <option *ngFor="let condition of CriticalRequirementsService.operationCondition" value="{{condition.title}}">
+                                                 {{condition.title}}
+                                   </option>
+                            </select> 
+                     </div>  
+                     
+                     <div class="input-field1 inline col s5" style="margin-top:0px;">
+                            <textarea disabled id="text_inline" type="text" class="materialize-textarea" name="moreOperationDetails" #moreOperationDetails="ngModel" [(ngModel)]="jpactivityService.selectedCriticalReq.moreOperationDetails">
+                            </textarea>
+                            <label for="text_inline">Mas detalles *opcional* </label> 
+                     </div>  
+              </td>       
+              <!--fin de aspectos de operación  -->            
+              <br>
+       </tr> 
+       <br> 
+       <!--FIN  DEFINICION DE REQUISITOS  -->
+              <input type="hidden" name="managementId" #managementId="ngModel" [(ngModel)]="jpactivityService.selectedJpactivity._id">
+       </tbody>  
+       </table>
+       <!-- BUTTONS -->
+
+       <br>    
+                                          <!-- [ngSwitch]="showNext" -->
+       <td class="col s3" style="text-align: center;"  >
+              <!-- *ngSwitchCase = true -->
+                     <div class="col s12"  (change)="changueStatus($event.target)" >
+                            <span>
+                            <b> estados de Kickof Meeting </b>
+                            </span>
+                            <select   class="browser-default"   name="status" #status="ngModel" [(ngModel)]="jpactivityService.selectedJpactivity.status">    
+                                   <option value="" disabled selected>cambiar estado...</option>                        
+                                   <option  *ngFor="let status of this.jpactivityService.selectedManagementStatus"  value="{{status.n}}">           
+                                          {{status.name}}  
+                                   </option>   
+                            </select>
+                                                        <!-- <label>Lista de Usuarios</label> -->
+                     </div>
+       </td> 
+       <td class="col s9" style="text-align: center;"  [ngSwitch] = "showFinish" >
+
+                     <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                     (click)="back()"> Regresar </a>
+              
+                     <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                     (click)="saveManagement(managementForm)"> Guardar </a>
+
+                     <a *ngSwitchCase = '1' type="button" class="btn waves-effect yellow darken-3"   style="margin: 15px; color:white; "
+                     routerLink='../../../../../eservices/home' > Finalizar </a>
+
+                     
+       </td> 
+       <br>
+
+       </form>
+
+</div>
+
+</div>
+
+
+
+
+
+<div>
+       <app-super-float-button></app-super-float-button>
+</div>
+<!-- -------------------------- -->
+<!-- FIN  BOTON FLOOTANTES -->
+<!-- -------------------------- -->
+<!-- find de Requerimientos criticos -->

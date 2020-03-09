@@ -1,0 +1,35 @@
+.sidenavv {
+    position: fixed ;
+    z-index: 4;
+    top: 75px;
+    left: 2px; 
+    width: 23%; 
+    /* zoom: 0.8; */
+    }
+.form-clientForm{
+    border-color: #f0f0f0;
+    border-radius: 10px;    
+    border-style: solid;
+    margin-top: 10px;
+    padding: 10px;    
+ }
+.btn-save-clientForm{
+    margin-left: 4px;
+    margin-right: 4px;
+} 
+.header-clients{
+    background-color: whitesmoke;
+    align-items: center;
+    text-align: center;
+
+
+}
+
+.input_clients {
+    /* background-color: blueviolet; */
+    margin-top: 15px;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+   
+}

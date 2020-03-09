@@ -1,0 +1,334 @@
+ <mat-drawer-container class="example-container" style="background-color: rgb(255, 255, 255);"  >
+  <!--  <mat-drawer #drawer class="example-sidenav" mode="side"> -->
+      <div [ngSwitch]="tab">  
+
+
+<!--////////////////////////////////////////////////////////////////// -->
+<!-- GLOSARIO DEL SWITCH:  
+0 : ADMINISTRADOR DE IT EN VISTA HOME 
+1: USUARIOS DE RRHH  EN VISTA HOME
+2: USUARIOS DE OPERACIONES EN VISTA HOME
+3: USUARIOS DE EQUIPO DE LINEA EN VISTA HOME
+4: USUARIOS DE EQUIPO COMERCIAL EN VISTA HOME 
+5: USUARIOS DE LOGISTICA EN VISTA HOME 
+6: USUARIOS DE FINANZAS EN VISTA HOME 
+
+AL AGREGAR UN .1 A CADA NUMERACION TENEMOS LO MISMO PERO PARA LA VISTA USUARIOS, 
+EL SIDENAV MUESTRA PERMISMOS ADMINISTRATIVOS PARA EL EQUIPO DE IT Y RRHH PARA LOS DEMAS
+MUESTRA SOLO LA OPCION DE MI EQUIPO
+-->
+
+<!-- ------------------------ SIDENAV PARA HOME  ------------------------------------------ -->
+<!----------------- ADMINISTRADOR, IT EN HOME ------------------------------->
+          <div *ngSwitchCase='0'>  
+            <br>
+              <p class="title"  >ADMIN IT - HOME</p>
+              <div class="divider"></div> 
+              <button mat-button [matMenuTriggerFor]="animals">Perfil</button>
+            <mat-icon class="example-icon">
+                <i class="material-icons">
+                   perm_identity
+                </i>
+            </mat-icon>
+    
+         <br>
+      
+            <mat-menu #animals="matMenu" style="border-style:solid; color:blue; ">
+              <a mat-menu-item  routerLink="../users/profile" >Mi Perfil</a>
+              <!-- <a mat-menu-item  routerLink="../users/add" >Cargar Foto de Perfil</a>-->
+              <a mat-menu-item   routerLink="../users/list" >Editar Datos</a>
+            </mat-menu>
+
+
+            <button mat-button [matMenuTriggerFor]="tickets" class='buttondesk'>HelpDesk</button>
+            <mat-icon class="example-icon">
+                <i class="material-icons">
+                    headset_mic
+                </i>
+            </mat-icon>
+    
+            
+      
+            <mat-menu #tickets="matMenu">
+              <a mat-menu-item  routerLink="../tickets/listTickets" >Lista de Tickets</a>
+              <!-- <a mat-menu-item  routerLink="../users/add" >Cargar Foto de Perfil</a>-->
+              <a mat-menu-item   routerLink="../tickets/myTickets" >Mis Tickets </a>
+              <a mat-menu-item   routerLink="../tickets/createTicket" >Crear Ticket </a>
+            </mat-menu>
+    
+            
+      
+            <mat-toolbar-row>
+           
+          
+            </mat-toolbar-row>
+    
+          </div>
+<!-- ------------------------ SIDENAV PARA HOME  ------------------------------------------ -->
+<!----------------- EL RESTO DE LOS DEPARTAMENTOS EN HOME ------------------------------->
+
+          <div *ngSwitchCase='1'>  
+              <p class="title" >HOME</p>
+              <div class="divider"></div> 
+              <button mat-button [matMenuTriggerFor]="animals">Perfil</button>
+            <mat-icon class="example-icon">
+                <i class="material-icons">
+                   perm_identity
+                </i>
+            </mat-icon>    
+          
+            <br>
+            <mat-menu #animals="matMenu">
+              <a mat-menu-item  routerLink="../users/profile" >Mi Perfil</a>
+        <!--        <a mat-menu-item  routerLink="../users/add" >Cargar Foto de Perfil</a> --->
+              <a mat-menu-item   routerLink="../users/list" >Editar Datos</a>
+            </mat-menu>
+   
+            <button mat-button [matMenuTriggerFor]="tickets">HelpDesk</button>
+            <mat-icon class="example-icon">
+                <i class="material-icons">
+                    headset_mic
+                </i>
+            </mat-icon>
+    
+            
+      
+            <mat-menu #tickets="matMenu">
+           
+              <!-- <a mat-menu-item  routerLink="../users/add" >Cargar Foto de Perfil</a>-->
+              <a mat-menu-item   routerLink="../tickets/listTickets" >Mis Tickets </a>
+              <a mat-menu-item   routerLink="../tickets/createTicket" >Crear Ticket </a>
+            </mat-menu>
+
+
+             <mat-toolbar-row>
+     <!--           <a   href="#!"  class="text">Soporte</a>
+              <mat-icon class="example-icon">
+                <i class="material-icons">
+                          perm_identity
+                </i>
+              </mat-icon>  --->
+            </mat-toolbar-row>
+          </div>
+
+<!-- ------------------------ SIDENAV USERS/PROFILE  ------------------------------------------ -->
+<!----------------- TODOS LOS DEPARTAMENTOS EN PERFIL  ------------------------------->
+                       <div *ngSwitchCase='2' >  
+                         <br>
+                        <p class="title" >Perfil</p>
+                        <div class="divider"></div> 
+                        <button mat-button [matMenuTriggerFor]="animals">Perfil</button>
+                      <mat-icon class="example-icon">
+                          <i class="material-icons">
+                             perm_identity
+                          </i>
+                      </mat-icon>             
+                        <mat-menu #animals="matMenu">
+                          <a mat-menu-item  routerLink="../../users/profile" >Mi Perfil</a>
+                          <!--<a mat-menu-item  routerLink="../users/add" >Cargar Foto de Perfil</a>  --> 
+                          <a mat-menu-item   routerLink="../users/list" >Editar Datos</a>
+                        </mat-menu>
+                      <mat-toolbar-row>
+                       <!--      <a   href="#!"  class="text">Soporte</a> 
+                        <mat-icon class="example-icon">
+                          <i class="material-icons">
+                                    perm_identity
+                          </i>  
+                         
+                        </mat-icon>
+
+                         --> 
+                      </mat-toolbar-row>
+              
+                    </div>
+
+     <!-- --------------------------------SIDENAV PARA VISTA USERS/LIST  ------------------------------------------ -->
+     <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+     <!-- ----------------------------TODOS LOS DEPARTAMENTOS NO ADMIN   ------------------------------------------ -->
+         <div *ngSwitchCase='3.0' >  
+          <p class="title">Usuarios</p>
+
+          <div class="divider"></div> 
+          <button mat-button [matMenuTriggerFor]="animals">Gestion de Equipo</button>
+        <mat-icon class="example-icon">
+            <i class="material-icons">
+               perm_identity
+            </i>
+        </mat-icon>
+        <mat-menu #animals="matMenu">
+            <!--<a mat-menu-item   routerLink="/Auth/register" >Agregar Usuario</a> -->
+            <!--  <a mat-menu-item   routerLink="/users/list" >Lista de Usuarios</a> -->   
+            <a mat-menu-item   routerLink="/users/list" >Mi equipo</a>
+          </mat-menu>
+        
+        
+        </div>
+
+      <!-- --------------------------------SIDENAV PARA VISTA USERS/LIST  ------------------------------------------ -->
+      <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+      <!-- ---------------------------- DEPARTAMENTO RRHH  & IT ------------------------------------------ -->
+         <div *ngSwitchCase='3.1' >  
+            <p class="title">Gestion de Usuarios</p>
+  
+            <div class="divider"></div> 
+            <button mat-button [matMenuTriggerFor]="animals">Lista de Usuarios</button>
+          <mat-icon class="example-icon">
+              <i class="material-icons">
+                 perm_identity
+              </i>
+          </mat-icon>
+          <mat-menu #animals="matMenu">
+              <a mat-menu-item   routerLink="/Auth/register" >Agregar Usuario</a>
+              <a mat-menu-item   routerLink="/users/list" >Lista de Usuarios</a>
+          </mat-menu>
+
+          </div>
+          
+               <!-- --------------------------------SIDENAV PARA VISTA tickets/listTickets  ------------------------------------------ -->
+     <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+       <!-- ----------------------------TODOS LOS DEPARTAMENTOS NO ADMIN   ------------------------------------------ -->
+       <div *ngSwitchCase='4.1' >  
+          <p class="title"> HELP DESK - HOME </p>
+
+          <div class="divider"></div> 
+          <br>
+          <mat-menu #animals="matMenu">
+            <a mat-menu-item  routerLink="../users/profile" >Mi Perfil</a>
+      <!--        <a mat-menu-item  routerLink="../users/add" >Cargar Foto de Perfil</a> --->
+            <a mat-menu-item   routerLink="../users/list" >Editar Datos</a>
+          </mat-menu>
+ 
+          <button mat-button [matMenuTriggerFor]="tickets">HelpDesk</button>
+          <mat-icon class="example-icon">
+              <i class="material-icons">
+                  headset_mic
+              </i>
+          </mat-icon>
+  
+          
+    
+          <mat-menu #tickets="matMenu">
+         
+            <!-- <a mat-menu-item  routerLink="../users/add" >Cargar Foto de Perfil</a>-->
+            <a mat-menu-item   routerLink="../tickets/listTickets" >Lista de Tickets </a>
+ 
+          </mat-menu>
+
+        </div>
+
+           <!-- ----------------------------TODOS LOS DEPARTAMENTOS ADMIN   ------------------------------------------ -->
+       <div *ngSwitchCase='4.0' >  
+          <p class="title"> HELP DESK </p>
+
+          <div class="divider"></div> 
+          <br>
+  
+ 
+          <button mat-button [matMenuTriggerFor]="tickets">HelpDesk</button>
+          <mat-icon class="example-icon">
+              <i class="material-icons">
+                  headset_mic
+              </i>
+          </mat-icon>
+  
+          
+    
+          <mat-menu #tickets="matMenu">
+         
+            <!-- <a mat-menu-item  routerLink="../users/add" >Cargar Foto de Perfil</a>-->
+            <a mat-menu-item   routerLink="../../tickets/listTickets" >Mis Tickets </a>
+            <a mat-menu-item   routerLink="../../tickets/createTicket" >Crear Ticket </a>
+          </mat-menu>
+
+        </div>
+
+
+           <!-- --------------------------------SIDENAV PARA VISTA ESERVICES/DASHBOARD  ------------------------------------------ -->
+     <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+     <!-- ----------------------------TODOS LOS DEPARTAMENTOS NO ADMIN   ------------------------------------------ -->
+     <div *ngSwitchCase='5' > 
+       <br>
+        <p class="title">ESERVICES - DASHBOARD</p>
+        <div class="divider"></div> 
+          <br>
+        <button mat-button  routerLink="../../eservices/dashboard" >DashBoard    <i class="material-icons">
+            <!-- headset_mic -->
+        </i>
+      </button>
+      <br>
+      <div class="divider"></div> 
+      <p class="title" style="margin-top:25px;">SUBHEADER</p>
+        <div class="divider"></div> 
+        <br>
+          <button mat-button  routerLink="../../eservices-management/start-management/1" >Iniciar Gesiton
+            <i class="material-icons">
+                <!-- headset_mic -->
+            </i></button>
+        
+    
+      </div>
+      <!-- Ejourney -->
+      <div *ngSwitchCase='6' > 
+        <br><p class="title">EJOURNEY</p>
+        <div id="sidebar" class="ejourney demo-grid-ruler mdl-grid">
+          <mat-nav-list>
+            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/ejourney/dashboard']">
+              <mat-icon class="sidenav-icon">home</mat-icon> {{ 'Dashboard' }}
+            </a>
+            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/ejourney/vehiclesList']">
+              <mat-icon class="sidenav-icon">emoji_transportation</mat-icon> {{ 'Vehiculos' }}
+            </a>
+            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/ejourney/driversList']">
+              <mat-icon class="sidenav-icon">people</mat-icon> {{ 'Conductores' }}
+            </a>
+          </mat-nav-list>
+        </div>
+      </div>
+
+
+
+
+  
+<!--////////////////////////////////////////////////////////////////// -->
+<!--//////////////////////FIN NG SWITCH/////////////////////////////// -->
+<!--////////////////////////////////////////////////////////////////// --> 
+
+      </div>
+      
+    <div class="divider"></div> 
+  <br>  
+      <button  (click)="singout()" routerLink="{{logout}}" mat-raised-button>
+        Cerrar Sesion
+      </button>
+
+
+   <div class="card-panel grey lighten-5 z-depth-1" style="position: relative; left: 0px; aling-items: center" >
+        <div class="title" style="position: relative; left: 10px;">
+          Navegacion 
+        </div>
+        <a class="buttonback" href="javascript:window.history.go(-1);">       
+          <button class="btn waves-effect waves-light" type="submit" name="action" style="height: 30px; width: 40px"  >
+              <i class="material-icons right" style= "left: -20px; top: 1px; position: absolute;">fast_rewind</i>
+          </button>
+        </a>
+        <a class="buttonback" routerLink="/home">     
+          <button class="btn waves-effect waves-light" type="submit" name="action"  style="height: 30px; width: 40px">
+            <i class="material-icons right" style= "left: -20px; top: 1px; position: absolute;">home</i>  
+        </button>
+      </a>
+        <a class="buttonback" href="javascript:window.history.go(+1);">     
+          <button class="btn waves-effect waves-light" type="submit" name="action"  style="height: 30px; width: 40px">
+            <i class="material-icons right" style= "left: -20px; top: 1px; position: absolute;">fast_forward</i>  
+        </button>
+      </a>
+  
+      </div>
+
+
+    <!-- </mat-drawer>
+     <div class="example-sidenav-content; top=100px" style="z-index:20; position:relative;">
+      <button class="button1" type="button" mat-button (click)="drawer.toggle()">
+           <a class="btn-floating pulse"><i class="material-icons">menu</i></a>
+      </button>
+    </div>-->
+  </mat-drawer-container> 

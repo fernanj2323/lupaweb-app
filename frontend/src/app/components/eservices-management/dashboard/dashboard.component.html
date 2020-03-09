@@ -1,0 +1,318 @@
+<!-- <div class=" col s12 m4 l3"> 
+    <div class="sidenavv">
+            <app-sidenav titulo = 'titulos'></app-sidenav>
+    </div>
+  
+</div>
+
+<div class='content col s12 m8 l9' >
+    <div class="header">
+        <b>DashBoard </b> 
+        <br>
+        <div class="divider"></div>
+    </div>
+
+    <div class="filters" [ngSwitch]="showFilters">
+            <div class="buttons" >
+                    <a class="waves-effect waves-purple btn hoverable amber accent-4"  (click)=changueShowFilters(1) style="margin-left: 25px;">
+                        <i class="material-icons left">filter_list</i> 
+                        Filtrar
+                    </a>
+                    <a class="waves-effect waves-purple btn hoverable green darken-1" style="margin-left: 25px;">
+                        <i class="material-icons left">picture_as_pdf
+                        </i>Pdf
+                    </a>
+                    <a class="waves-effect waves-purple btn hoverable light-blue darken-4" style="margin-left: 25px;">
+                        <i class="material-icons left">file_download</i>
+                        Excel
+                    </a>
+            </div>
+            <div class="input-field col s12 m12 l12" *ngSwitchCase='1' >
+                <form #filtersForm="ngForm" (ngSubmit)="applyFilters(filtersForm)">
+                <div class="card row col s12 blue-grey lighten-5">
+                        <div class="header2 col s10 ">
+                                <b> Opciones de Filtrado </b>
+                                <div class="divider"></div>
+                        </div>
+                        <div class="header2 col s2 ">
+                                <a (click)=changueShowFilters(0) style="margin-left:80px;" title="Ocultar Filtros" class="waves-effect waves-purple btn-floating hoverable  blue-grey darken-3"  (click)=changueShowFilters() style="margin-left: 25px;">
+                                        <i class="material-icons left">keyboard_capslock</i> 
+                                </a>
+                    
+                        </div>
+                        
+                        <div class="content col s12 ">
+                     
+                  
+                        <div class="selects col s12 m12 l12">
+                                <div class="col s4 input-field" >     
+                                        <select class="browser-default"    name="responsibleLine"   id="responsibleLine" ngModel required  (change)="hideCloster($event.target.value)">
+                                                <option  value="" disabled selected>Linea de Servicio</option>
+                                                <option *ngFor="let Department of DeparmentsService.departments"value="{{Department.name}}"   >
+                                                                {{Department.name}}
+                                                </option>
+                                        </select>
+                                </div>
+                                <div class="col s4 input-field">
+                                        <select class="browser-default" name="client"  id="client" ngModel required>
+                                                <option value="" disabled selected>Cliente..</option>
+                                                <option *ngFor="let client of ClientesService.clientes"value="{{client.name}}">
+                                                        {{client.name}}
+                                                </option>
+                                        </select>
+                                </div>
+
+                           
+                                <div class="col s4 input-field">
+                                        <select  class="browser-default" name="Critico" id="Critico" ngModel required>
+                                                <option value="" disabled selected>Criticidad</option>
+                                                <option value="1">Alta</option>
+                                                <option value="0">Baja</option>
+                                         
+                                        </select>
+                                </div>
+
+                        </div>  
+                        
+                        <div class="selects col s12 m12 l12 " [ngSwitch] = "showCloster">
+                             
+                                        <div class="col s4 input-field">     
+                                            <select class="browser-default"   name="country"   id="country" ngModel required>
+                                                <option value="" disabled selected>Pais</option>
+                                                <option *ngFor='let location of this.LocationsService.country' value="{{location.name}}">{{location.name}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col s4 input-field">     
+                                                <select class="browser-default"  name="district"   id="district" ngModel required>
+                                                        <option value="" disabled selected>Distrito</option>
+                                                        <option *ngFor='let location of this.LocationsService.district' value="{{location.name}}">{{location.name}}</option>
+                                                </select>
+                                        </div>
+                                        <div class="col s4 input-field">     
+                                                <select class="browser-default"  name="camp"   id="camp" ngModel required>
+                                                        <option value="" disabled selected>Campo</option>
+                                                        <option *ngFor='let location of this.LocationsService.camp' value="{{location.name}}">{{location.name}}</option>
+                                                      
+                                                </select>
+                                        </div>
+                                        <div class="col s4 input-field" *ngSwitchCase = '1'>     
+                                                <select class="browser-default"  name="closter"   id="closter" ngModel required>
+                                                        <option value="" disabled selected>Closter</option>
+                                                        <option *ngFor='let location of this.LocationsService.closter' value="{{location.name}}">{{location.name}}</option>
+                                                </select>
+                                        </div>
+                                        <div class="col s4 input-field">     
+                                                <select class="browser-default"  name="well"   id="well" ngModel required>
+                                                        <option value="" disabled selected>Pozo</option>
+                                                        <option *ngFor='let location of this.LocationsService.well' value="{{location.name}}">{{location.name}}</option>
+                                                </select>
+                                        </div>
+                                        <div class="col s4 input-field">
+                                            <select class="browser-default"  name="status"   id="status" ngModel required>
+                                                    <option value="" disabled selected>Estatus de KOM</option>
+                                                    <option  *ngFor="let status of this.jpactivityService.selectedManagementStatus"  value="{{status.n}}">           
+                                                        {{status.name}}  
+                                                   </option>  
+                                            </select>
+                                        </div>
+                                        <div class="col s4 input-field">
+                                                <div> <span> Lineas de servicio  <div class="divider"></div></span>
+                                                <div class="col s3">  
+                                                        <p>
+                                                        <label>
+                                                          <input type="checkbox" name="ct" ngModel required/>
+                                                          <span>CT</span>
+                                                        </label>
+                                                      <p>
+                                                </div>    
+                                                <div class="col s3">          
+                                                      <p>
+                                                        <label>
+                                                          <input type="checkbox" name="wt" ngModel required />
+                                                          <span>WT</span>
+                                                        </label>
+                                                      <p>
+                                                </div>
+                                                <div class="col s3"> 
+                                                      <p>
+                                                        <label>
+                                                          <input type="checkbox" name="sl" ngModel required />
+                                                          <span>SL</span>
+                                                        </label>
+                                                      <p>
+                                                </div>
+                                                <div class="col s6"> 
+                                                      <p>
+                                                        <label>
+                                                          <input type="checkbox"  name="wl" ngModel required />
+                                                          <span>WL</span>
+                                                        </label>
+                                                      <p>
+                                                </div>
+                                                <div class="col s6"> 
+                                                      <p>
+                                                        <label>
+                                                          <input type="checkbox"name="fi"  ngModel required />
+                                                          <span>FI</span>
+                                                        </label>
+                                                      <p>
+                                                </div>
+                                                </div>
+                                        </div>
+                                </div>
+                           
+                         
+                            <div class="dates col s12">
+                                    <div class=" col s4 input-field">
+                                        <input id='dateInit' type="text" 
+                                        (change)="selectdateInit($event.target)"  
+                                        name="dateInit" class="datepicker"  
+                                        ngModel required   >
+                                       <label for="dateInit">desde </label>    
+                                    </div>
+                                    <div class=" col s4 input-field">
+                                            <input id='dateInit' type="text" 
+                                            (change)="selectdateEnd($event.target)"  
+                                            name="dateInit" class="datepicker"  
+                                            ngModel required  >
+                                         <label for="dateInit">hasta </label>   
+                                    </div>
+                                    <div class="col s12">
+                                        <div class="footerBtns">
+                                                <a title="filtrar" class="waves-effect waves-purple btn hoverable btn right amber accent-4"  (click)="applyFilters(filtersForm)">
+                                                        <i class="material-icons right">send</i>
+                                                        Filtrar
+                                                </a>
+                                                <a title="limpiar" class="waves-effect waves-purple btn hoverable btn left  blue-grey darken-3" (click)="resetForm(filtersForm)">
+                                                        <i class="material-icons right">clear</i>
+                                                        Limpiar
+                                                </a>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+            </form>
+            </div>  
+    </div>
+
+   
+        <table class="responsive-table"> 
+            <thead class="blue-grey lighten-5">
+                <tr> 
+                    <th># </th>
+                    <th>Cliente</th>
+                    <th>Lider</th>
+                    <th>Distrito</th>
+                    <th>Estatus de KOM</th>
+                    <th>Criticidad</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>CT</th>
+                    <th>WT</th>
+                    <th>SL</th>
+                    <th>WL</th>
+                    <th>FI</th>
+                    <th>Detalles</th>
+                </tr>
+              </thead>
+             <tbody  title="Detalles">
+                    <tr class="hoverable " *ngFor="let activity of jpactivityService.Jpactivitys|  paginate: {itemsPerPage: 10, currentPage: pageActual};   let i = index  " > 
+                         <td>
+                            {{i+1}}
+                        </td>
+                      
+                        <td>
+                            {{activity.client}}
+                        </td>
+                        <td>
+                            {{activity.leaderDesignation}}
+                        </td>
+                        <td>
+                            {{activity.district}}
+                        </td>
+                        <td [ngSwitch]="activity.status">
+                                <div *ngSwitchCase = ""> 
+                                     
+                                </div>
+                                <div *ngSwitchCase = 1> 
+                                         En espera
+                                </div>
+                                <div *ngSwitchCase = 2> 
+                                               En proceso
+                                 </div>
+                                 <div *ngSwitchCase = 3> 
+                                                Realizado
+                                 </div>
+                        </td>
+                        <td  [ngSwitch]="activity.hrisk">
+                                <div *ngSwitchCase = 0 >
+                                        Baja
+                                </div>
+                                <div *ngSwitchCase = 1 >
+                                        Alta
+                                </div>
+                        </td>
+                        <td>
+                                      
+                            {{activity.dateInit}} 
+                        </td>
+                        <td>
+                                     
+                            {{activity.dateEnd}} 
+                        </td>
+                          <td  [ngSwitch]="activity.ct" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                 </div>
+                                 <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                 </div>
+                        </td>
+                        <td  [ngSwitch]="activity.wt" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                 </div>
+                                 <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                 </div>
+                        </td>
+                        <td  [ngSwitch]="activity.sl" >
+                                        <div *ngSwitchCase = true >
+                                                        <i class="material-icons">done</i>  
+                                         </div>
+                                <div *ngSwitchCase = false >
+                                                        <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                       
+                        <td  [ngSwitch]="activity.wl" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                 </div>
+                                 <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                 </div>
+                        </td>
+                        <td  [ngSwitch]="activity.fi" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                 </div>
+                                 <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                 </div>
+                        </td>
+                        <td>    http://localhost:4200/eservices-management/workpreparation/1
+                             <a title="ver" target="_blank" href='./eservices-management/workpreparation/1/{{activity._id}}'>
+                                <i class="material-icons">present_to_all</i>  
+                             </a> 
+                             <a title="editar" target="_blank" href='./eservices-management/workpreparation/1/{{activity._id}}'>
+                                <i class="material-icons">edit</i>  
+                             </a> 
+                        </td>
+                    </tr>
+
+         
+            </tbody>
+        </table>
+</div> -->

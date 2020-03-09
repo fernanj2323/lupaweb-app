@@ -1,0 +1,55 @@
+<nav>
+    <div class="nav-wrapper">
+      <div class="col s12 breadcrumb-top">
+        <a href="elerearning/dashboard" class="breadcrumb">Dashboard</a>
+        <a class="breadcrumb">Rol | Menu | Aplicacion</a>
+      </div>
+    </div>
+</nav>
+<div class="row">
+    <div class="container">
+        <div class="col s12 form-content">
+            <h4>Rol | Menu | Aplicacion</h4>
+            <form #rolConfigForm="ngForm" (ngSubmit) = "addRol (rolConfigForm)" class="col s12 form-rolConfig">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" name = "name" class="validate" #name="ngModel" placeholder="Nombre" ngModel required>
+                    </div>
+                    <div class="input-field col s12">
+                        <select class="browser-default" (change) = "showMenus($event.target.value)" name="typeRol"  #typeRol="ngModel" ngModel required>
+                          <option value="" disabled selected>Tipo de registro</option>
+                          <option value="Rol">Rol</option>
+                          <option value="Aplicacion">Aplicación</option>
+                          <option value="Menu">Menú</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="text" name = "menulink" class="validate" #menulink="ngModel" placeholder="Link si lo requiere" ngModel>
+                    </div>  
+                    <div [ngSwitch]='show'>         
+                        <div class="input-field col s12" *ngSwitchCase='1'>
+                            <select class="browser-default combo" name="relmenu" id="relmenu" #relmenu="ngModel" [(ngModel)]="rolConfigService.selectedRols.relmenu">
+                                <option value="" disabled selected>Asociar menu a una aplicacion...</option>
+                                <option value="new" selected>Agregar nuevo</option>
+                                <option *ngFor="let menus of rolConfigService.selectedRols" value="{{menus._id}}">
+                                    {{menus.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12" *ngSwitchCase='1'>
+                            <input type="text" name = "sbname" class="validate" #sbname="ngModel" placeholder="Nombre del sub-menu" ngModel>
+                        </div>
+                        <div class="input-field col s12" *ngSwitchCase='1'>
+                            <input type="text" name = "sblink" class="validate" #sblink="ngModel" placeholder="Link si lo requiere" ngModel>
+                        </div>
+                    </div>
+                    <div class="input_field col s12">
+                        <button class="btn waves-effect waves-light btn-small btn-save-rols right"><i class="material-icons right">save</i>Guardar</button>
+                        <a routerLink="/config/rols" class="waves-effect waves-light btn-small btn-save-rols right"><i class="material-icons right">clear</i>Cancelar</a>
+                        <a class="waves-effect waves-light btn-small right" (click)="resetForm(rolConfigForm)"><i class="material-icons right">clear</i>Limpiar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

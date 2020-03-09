@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+.nav-brand {
+  width: 215px;
+  text-align: center;
+}
+.topnav-icon {
+  text-decoration: none;
+  display: flex;
+  color: #fff;
+}
+
+.fix-nav { 
+  background: #5C258D;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2a60ac, rgb(000,060,077));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2a60ac, rgb(000,060,077)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
+}
+.nav-spacer {
+  flex: 1 1 auto;
+}
+
+.visible-md {
+  display: none;
+}
+.visible-sm {
+  display: none;
+}
+@media screen and (max-width: 992px) {
+  .visible-md {
+      display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  .visible-sm {
+      display: block;
+  }
+  .nav-brand {
+      width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .hidden-sm {
+      display: none;
+  }
+}

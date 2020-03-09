@@ -1,0 +1,16 @@
+nav .nav-wrapper{
+    margin-top: -20px;
+ }
+ nav{
+    background-color: #003c4d;
+ }
+.form-rolConfig{
+    margin-top: 10px;
+ }
+.btn-save-rols{
+    margin-left: 4px;
+    margin-right: 4px;
+} 
+.header-rols{
+    background-color: #f0f0f0;
+}

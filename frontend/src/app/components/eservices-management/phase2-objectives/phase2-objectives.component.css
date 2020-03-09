@@ -1,0 +1,93 @@
+.sidenavv {
+    position: absolute ;
+       z-index: -2;
+       top: -115px;
+       left: -300px; 
+    }
+
+    .start-management{
+        z-index: 2;
+        border-style: solid;
+       /*  width: 1300px; */
+        border-radius: 2px;
+        border-color: grey;
+        border-width: 1px;
+    }
+   
+.tableleft {
+    border-style: solid;
+    top:15px; 
+    height: 75px;
+    padding: 28px;
+   
+    border-style: solid;
+    border-radius: 2px;
+    border-color: grey;
+    border-width: 1px;
+}
+
+
+.input-field{
+    margin-bottom: -14px;
+    z-index: 2;
+    border-style: solid;
+    top:0px; 
+    height: 75px;
+    padding: 28px;
+    border-style: solid;
+    border-radius: 2px;
+    border-color: grey;
+    border-width: 1px; 
+    background-color: whitesmoke;
+}
+
+.input-field2{
+    margin-bottom: 10px;
+    z-index: 2;
+    border-style: solid;
+    top:0px; 
+    height: 75px;
+    padding: 28px;
+    border-style: solid;
+    border-radius: 2px;
+    border-color: grey;
+    border-width: 1px; 
+    background-color: whitesmoke;
+}
+.tableleftname{
+    border-style: solid;
+    top:15px; 
+    padding: 28px;
+    height: 100px;
+    background-color: whitesmoke;
+    border-style: solid;
+    border-radius: 2px;
+    border-color: grey;
+    border-width: 1px;
+}
+
+.input-field1{
+    z-index: 2;
+    background-color: whitesmoke;
+    margin-bottom: 35px;
+    height: 100px;
+    margin-top: 15px;
+    border-style: solid;
+    border-radius: 2px;
+    border-color: grey;
+    border-width: 1px;
+}
+
+
+
+
+.material-icons{
+    cursor:pointer; 
+    color:#003c4d;
+
+}
+.material-icons:hover{ 
+    border: 1px;
+    color:#009447;
+
+}

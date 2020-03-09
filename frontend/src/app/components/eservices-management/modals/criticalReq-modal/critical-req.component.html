@@ -1,0 +1,200 @@
+
+<div class="row">
+        <div class='card col s12'>
+                <div class='col s12 header-clients indigo lighten-2'>
+                    <h4 center>
+                        Administracion de Requerimientos críticos
+                    </h4>
+                </div>
+                <div class="miniColmena">
+                        <div class="hexagon hoverable" (click)='enableLocation(1)' title="Lista y detalles de caracteristicas criticas relacionadas a pozos" style="background-color: #f9a41f; " >
+                                <span class="titleHexagon " > Condiciones de pozo </span>
+                            </div>
+                            <div class="hexagon hoverable" (click)='enableLocation(2)' style="background-color: #2a60ac; left: 348px; top:-30px; position: relative; z-index: 10" >
+                                <span class="titleHexagon " > Condiciones de operación </span>
+                            </div>
+                            <div class="hexagon hoverable" (click)='enableLocation(3)' style="background-color: #009447 ; left: 275px; top:-30px; position: relative; z-index: 10" >
+                                    <span class="titleHexagon " > Condiciones de HSE </span>
+                            </div>
+                            <div class="hexagon hoverable" (click)='enableLocation(4)'  style="background-color: #003c4d ; left: 425px; top:-161px; position: relative; z-index: 10" >
+                                <span class="titleHexagon " > condiciones de Tecnología  </span>
+                            </div>
+                </div>
+        </div>
+
+        <div  [ngSwitch] = "moduleSelected" >
+
+
+
+
+            <!-- dinamic critical condition  -->
+                <div *ngSwitchCase='1' style=' border-width: 0.35px; border-color:gray;'>
+                        <table class="highlight"> 
+                                <caption class="indigo lighten-2">
+                                        <h3>{{moduleName}}  </h3> 
+                                        <a title="Ocultar Modulo" style='top:-70px'class="btn-floating waves-effect waves-light btn-small right  pink accent-3" (click)="enableLocation(0)"><i class="material-icons right">arrow_drop_up</i>ocultar</a>
+                                </caption> 
+                                <div class="container"  >
+                                        <div  class="col s12 form-content" style="margin-top:20px;">
+                                                <form #criticalReqForm="ngForm" (ngSubmit) = "dinamicAddAndEdit(1,criticalReqForm)" class="col s12 form-clientForm">
+                                                        <div class="row">
+                                                                <div class="input-field col s12">
+                                                                        <!-- <input type="hidden" name="{{ModuleName}}"  value="{{ModuleName}}" ngModel required> -->
+                                                                        <input type="text" name = "title" class="validate" #title="ngModel" placeholder="{{placeholder}}" ngModel required>
+                                                                </div>
+                                                                <div class="input-field col s12">
+                                                                        <!-- <input type="hidden" name="{{ModuleName}}"  value="{{ModuleName}}" ngModel required> -->
+                                                                        <input type="text" name = "justification" class="validate" #justification="ngModel" placeholder="{{placeholder2}}" ngModel required>
+                                                                </div>
+                                                                
+                                                                <!-- bloque de linea de servicio  -->
+                                                                <br>
+                                                                <div class="col s12" style="margin-top: 20px; text-align: center;">
+                                                                     
+                                                                         <b>
+                                                                            Seleccione Linea de servicio a la que aplique 
+                                                                         </b>
+                                                                        <div class="divider"> </div>
+                                                                </div>
+                                                                 <div class='col s12 input-field'>
+                                                                         <div class="col s4">
+                                                                                <p>
+                                                                                        <label title="indique si aplica para WellTesting">
+                                                                                                <input type="checkbox"  name="wt" #wt='ngModel'   ngModel required/>
+                                                                                                <span>Well Testing</span>
+                                                                                        </label>
+                                                                                </p>
+                                                                         </div>
+                                                                         <div class="col s4">
+                                                                                <p>
+                                                                                        <label title="indique si aplica para WellTesting">
+                                                                                                <input type="checkbox"  name="wl" #wl='ngModel' ngModel required/>
+                                                                                                <span>WireLine</span>
+                                                                                        </label>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="col s4">
+                                                                                <p>
+                                                                                        <label title="indique si aplica para WellTesting">
+                                                                                                <input type="checkbox"  name="sl" #sl='ngModel' ngModel required/>
+                                                                                                <span>SlickLine</span>
+                                                                                        </label>
+                                                                                </p>
+                                                                        </div>
+                                                                </div>
+                                                                <div class='col s12 input-field'>
+                                                                        <div class="col s6">
+                                                                                <p>
+                                                                                        <label title="indique si aplica para WellTesting">
+                                                                                                <input type="checkbox"  name="ct" #ct='ngModel' ngModel required/>
+                                                                                                <span>Coiled Tubing</span>
+                                                                                        </label>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="col s6">
+                                                                                <p>
+                                                                                        <label title="indique si aplica para WellTesting">
+                                                                                                <input type="checkbox"  name="fi" #fi='ngModel' ngModel required/>
+                                                                                                <span>Frente de inyección</span>
+                                                                                        </label>
+                                                                                </p>
+                                                                        </div>
+                                                                        
+                                                                        <br>
+                                                                        <div class="divider">  </div>
+                                                                 </div>
+                                                                <!-- fin de bloque de linea de servicio  -->
+                                                                <br> 
+                                                                <div class="divider">  </div>
+                                                                <div style="margin-top:30px;" class="input_field col s12">
+                                                                        <button title="guardar" class=" blue darken-4 btn waves-effect waves-light btn-small btn-save-clientForm right"><i class="material-icons right">send</i>Guardar</button>
+                                                                        <a title="limpiar" class="  blue-grey lighten-1 waves-effect waves-light btn-small left" (click)="resetForm(criticalReqForm)"><i class="material-icons right">clear</i>Limpiar</a>
+                                                                </div>
+
+                                                        </div>
+                                                </form>
+                                        </div>
+                                </div>     <!-- container -->
+                                <div>   
+                                      <div class='divider'></div>
+
+                                     <table class="highlight" >
+                                        <caption class="indigo lighten-2" style="margin-top:40px;">
+                                                <h3>Editar Requerimientos criticos</h3>
+                                        </caption>
+                                       <tbody class="">
+                                           <tr  *ngFor="let critialReq of  this.selectList">
+                                               <td class="hoverable">
+                                                   <form  #criticalReqForm="ngForm" (ngSubmit)= "EditCriticalReq(criticalReqForm)">
+
+
+                                                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] ="critialReq._id"  >
+                                                        <div class="input-field col s12">
+                                                                <div class=' input-field col s12'>
+                                                                        <input  name="title" #title='ngModel' type="text" [(ngModel)] = 'critialReq.title' class="validate"  ngModel required>
+                                                                </div>
+                                                                <div class='input-field col s12'>
+                                                                        <input name="justification"  #justification='ngModel' type="text" [(ngModel)] = 'critialReq.justification' class="validate"  ngModel required>
+                                                                </div>
+                                                        </div>
+                                                        <div class="input-field col s12">
+                                                                <div class="input-field col s4">
+                                                                        <p>
+                                                                                <label title="indique si aplica para WellTesting">
+                                                                                        <input type="checkbox"  name="wt" #wt='ngModel' [(ngModel)] = 'critialReq.wt'   ngModel required />
+                                                                                                <span>Well Testing</span>
+                                                                                </label>
+                                                                        </p>
+                                                                </div>
+                                                                <div class=" input-field col s4">
+                                                                        <p>
+                                                                                <label title="indique si aplica para WireLine">
+                                                                                        <input type="checkbox"  name="wl" #wl='ngModel' [(ngModel)] = 'critialReq.wl'   ngModel required/>
+                                                                                                <span>WireLine</span>
+                                                                                </label>
+                                                                        </p>
+                                                                </div>
+                                                                <div class=" input-field col s4">
+                                                                          <p>
+                                                                                <label title="indique si aplica para SlickLine">
+                                                                                        <input type="checkbox"  name="sl" #sl='ngModel' [(ngModel)] = 'critialReq.sl'  ngModel required/>
+                                                                                                <span>SlickLine</span>
+                                                                                </label>
+                                                                        </p>
+                                                                </div>
+                                                        </div>
+                                                        <div class="input-field col s12">
+                                                                <div class="input-field col s6">
+                                                                        <p>
+                                                                                <label title="indique si aplica para Coiled Tubing">
+                                                                                        <input type="checkbox"  name="ct" #ct='ngModel'  [(ngModel)] = 'critialReq.ct'  ngModel required/>
+                                                                                                <span>Coiled Tubing</span>
+                                                                                </label>
+                                                                        </p>
+                                                                </div>
+                                                                <div class="input-field col s6">
+                                                                        <p>
+                                                                                <label title="indique si aplica para Frente de inyección">
+                                                                                        <input type="checkbox"  name="fi" #fi='ngModel'  [(ngModel)] = 'critialReq.fi'  ngModel required/>
+                                                                                                <span>Frente de inyección</span>
+                                                                                </label>
+                                                                        </p>
+                                                                </div>
+                                                        </div>
+                                                        <div class="col s12">
+                                                                <button  type='submit' class="btn waves-effect waves-light btn-small btn-save-departments ">
+                                                                        <i class="material-icons right">save</i>
+                                                                                    Guardar
+                                                                </button>
+                                                        </div> 
+                                                   </form>
+                                               </td>
+                                           </tr>
+                                       </tbody>
+                                   </table>  
+                                </div>
+                        </table>
+                </div>
+                 <!-- dinamic critical condition  -->
+        </div> 
+</div>

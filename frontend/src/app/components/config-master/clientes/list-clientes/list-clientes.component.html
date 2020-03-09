@@ -1,0 +1,88 @@
+
+<div class="col s12 m4 l3"> 
+    <app-sidenav titulo = 'titulos'></app-sidenav>
+</div>
+<tr class="col s12 m8 l9">
+    <p>
+        <a class="btn-floating btn-large waves-effect waves-light green" routerLink = "../../../config/client/clientAdd" title="Agregar Cliente">
+            <i class="material-icons">add</i>
+        </a>
+    </p>
+
+ <!-- Con Switch Tab controlamos la vista, si mostramos la tabla sin edit, o con edit  -->
+    <div class="row" [ngSwitch] = "tab">
+     <div  class="col s12 " *ngSwitchCase='1'>
+     <table class="highlight">
+        <caption class="blue">
+            <h3>Lista de Clientes</h3>
+        </caption>
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+        </thead>
+    
+        <tbody >        
+                <tr  *ngFor="let cliente of clientesService.clientes" >
+                        <td> {{cliente._id}} </td>
+                        <td> {{cliente.name}} </td> 
+                    <td>
+                        <!-- <a (click)=editClientesMode(cliente._id) class = "href-pointer"  title="Editar">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a class = "href-pointer" (click)="deleCliente(cliente._id)" title="Eliminar">
+                            <i class="material-icons">delete</i>
+                        </a> -->
+                    </td>
+               </tr>
+        </tbody>
+    </table>
+    <!-- <pagination-controls class="pagination center" (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls> -->
+    <div class="input_field col s12">
+            <button (click)=editClientesMode() class="btn waves-effect waves-light btn-small btn-save-departments right"><i class="material-icons right">edit</i>Editar</button>
+            <!-- <a (click)="undoEditMode()" class="waves-effect waves-light btn-small btn-save-departments right"><i class="material-icons right">clear</i>Cancelar</a> -->
+    </div>
+
+</div>
+<div  class="col s12 " *ngSwitchCase='2'>
+            <table class="highlight">
+           <caption class="blue">
+               <h3>Editar Cliente</h3>
+            </caption>
+           <thead>
+                <th>Nombre</th>
+                <!-- <th>Acciones</th> -->
+                <!-- </form> -->
+           </thead>
+           <tbody class="">        
+                <tr  *ngFor="let cliente of clientesService.clientes">
+                        <td>
+                             <form #clientesForm="ngForm" (ngSubmit) = "editClient(clientesForm)" class="col s12 form-departments"> 
+                                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] ="cliente._id">
+                                    <div class="input-field col s7">
+                                        <input  id="name" type="text" class="validate" [(ngModel)] ="cliente.name"  name="name" class="validate"  ngModel required>
+                                            <!-- <label for="name"> {{cliente.name}}</label> -->
+                                            <!-- <div class="input-field col s10"> -->
+                                    </div>
+                                    <div class="col s5">
+                                        <button  type='submit' class="btn waves-effect waves-light btn-small btn-save-departments ">
+                                            <i class="material-icons right">save</i>
+                                                    Guardar
+                                        </button>
+                                    </div>
+                                 
+                             </form>
+                    </td> 
+                   
+                 </tr>
+           </tbody>
+         </table>
+         <!-- <pagination-controls class="pagination center" (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls> -->
+        <br>
+        <div class="input_field col s12">
+              
+                <a (click)="undoEditMode()" class="waves-effect waves-light btn-small btn-save-departments right"><i class="material-icons right">clear</i>Cancelar</a>
+            </div>
+        
+    </div>
+
+</div>

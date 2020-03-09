@@ -1,0 +1,1795 @@
+<div class="row blue-grey lighten-5"  [ngSwitch] = "userDepartment"  >
+    <!-- <div class="col s12 header-home">
+        <h4>Eservices - Gestion y control a un click </h4>
+    </div> -->
+    <div class="carousel carousel-slider">
+        <div class="carousel carousel-slider center">
+            <div class="carousel-fixed-item center">
+            <!-- <a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('open')">Saber Más</a> -->
+            </div>
+            <div class="carousel-item  white-text" href="#one!">
+       
+              <img src="https://lupatech.com.co/wp-content/uploads/2019/11/lupito.jpg" alt="eLearning Tope" class="responsive-img"  >
+         
+            </div>
+            <div class="carousel-item amber white-text" href="#two!">
+              <h2>Eservices </h2>
+              <p class="white-text">Gestion y control a un click</p>
+            </div>
+            <div class="carousel-item green white-text" href="#three!">
+                <h2>Eservices </h2>
+                <p class="white-text">Gestion y control a un click</p>
+            </div>
+            <div class="carousel-item blue white-text" href="#four!">
+                <h2>Eservices </h2>
+                <p class="white-text">Gestion y control a un click</p>
+            </div>
+          </div>  
+        <!-- <a class="carousel-item"><img src="https://lupatech.com.co/wp-content/uploads/2019/11/lupito.jpg" alt="eLearning Tope" class="responsive-img"  ></a> -->
+    </div>
+<!-- menu lateral -->
+    <div class="col s12 m4 l4">
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header modal-trigger " href="#modal1"  id='linkeable' >
+                    <i class="material-icons">priority_high</i>Operaciones Críticas  
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header modal-trigger " href="#modal2"><i class="material-icons">reorder</i>Operaciones Regulares</div>
+            </li> 
+            
+            <li>
+                <div class="collapsible-header  modal-trigger " href="#modal3" ><i class="material-icons">memory</i>Operaciones en Proceso</div>
+            </li> 
+                
+            <li>
+                <div class="collapsible-header modal-trigger " href="#modal4" ><i class="material-icons">offline_pin</i>Operaciones Finalizadas</div>
+            </li>      
+      
+            <!-- <li>
+                <div class="collapsible-header"><i class="material-icons">apps</i>Ticketes y KPIS</div>
+            </li> 
+                                     -->
+        </ul>
+    </div>
+<!-- contenido  operaciones -->
+
+<!-- {{this.userDepartment}} -->
+
+
+
+
+
+
+<!-- operaciones -->
+    <div  *ngSwitchCase = '1'   class="col s12 m8 l8">
+        <div class="col s12">  
+            <div  class="col s5 m5 l5 center card hoverable pink lighten-3">
+                <div class="card-header  col s12"> 
+                        Operaciones Críticas 
+                </div>
+                <div class="card-content col s12 modal-trigger " href="#modal1">
+                       {{this.card1Number}}
+                </div>
+                <div class="card-footer col s12" >
+          
+                </div>
+        
+            </div>
+          
+            <div class="col s5 m5 l5 center card hoverable light-green accent-1 ">
+                        <div class="card-header  col s12"> 
+                            Operaciones Convencionales 
+                        </div>
+                        <div class="card-content col s12 modal-trigger" href="#modal2">
+                            {{this.card2Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                        
+                        </div>
+                 
+            </div>
+        </div>
+      
+        <div class="col s12">
+            <div class="col s5 m5 l5 center card hoverable  blue lighten-1">
+                    <div class="card-header  col s12"> 
+                        Operaciones En proceso 
+                    </div>
+                    <div class="card-content col s12 modal-trigger" href="#modal3">
+                        {{this.card3Number}}
+                    </div>
+                    <div class="card-footer col s12">
+                    
+                       
+                    </div>
+                  
+                    
+                    
+                    
+            </div>
+
+
+            <div   class="col s5 m5 l5 center card hoverable  blue-grey lighten-3">
+                <div class="card-header  col s12"> 
+                    Operaciones Finalizadas 
+                </div>
+                <div class="card-content col s12 modal-trigger" href="#modal4">
+                    {{this.card4Number}}
+                </div>
+                <div class="card-footer col s12" >
+                 
+                  
+                </div>
+             
+
+            </div>  
+        </div>
+
+        <div class="col s12">
+            <div [ngSwitch]="showColor5" class="col s10 m10 l10 center card hoverable  blue-grey lighten-3">
+                <div class="card-header  col s12"> 
+                    Operaciones Por Linea de servicio
+                </div>
+                <div class="card-content col s12 center" style="padding: 0; align-items: center; align-content: center;">
+                    <!-- <div class="col s0 l1"></div> -->
+
+              
+                    <div *ngIf='showCardWT'  class="col s5 l2 card  blue lighten-1" >
+                        <div class="col s12 card-subheader">
+                            Well Testing
+                        </div>
+                        <div class="col s12 card-subcontent modal-trigger" href="#modal51">
+                            {{this.card51Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                           
+                        </div>
+                    
+
+                    </div>
+
+                    <div *ngIf='showCardWL' class="col s5 l2 card  blue lighten-1">
+                        <div class="col s12 card-subheader">
+                        Well Login
+                        </div>
+                        <div class="col s12 card-subcontent  modal-trigger" href="#modal52">
+                            {{this.card52Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                           
+                        </div>
+                       
+                    </div>
+
+                    <div  *ngIf='showCardSL' class="col s5 l2 card  blue lighten-1">
+                        <div class="col s12 card-subheader">
+                            Slick Line
+                        </div>
+                        <div class="col s12 card-subcontent  modal-trigger" href="#modal53">
+                            {{this.card53Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                     
+                        </div>
+              
+
+                    </div>
+
+                    <div *ngIf='showCardCT' class="col s5 l2 card  blue lighten-1">
+                        <div class="col s12 card-subheader">
+                            Coiled Tubing
+                        </div>
+                        <div class="col s12 card-subcontent  modal-trigger" href="#modal54">
+                            {{this.card54Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                          
+                        </div>
+                   
+                    </div>
+
+                    <div *ngIf='showCardFI'  class="col s5 l2 card  blue lighten-1">
+                        <div class="col s12 card-subheader">
+                        Frente de Inyección
+                        </div>
+                        <div class="col s12 card-subcontent  modal-trigger" href="#modal55">
+                            {{this.card55Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                          
+                        </div>
+                   
+                    </div>
+
+
+                    <!-- <div class="col s0 l1"></div> -->
+                </div>
+                <div class="card-footer col s12">
+                 
+                   
+               </div>
+            </div>
+       </div>
+
+
+      
+    </div>
+
+<!-- comercial -->
+    <div  *ngSwitchCase = '2'   class="col s12 m8 l8">
+        <!-- <div class="col s12">  
+            <div  class="col s5 m5 l5 center card hoverable pink lighten-3">
+                <div class="card-header  col s12"> 
+                        Operaciones Críticas 
+                </div>
+                <div class="card-content col s12 modal-trigger " href="#modal1">
+                       {{this.card1Number}}
+                </div>
+                <div class="card-footer col s12" >
+          
+                </div>
+        
+            </div>
+          
+            <div class="col s5 m5 l5 center card hoverable light-green accent-1 ">
+                        <div class="card-header  col s12"> 
+                            Operaciones Convencionales 
+                        </div>
+                        <div class="card-content col s12 modal-trigger" href="#modal2">
+                            {{this.card2Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                        
+                        </div>
+                 
+            </div>
+        </div> -->
+      
+        <div class="col s12">
+            <div class="col s5 m5 l5 center card hoverable  blue lighten-1">
+                    <div class="card-header  col s12"> 
+                        Operaciones En proceso 
+                    </div>
+                    <div class="card-content col s12 modal-trigger" href="#modal3">
+                        {{this.card3Number}}
+                    </div>
+                    <div class="card-footer col s12">
+                    
+                       
+                    </div>
+                  
+                    
+                    
+                    
+            </div>
+
+
+            <div   class="col s5 m5 l5 center card hoverable  blue-grey lighten-3">
+                <div class="card-header  col s12"> 
+                    Operaciones Finalizadas 
+                </div>
+                <div class="card-content col s12 modal-trigger" href="#modal4">
+                    {{this.card4Number}}
+                </div>
+                <div class="card-footer col s12" >
+                 
+                  
+                </div>
+             
+
+            </div>  
+        </div>
+
+        <div class="col s12">
+            <div [ngSwitch]="showColor5" class="col s10 m10 l10 center card hoverable  blue-grey lighten-3">
+                <div class="card-header  col s12"> 
+                    Operaciones Por Linea de servicio
+                </div>
+                <div class="card-content col s12 center" style="padding: 0; align-items: center; align-content: center;">
+                    <!-- <div class="col s0 l1"></div> -->
+
+                    <div *ngIf='showCardWT'  class="col s5 l2 card  blue lighten-1" >
+                        <div class="col s12 card-subheader">
+                            Well Testing
+                        </div>
+                        <div class="col s12 card-subcontent modal-trigger" href="#modal51">
+                            {{this.card51Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                           
+                        </div>
+                    
+
+                    </div>
+
+                    <div *ngIf='showCardWL' class="col s5 l2 card  blue lighten-1">
+                        <div class="col s12 card-subheader">
+                        Well Login
+                        </div>
+                        <div class="col s12 card-subcontent  modal-trigger" href="#modal52">
+                            {{this.card52Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                           
+                        </div>
+                       
+                    </div>
+
+                    <div  *ngIf='showCardSL' class="col s5 l2 card  blue lighten-1">
+                        <div class="col s12 card-subheader">
+                            Slick Line
+                        </div>
+                        <div class="col s12 card-subcontent  modal-trigger" href="#modal53">
+                            {{this.card53Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                     
+                        </div>
+              
+
+                    </div>
+
+                    <div *ngIf='showCardCT' class="col s5 l2 card  blue lighten-1">
+                        <div class="col s12 card-subheader">
+                            Coiled Tubing
+                        </div>
+                        <div class="col s12 card-subcontent  modal-trigger" href="#modal54">
+                            {{this.card54Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                          
+                        </div>
+                   
+                    </div>
+
+                    <div *ngIf='showCardFI'  class="col s5 l2 card  blue lighten-1">
+                        <div class="col s12 card-subheader">
+                        Frente de Inyección
+                        </div>
+                        <div class="col s12 card-subcontent  modal-trigger" href="#modal55">
+                            {{this.card55Number}}
+                        </div>
+                        <div class="card-footer col s12">
+                          
+                        </div>
+                   
+                    </div>
+
+
+                    <!-- <div class="col s0 l1"></div> -->
+                </div>
+                <div class="card-footer col s12">
+                 
+                   
+               </div>
+            </div>
+       </div>
+
+
+
+   
+
+
+    
+    </div>
+
+</div>
+
+
+
+<div [ngSwitch] = "userDepartment"  class="fixed-action-btn">
+  
+    <a  *ngSwitchCase = '2' routerLink='../../eservices-management/start/1/2' target="blank" class="btn-floating btn-large lime accent-3">
+      <i class="large  material-icons "> blur_circular </i>
+    </a>
+    <ul>
+    </ul>
+</div>
+
+<!-- ------------ -->
+<!-- data target  -->
+
+<!-- --------- -->
+<!-- modals -->
+<!-- ----  -->
+
+<!-- card1  -->
+<div id="modal1" class="modal modal-fixed-footer blue-grey lighten-5">
+        <div class="modal-header center blue-grey lighten-5" style="position: fixed; padding: 20px;">
+                <h4>Operaciones Críticas:</h4>
+                <div class="divider black"></div>
+        </div>
+
+        <div class="modal-content" style="margin-top:76px; margin:0; padding: 0;">
+            <table class="table "  style=" margin:0; padding: 0; margin-top:70px;"> 
+                <thead class="blue-grey lighten-5">
+                    <tr> 
+                        <th># </th>
+                        <th>Cliente</th>
+                        <th>Lider</th>
+                        <th>Distrito</th>
+                        <th>Estatus de KOM</th>
+                        <th>Criticidad</th>
+                        <th>Fecha de inicio</th>
+                        <th>Fecha de cierre</th>
+                        <th>CT</th>
+                        <th>WT</th>
+                        <th>SL</th>
+                        <th>WL</th>
+                        <th>FI</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody  title="Detalles">
+                        <tr class="hoverable " *ngFor="let activity of  this.card1List ;  let i = index " > 
+                            <td>
+                                {{i+1}}
+                            </td>
+                        
+                            <td>
+                                {{activity.client}}
+                            </td>
+                            <td>
+                                {{activity.leaderDesignation}}
+                            </td>
+                            <td>
+                                {{activity.district}}
+                            </td>
+                            <td [ngSwitch]="activity.status">
+                                    <div *ngSwitchCase = 1> 
+                                            En espera
+                                    </div>
+                                    <div *ngSwitchCase = 2> 
+                                            En proceso
+                                    </div>
+                                    <div *ngSwitchCase = 3> 
+                                            Realizado
+                                    </div>
+                            </td>
+                            <td  [ngSwitch]="activity.hrisk">
+                                    <div *ngSwitchCase = 0 >
+                                            Baja
+                                    </div>
+                                    <div *ngSwitchCase = 1 >
+                                            Alta
+                                    </div>
+                            </td>
+                            <td>
+                                            <!-- {{activity.district}} -->
+                                {{activity.dateInit}} 
+                            </td>
+                            <td>
+                                            <!-- {{activity.district}} -->
+                                {{activity.dateEnd}} 
+                            </td>
+                            <td  [ngSwitch]="activity.ct" >
+                                    <div *ngSwitchCase = true >
+                                                    <i class="material-icons">done</i>  
+                                    </div>
+                                    <div *ngSwitchCase = false >
+                                                    <i class="material-icons">close</i>  
+                                    </div>
+                            </td>
+                            <td  [ngSwitch]="activity.wt" >
+                                    <div *ngSwitchCase = true >
+                                                    <i class="material-icons">done</i>  
+                                    </div>
+                                    <div *ngSwitchCase = false >
+                                                    <i class="material-icons">close</i>  
+                                    </div>
+                            </td>
+                            <td  [ngSwitch]="activity.sl" >
+                                            <div *ngSwitchCase = true >
+                                                            <i class="material-icons">done</i>  
+                                            </div>
+                                    <div *ngSwitchCase = false >
+                                                            <i class="material-icons">close</i>  
+                                    </div>
+                            </td>
+                        
+                            <td  [ngSwitch]="activity.wl" >
+                                    <div *ngSwitchCase = true >
+                                                    <i class="material-icons">done</i>  
+                                    </div>
+                                    <div *ngSwitchCase = false >
+                                                    <i class="material-icons">close</i>  
+                                    </div>
+                            </td>
+                            <td  [ngSwitch]="activity.fi" >
+                                    <div *ngSwitchCase = true >
+                                                    <i class="material-icons">done</i>  
+                                    </div>
+                                    <div *ngSwitchCase = false >
+                                                    <i class="material-icons">close</i>  
+                                    </div>
+                            </td>
+                            <div [ngSwitch] = "userDepartment">
+                                <td>
+                                
+                                    <a   *ngSwitchCase = '1' routerLink='../../eservices-management/workpreparation/1/{{activity._id}}' target="blank" class="btn lime accent-3">
+                                        <i class="large material-icons"> present_to_all </i>
+                                    </a>
+        
+                                    <a  *ngSwitchCase = '2'  title="ver" target="_blank" routerLink='../../eservices-management/start/1/{{activity._id}}/0' class="btn lime accent-3" >
+                                        <i class="material-icons">present_to_all</i>  
+                                    </a> 
+                                
+                                </td>
+    
+                            </div>
+                        </tr>
+
+                        <!-- PAGINACION PENDIENTE  -->
+                </tbody>
+            </table>
+        </div>
+
+
+    <div class="modal-footer pink lighten-3 " style="-webkit-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+    -moz-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+    box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+    ">
+      <a  class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+</div>
+<!-- card2  -->
+<div id="modal2" class="modal modal-fixed-footer blue-grey lighten-5">
+    <div class="modal-header center blue-grey lighten-5" style="position: fixed; padding: 20px;">
+            <h4>Operaciones Convencionales:</h4>
+            <div class="divider black"></div>
+    </div>
+
+    <div class="modal-content" style="margin-top:76px; margin:0; padding: 0;">
+        <table class="table "  style=" margin:0; padding: 0; margin-top:70px;"> 
+            <thead class="blue-grey lighten-5">
+                <tr> 
+                    <th># </th>
+                    <th>Cliente</th>
+                    <th>Lider</th>
+                    <th>Distrito</th>
+                    <th>Estatus de KOM</th>
+                    <th>Criticidad</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>CT</th>
+                    <th>WT</th>
+                    <th>SL</th>
+                    <th>WL</th>
+                    <th>FI</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody  title="Detalles">
+                    <tr class="hoverable " *ngFor="let activity of  this.card2List ;  let i = index " > 
+                        <td>
+                            {{i+1}}
+                        </td>
+                    
+                        <td>
+                            {{activity.client}}
+                        </td>
+                        <td>
+                            {{activity.leaderDesignation}}
+                        </td>
+                        <td>
+                            {{activity.district}}
+                        </td>
+                        <td [ngSwitch]="activity.status">
+                                <div *ngSwitchCase = 1> 
+                                        En espera
+                                </div>
+                                <div *ngSwitchCase = 2> 
+                                        En proceso
+                                </div>
+                                <div *ngSwitchCase = 3> 
+                                        Realizado
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.hrisk">
+                                <div *ngSwitchCase = 0 >
+                                        Baja
+                                </div>
+                                <div *ngSwitchCase = 1 >
+                                        Alta
+                                </div>
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateInit}} 
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateEnd}} 
+                        </td>
+                        <td  [ngSwitch]="activity.ct" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.wt" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.sl" >
+                                        <div *ngSwitchCase = true >
+                                                        <i class="material-icons">done</i>  
+                                        </div>
+                                <div *ngSwitchCase = false >
+                                                        <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                    
+                        <td  [ngSwitch]="activity.wl" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.fi" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <div [ngSwitch] = "userDepartment">
+                            <td>
+                            
+                                <a   *ngSwitchCase = '1' routerLink='../../eservices-management/workpreparation/1/{{activity._id}}' target="blank" class="btn lime accent-3">
+                                    <i class="large material-icons"> present_to_all </i>
+                                </a>
+    
+                                <a  *ngSwitchCase = '2'  title="ver" target="_blank" routerLink='../../eservices-management/start/1/{{activity._id}}/0' class="btn lime accent-3" >
+                                    <i class="material-icons">present_to_all</i>  
+                                </a> 
+                            
+                            </td>
+
+                        </div>
+                    </tr>
+
+                    <!-- PAGINACION PENDIENTE  -->
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="modal-footer  light-green accent-1 " style="-webkit-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+-moz-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+">
+  <a  class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+</div>
+</div>
+<!-- card3  -->
+<div id="modal3" class="modal modal-fixed-footer blue-grey lighten-5">
+    <div class="modal-header center blue-grey lighten-5" style="position: fixed; padding: 20px;">
+            <h4>Operaciones En Proceso:</h4>
+            <div class="divider black"></div>
+    </div>
+
+    <div class="modal-content" style="margin-top:76px; margin:0; padding: 0;">
+        <table class="table "  style=" margin:0; padding: 0; margin-top:70px;"> 
+            <thead class="blue-grey lighten-5">
+                <tr> 
+                    <th># </th>
+                    <th>Cliente</th>
+                    <th>Lider</th>
+                    <th>Distrito</th>
+                    <th>Estatus de KOM</th>
+                    <th>Criticidad</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>CT</th>
+                    <th>WT</th>
+                    <th>SL</th>
+                    <th>WL</th>
+                    <th>FI</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody  title="Detalles">
+                    <tr class="hoverable " *ngFor="let activity of  this.card3List ;  let i = index " > 
+                        <td>
+                            {{i+1}}
+                        </td>
+                    
+                        <td>
+                            {{activity.client}}
+                        </td>
+                        <td>
+                            {{activity.leaderDesignation}}
+                        </td>
+                        <td>
+                            {{activity.district}}
+                        </td>
+                        <td [ngSwitch]="activity.status">
+                                <div *ngSwitchCase = 1> 
+                                        En espera
+                                </div>
+                                <div *ngSwitchCase = 2> 
+                                        En proceso
+                                </div>
+                                <div *ngSwitchCase = 3> 
+                                        Realizado
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.hrisk">
+                                <div *ngSwitchCase = 0 >
+                                        Baja
+                                </div>
+                                <div *ngSwitchCase = 1 >
+                                        Alta
+                                </div>
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateInit}} 
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateEnd}} 
+                        </td>
+                        <td  [ngSwitch]="activity.ct" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.wt" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.sl" >
+                                        <div *ngSwitchCase = true >
+                                                        <i class="material-icons">done</i>  
+                                        </div>
+                                <div *ngSwitchCase = false >
+                                                        <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                    
+                        <td  [ngSwitch]="activity.wl" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.fi" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <div [ngSwitch] = "userDepartment">
+                            <td>
+                            
+                                <a   *ngSwitchCase = '1' routerLink='../../eservices-management/workpreparation/1/{{activity._id}}' target="blank" class="btn lime accent-3">
+                                    <i class="large material-icons"> present_to_all </i>
+                                </a>
+    
+                                <a  *ngSwitchCase = '2'  title="ver" target="_blank" routerLink='../../eservices-management/start/1/{{activity._id}}/0' class="btn lime accent-3" >
+                                    <i class="material-icons">present_to_all</i>  
+                                </a> 
+                            
+                            </td>
+
+                        </div>
+            
+                    </tr>
+
+                    <!-- PAGINACION PENDIENTE  -->
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="modal-footer " style="-webkit-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+-moz-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+">
+  <a  class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+</div>
+</div>
+
+
+
+<!-- card4  -->
+<div id="modal4" class="modal modal-fixed-footer blue-grey lighten-5">
+    <div class="modal-header center blue-grey lighten-5" style="position: fixed; padding: 20px;">
+            <h4>Operaciones Finalizadas:</h4>
+            <div class="divider black"></div>
+    </div>
+
+    <div class="modal-content" style="margin-top:76px; margin:0; padding: 0;">
+        <table class="table "  style=" margin:0; padding: 0; margin-top:70px;"> 
+            <thead class="blue-grey lighten-5">
+                <tr> 
+                    <th># </th>
+                    <th>Cliente</th>
+                    <th>Lider</th>
+                    <th>Distrito</th>
+                    <th>Estatus de KOM</th>
+                    <th>Criticidad</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>CT</th>
+                    <th>WT</th>
+                    <th>SL</th>
+                    <th>WL</th>
+                    <th>FI</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody  title="Detalles">
+                    <tr class="hoverable " *ngFor="let activity of  this.card4List ; let i = index"  > 
+                        <td>
+                            {{i+1}}
+                        </td>
+                    
+                        <td>
+                            {{activity.client}}
+                        </td>
+                        <td>
+                            {{activity.leaderDesignation}}
+                        </td>
+                        <td>
+                            {{activity.district}}
+                        </td>
+                        <td [ngSwitch]="activity.status">
+                                <div *ngSwitchCase = 1> 
+                                        En espera
+                                </div>
+                                <div *ngSwitchCase = 2> 
+                                        En proceso
+                                </div>
+                                <div *ngSwitchCase = 3> 
+                                        Realizado
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.hrisk">
+                                <div *ngSwitchCase = 0 >
+                                        Baja
+                                </div>
+                                <div *ngSwitchCase = 1 >
+                                        Alta
+                                </div>
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateInit}} 
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateEnd}} 
+                        </td>
+                        <td  [ngSwitch]="activity.ct" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.wt" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.sl" >
+                                        <div *ngSwitchCase = true >
+                                                        <i class="material-icons">done</i>  
+                                        </div>
+                                <div *ngSwitchCase = false >
+                                                        <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                    
+                        <td  [ngSwitch]="activity.wl" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.fi" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <div [ngSwitch] = "userDepartment">
+                            <td>
+                            
+                                <a   *ngSwitchCase = '1' routerLink='../../eservices-management/workpreparation/1/{{activity._id}}' target="blank" class="btn lime accent-3">
+                                    <i class="large material-icons"> present_to_all </i>
+                                </a>
+    
+                                <a  *ngSwitchCase = '2'  title="ver" target="_blank" routerLink='../../eservices-management/start/1/{{activity._id}}/0' class="btn lime accent-3" >
+                                    <i class="material-icons">present_to_all</i>  
+                                </a> 
+                            
+                            </td>
+
+                        </div>
+                    </tr>
+
+                    <!-- PAGINACION PENDIENTE  -->
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="modal-footer {{card4}}" style="-webkit-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+-moz-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+">
+  <a  class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+</div>
+</div>
+<!-- card51  -->
+<div id="modal51" class="modal modal-fixed-footer blue-grey lighten-5">
+    <div class="modal-header center blue-grey lighten-5" style="position: fixed; padding: 20px;">
+            <h4>Operaciones Well Testing</h4>
+            <div class="divider black"></div>
+    </div>
+
+    <div class="modal-content" style="margin-top:76px; margin:0; padding: 0;">
+        <table class="table "  style=" margin:0; padding: 0; margin-top:70px;"> 
+            <thead class="blue-grey lighten-5">
+                <tr> 
+                    <th># </th>
+                    <th>Cliente</th>
+                    <th>Lider</th>
+                    <th>Distrito</th>
+                    <th>Estatus de KOM</th>
+                    <th>Criticidad</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>CT</th>
+                    <th>WT</th>
+                    <th>SL</th>
+                    <th>WL</th>
+                    <th>FI</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody  title="Detalles">
+                    <tr class="hoverable " *ngFor="let activity of  this.card51List ; let i = index " > 
+                        <td>
+                            {{i+1}}
+                        </td>
+                    
+                        <td>
+                            {{activity.client}}
+                        </td>
+                        <td>
+                            {{activity.leaderDesignation}}
+                        </td>
+                        <td>
+                            {{activity.district}}
+                        </td>
+                        <td [ngSwitch]="activity.status">
+                                <div *ngSwitchCase = 1> 
+                                        En espera
+                                </div>
+                                <div *ngSwitchCase = 2> 
+                                        En proceso
+                                </div>
+                                <div *ngSwitchCase = 3> 
+                                        Realizado
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.hrisk">
+                                <div *ngSwitchCase = 0 >
+                                        Baja
+                                </div>
+                                <div *ngSwitchCase = 1 >
+                                        Alta
+                                </div>
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateInit}} 
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateEnd}} 
+                        </td>
+                        <td  [ngSwitch]="activity.ct" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.wt" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.sl" >
+                                        <div *ngSwitchCase = true >
+                                                        <i class="material-icons">done</i>  
+                                        </div>
+                                <div *ngSwitchCase = false >
+                                                        <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                    
+                        <td  [ngSwitch]="activity.wl" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.fi" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <div [ngSwitch] = "userDepartment">
+                            <td>
+                            
+                                <a   *ngSwitchCase = '1' routerLink='../../eservices-management/workpreparation/1/{{activity._id}}' target="blank" class="btn lime accent-3">
+                                    <i class="large material-icons"> present_to_all </i>
+                                </a>
+    
+                                <a  *ngSwitchCase = '2'  title="ver" target="_blank" routerLink='../../eservices-management/start/1/{{activity._id}}/0' class="btn lime accent-3" >
+                                    <i class="material-icons">present_to_all</i>  
+                                </a> 
+                            
+                            </td>
+
+                        </div>
+                    </tr>
+
+                    <!-- PAGINACION PENDIENTE  -->
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="modal-footer {{card51}}" style="-webkit-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+-moz-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+">
+  <a  class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+</div>
+</div>
+<!-- card52  -->
+<div id="modal52" class="modal modal-fixed-footer blue-grey lighten-5">
+    <div class="modal-header center blue-grey lighten-5" style="position: fixed; padding: 20px;">
+            <h4>Operaciones Well Login:</h4>
+            <div class="divider black"></div>
+    </div>
+
+    <div class="modal-content" style="margin-top:76px; margin:0; padding: 0;">
+        <table class="table "  style=" margin:0; padding: 0; margin-top:70px;"> 
+            <thead class="blue-grey lighten-5">
+                <tr> 
+                    <th># </th>
+                    <th>Cliente</th>
+                    <th>Lider</th>
+                    <th>Distrito</th>
+                    <th>Estatus de KOM</th>
+                    <th>Criticidad</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>CT</th>
+                    <th>WT</th>
+                    <th>SL</th>
+                    <th>WL</th>
+                    <th>FI</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody  title="Detalles">
+                    <tr class="hoverable " *ngFor="let activity of  this.card52List ;  let i = index  " > 
+                        <td>
+                            {{i+1}}
+                        </td>
+                    
+                        <td>
+                            {{activity.client}}
+                        </td>
+                        <td>
+                            {{activity.leaderDesignation}}
+                        </td>
+                        <td>
+                            {{activity.district}}
+                        </td>
+                        <td [ngSwitch]="activity.status">
+                                <div *ngSwitchCase = 1> 
+                                        En espera
+                                </div>
+                                <div *ngSwitchCase = 2> 
+                                        En proceso
+                                </div>
+                                <div *ngSwitchCase = 3> 
+                                        Realizado
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.hrisk">
+                                <div *ngSwitchCase = 0 >
+                                        Baja
+                                </div>
+                                <div *ngSwitchCase = 1 >
+                                        Alta
+                                </div>
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateInit}} 
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateEnd}} 
+                        </td>
+                        <td  [ngSwitch]="activity.ct" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.wt" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.sl" >
+                                        <div *ngSwitchCase = true >
+                                                        <i class="material-icons">done</i>  
+                                        </div>
+                                <div *ngSwitchCase = false >
+                                                        <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                    
+                        <td  [ngSwitch]="activity.wl" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.fi" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <div [ngSwitch] = "userDepartment">
+                            <td>
+                            
+                                <a   *ngSwitchCase = '1' routerLink='../../eservices-management/workpreparation/1/{{activity._id}}' target="blank" class="btn lime accent-3">
+                                    <i class="large material-icons"> present_to_all </i>
+                                </a>
+    
+                                <a  *ngSwitchCase = '2'  title="ver" target="_blank" routerLink='../../eservices-management/start/1/{{activity._id}}/0' class="btn lime accent-3" >
+                                    <i class="material-icons">present_to_all</i>  
+                                </a> 
+                            
+                            </td>
+
+                        </div>
+                    </tr>
+
+                    <!-- PAGINACION PENDIENTE  -->
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="modal-footer " style="-webkit-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+-moz-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+">
+  <a  class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+</div>
+</div>
+<!-- card53  -->
+<div id="modal53" class="modal modal-fixed-footer blue-grey lighten-5">
+    <div class="modal-header center blue-grey lighten-5" style="position: fixed; padding: 20px;">
+            <h4>Operaciones de Slick Line:</h4>
+            <div class="divider black"></div>
+    </div>
+
+    <div class="modal-content" style="margin-top:76px; margin:0; padding: 0;">
+        <table class="responsive-table "  style=" margin:0; padding: 0; margin-top:70px;"> 
+            <thead class="blue-grey lighten-5">
+                <tr> 
+                    <th># </th>
+                    <th>Cliente</th>
+                    <th>Lider</th>
+                    <th>Distrito</th>
+                    <th>Estatus de KOM</th>
+                    <th>Criticidad</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>CT</th>
+                    <th>WT</th>
+                    <th>SL</th>
+                    <th>WL</th>
+                    <th>FI</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody  title="Detalles">
+                    <tr class="hoverable " *ngFor="let activity of  this.card53List ;  let i = index " > 
+                        <td>
+                            {{i+1}}
+                        </td>
+                    
+                        <td>
+                            {{activity.client}}
+                        </td>
+                        <td>
+                            {{activity.leaderDesignation}}
+                        </td>
+                        <td>
+                            {{activity.district}}
+                        </td>
+                        <td [ngSwitch]="activity.status">
+                                <div *ngSwitchCase = 1> 
+                                        En espera
+                                </div>
+                                <div *ngSwitchCase = 2> 
+                                        En proceso
+                                </div>
+                                <div *ngSwitchCase = 3> 
+                                        Realizado
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.hrisk">
+                                <div *ngSwitchCase = 0 >
+                                        Baja
+                                </div>
+                                <div *ngSwitchCase = 1 >
+                                        Alta
+                                </div>
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateInit}} 
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateEnd}} 
+                        </td>
+                        <td  [ngSwitch]="activity.ct" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.wt" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.sl" >
+                                        <div *ngSwitchCase = true >
+                                                        <i class="material-icons">done</i>  
+                                        </div>
+                                <div *ngSwitchCase = false >
+                                                        <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                    
+                        <td  [ngSwitch]="activity.wl" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.fi" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <div [ngSwitch] = "userDepartment">
+                            <td>
+                            
+                                <a   *ngSwitchCase = '1' routerLink='../../eservices-management/workpreparation/1/{{activity._id}}' target="blank" class="btn lime accent-3">
+                                    <i class="large material-icons"> present_to_all </i>
+                                </a>
+    
+                                <a  *ngSwitchCase = '2'  title="ver" target="_blank" routerLink='../../eservices-management/start/1/{{activity._id}}/0' class="btn lime accent-3" >
+                                    <i class="material-icons">present_to_all</i>  
+                                </a> 
+                            
+                            </td>
+
+                        </div>
+                    </tr>
+
+                    <!-- PAGINACION PENDIENTE  -->
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="modal-footer {{card53}}" style="-webkit-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+-moz-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+">
+  <a  class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+</div>
+</div>
+<!-- card54  -->
+<div id="modal54" class="modal modal-fixed-footer blue-grey lighten-5">
+    <div class="modal-header center blue-grey lighten-5" style="position: fixed; padding: 20px;">
+            <h4>Operaciones de Coiled Tubing:</h4>
+            <div class="divider black"></div>
+    </div>
+
+    <div class="modal-content" style="margin-top:76px; margin:0; padding: 0;">
+        <table class="table "  style=" margin:0; padding: 0; margin-top:70px;"> 
+            <thead class="blue-grey lighten-5">
+                <tr> 
+                    <th># </th>
+                    <th>Cliente</th>
+                    <th>Lider</th>
+                    <th>Distrito</th>
+                    <th>Estatus de KOM</th>
+                    <th>Criticidad</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>CT</th>
+                    <th>WT</th>
+                    <th>SL</th>
+                    <th>WL</th>
+                    <th>FI</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody  title="Detalles">
+                    <tr class="hoverable " *ngFor="let activity of  this.card54List   let i = index" > 
+                        <td>
+                            {{i+1}}
+                        </td>
+                    
+                        <td>
+                            {{activity.client}}
+                        </td>
+                        <td>
+                            {{activity.leaderDesignation}}
+                        </td>
+                        <td>
+                            {{activity.district}}
+                        </td>
+                        <td [ngSwitch]="activity.status">
+                                <div *ngSwitchCase = 1> 
+                                        En espera
+                                </div>
+                                <div *ngSwitchCase = 2> 
+                                        En proceso
+                                </div>
+                                <div *ngSwitchCase = 3> 
+                                        Realizado
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.hrisk">
+                                <div *ngSwitchCase = 0 >
+                                        Baja
+                                </div>
+                                <div *ngSwitchCase = 1 >
+                                        Alta
+                                </div>
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateInit}} 
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateEnd}} 
+                        </td>
+                        <td  [ngSwitch]="activity.ct" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.wt" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.sl" >
+                                        <div *ngSwitchCase = true >
+                                                        <i class="material-icons">done</i>  
+                                        </div>
+                                <div *ngSwitchCase = false >
+                                                        <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                    
+                        <td  [ngSwitch]="activity.wl" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.fi" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <div [ngSwitch] = "userDepartment">
+                            <td>
+                            
+                                <a   *ngSwitchCase = '1' routerLink='../../eservices-management/workpreparation/1/{{activity._id}}' target="blank" class="btn lime accent-3">
+                                    <i class="large material-icons"> present_to_all </i>
+                                </a>
+    
+                                <a  *ngSwitchCase = '2'  title="ver" target="_blank" routerLink='../../eservices-management/start/1/{{activity._id}}/0' class="btn lime accent-3" >
+                                    <i class="material-icons">present_to_all</i>  
+                                </a> 
+                            
+                            </td>
+
+                        </div>
+                    </tr>
+
+                    <!-- PAGINACION PENDIENTE  -->
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="modal-footer {{card54}}" style="-webkit-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+-moz-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+">
+  <a  class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+</div>
+</div>
+<!-- card55  -->
+<div id="modal55" class="modal modal-fixed-footer blue-grey lighten-5">
+    <div class="modal-header center blue-grey lighten-5" style="position: fixed; padding: 20px;">
+            <h4>Operaciones de Frente de Inyección:</h4>
+            <div class="divider black"></div>
+    </div>
+
+    <div class="modal-content" style="margin-top:76px; margin:0; padding: 0;">
+        <table class="table "  style=" margin:0; padding: 0; margin-top:70px;"> 
+            <thead class="blue-grey lighten-5">
+                <tr> 
+                    <th># </th>
+                    <th>Cliente</th>
+                    <th>Lider</th>
+                    <th>Distrito</th>
+                    <th>Estatus de KOM</th>
+                    <th>Criticidad</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>CT</th>
+                    <th>WT</th>
+                    <th>SL</th>
+                    <th>WL</th>
+                    <th>FI</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody  title="Detalles">
+                    <tr class="hoverable " *ngFor="let activity of  this.card55List ; let i = index" > 
+                        <td>
+                            {{i+1}}
+                        </td>
+                    
+                        <td>
+                            {{activity.client}}
+                        </td>
+                        <td>
+                            {{activity.leaderDesignation}}
+                        </td>
+                        <td>
+                            {{activity.district}}
+                        </td>
+                        <td [ngSwitch]="activity.status">
+                                <div *ngSwitchCase = 1> 
+                                        En espera
+                                </div>
+                                <div *ngSwitchCase = 2> 
+                                        En proceso
+                                </div>
+                                <div *ngSwitchCase = 3> 
+                                        Realizado
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.hrisk">
+                                <div *ngSwitchCase = 0 >
+                                        Baja
+                                </div>
+                                <div *ngSwitchCase = 1 >
+                                        Alta
+                                </div>
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateInit}} 
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateEnd}} 
+                        </td>
+                        <td  [ngSwitch]="activity.ct" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.wt" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.sl" >
+                                        <div *ngSwitchCase = true >
+                                                        <i class="material-icons">done</i>  
+                                        </div>
+                                <div *ngSwitchCase = false >
+                                                        <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                    
+                        <td  [ngSwitch]="activity.wl" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.fi" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <div [ngSwitch] = "userDepartment">
+                            <td>
+                            
+                                <a   *ngSwitchCase = '1' routerLink='../../eservices-management/workpreparation/1/{{activity._id}}' target="blank" class="btn lime accent-3">
+                                    <i class="large material-icons"> present_to_all </i>
+                                </a>
+    
+                                <a  *ngSwitchCase = '2'  title="ver" target="_blank" routerLink='../../eservices-management/start/1/{{activity._id}}/0' class="btn lime accent-3" >
+                                    <i class="material-icons">present_to_all</i>  
+                                </a> 
+                            
+                            </td>
+
+                        </div>
+                    </tr>
+
+                    <!-- PAGINACION PENDIENTE  -->
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="modal-footer {{card55}}" style="-webkit-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+-moz-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+">
+  <a  class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+</div>
+</div>
+
+<!-- card56  -->
+<div id="modal56" class="modal modal-fixed-footer blue-grey lighten-5">
+    <div class="modal-header center blue-grey lighten-5" style="position: fixed; padding: 20px;">
+            <h4>Operaciones Pendientes:</h4>
+            <div class="divider black"></div>
+    </div>
+
+    <div class="modal-content" style="margin-top:76px; margin:0; padding: 0;">
+        <table class="table "  style=" margin:0; padding: 0; margin-top:70px;"> 
+            <thead class="blue-grey lighten-5">
+                <tr> 
+                    <th># </th>
+                    <th>Cliente</th>
+                    <th>Lider</th>
+                    <th>Distrito</th>
+                    <th>Estatus de KOM</th>
+                    <th>Criticidad</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>CT</th>
+                    <th>WT</th>
+                    <th>SL</th>
+                    <th>WL</th>
+                    <th>FI</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody  title="Detalles">
+                    <tr class="hoverable " *ngFor="let activity of  this.card56List ;  let i = index " > 
+                        <td>
+                            {{i+1}}
+                        </td>
+                    
+                        <td>
+                            {{activity.client}}
+                        </td>
+                        <td>
+                            {{activity.leaderDesignation}}
+                        </td>
+                        <td>
+                            {{activity.district}}
+                        </td>
+                        <td [ngSwitch]="activity.status">
+                                <div *ngSwitchCase = 1> 
+                                        En espera
+                                </div>
+                                <div *ngSwitchCase = 2> 
+                                        En proceso
+                                </div>
+                                <div *ngSwitchCase = 3> 
+                                        Realizado
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.hrisk">
+                                <div *ngSwitchCase = 0 >
+                                        Baja
+                                </div>
+                                <div *ngSwitchCase = 1 >
+                                        Alta
+                                </div>
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateInit}} 
+                        </td>
+                        <td>
+                                        <!-- {{activity.district}} -->
+                            {{activity.dateEnd}} 
+                        </td>
+                        <td  [ngSwitch]="activity.ct" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.wt" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.sl" >
+                                        <div *ngSwitchCase = true >
+                                                        <i class="material-icons">done</i>  
+                                        </div>
+                                <div *ngSwitchCase = false >
+                                                        <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                    
+                        <td  [ngSwitch]="activity.wl" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <td  [ngSwitch]="activity.fi" >
+                                <div *ngSwitchCase = true >
+                                                <i class="material-icons">done</i>  
+                                </div>
+                                <div *ngSwitchCase = false >
+                                                <i class="material-icons">close</i>  
+                                </div>
+                        </td>
+                        <div [ngSwitch] = "userDepartment">
+                            <td>
+                            
+                                <a   *ngSwitchCase = '1' routerLink='../../eservices-management/workpreparation/1/{{activity._id}}' target="blank" class="btn lime accent-3">
+                                    <i class="large material-icons"> present_to_all </i>
+                                </a>
+    
+                                <a  *ngSwitchCase = '2'  title="ver" target="_blank" routerLink='../../eservices-management/start/1/{{activity._id}}/0' class="btn lime accent-3" >
+                                    <i class="material-icons">present_to_all</i>  
+                                </a> 
+                            
+                            </td>
+
+                        </div>
+                    </tr>
+
+                    <!-- PAGINACION PENDIENTE  -->
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="modal-footer blue-grey lighten-5" style="-webkit-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+-moz-box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+box-shadow: -2px -2px 10px 0px rgba(191,191,191,1);
+">
+  <a  class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+</div>
+</div>
+
+
+

@@ -1,0 +1,110 @@
+<mat-toolbar color="primary" class="fix-nav">
+  <!-- <button type="button" mat-icon-button class="visible-md" (click)="toggleSidebar()">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button> -->
+  <img src="../../../favicon.ico" width="99" height="71">
+  <div class="nav-brand">LupaWeb</div>
+  <span class="nav-spacer"></span>
+
+  <button mat-icon-button [routerLink]="['/home']" title="home" class="modal-trigger btn">
+    <mat-icon>home</mat-icon>
+  </button>
+
+    <button mat-icon-button [routerLink]="['/users/list']" title="Usuarios" class="modal-trigger btn">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+
+   <div [ngSwitch]=showSpan>
+    <button mat-icon-button title="Notificaciones" class="modal-trigger btn" href="#modalNotifications">
+      <mat-icon>notifications</mat-icon>
+      <span *ngSwitchCase=1 class="red new badge right" style="margin-top:-54px; margin-left:15px;">
+        {{countNotifications}}
+      </span>
+    </button>
+   </div>
+
+    <button mat-icon-button title="Configuraciones" class="modal-trigger btn">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button mat-icon-button (click)="onLogout()" title="Salir" class="modal-trigger btn">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+
+</mat-toolbar>
+  
+  <div id="modalNotifications" class="modal modal-fixed-footer" style="z-index: 60;  background-color: transparent; margin: 0; padding: 0; ">
+    <div class="modal-content col s12 m12 l12" style=" background-color: transparent;  margin: 0; padding: 0;"  > 
+      <div class='card'>
+         <nav class="blue darken-3 center" style="margin-top: -10px;">
+            <h4> 
+              Lista de Notificaciones
+            </h4>
+        </nav>
+        <div class="divider"></div>
+        <table class="highlight"  > 
+          <!-- style="border-style:solid; border-color:#7c4dff;" -->
+   
+            <thead class="blue-grey lighten-4"style="color:grey;  font-size: 15px; width:70%;  text-align: center; border: grey solid 0.08em;" >
+              <th>
+                  <b>Modulo</b>
+              </th>         
+              <th>
+                  <b>Detalles</b>
+              </th>
+              <th>
+                  <b>Acciones</b>
+              </th>
+            </thead>
+        
+                <tbody style="color: grey;"> 
+                    <tr class="{{notification.color}}" *ngFor= "let notification of NotificationsService.Notifications ;    let i = index  "  >
+                          <td >
+                              <b>{{notification.title}}</b>
+                          </td>     
+                          <td >
+                              {{notification.longTitle}}
+                          </td>
+                          <td  class="col s12">
+                            <a style="color: black; margin:4px; padding: 5px;" title='Marcar Como Visto'  class="detalles waves-effect waves-green" (click)="checkNotification(notification._id)">
+                                  <i class="material-icons ">invert_colors</i>
+                            </a> 
+                            <a  style="color: black; margin:4px; padding: 5px;"  title="Detalles de Notificacion"  class="detalles waves-effect waves-purple" (click)="redirectNotification(notification.action, notification._id)">
+                              <i class="material-icons ">open_in_new</i>
+                            </a>
+                            <!-- <a style="color: black; margin:4px; padding: 5px;" title='Eliminar Notificacion'  class="detalles waves-effect waves-red" (click)="deleteNotification(notification._id)">
+                              <i class="material-icons ">delete_sweep</i> -->
+                            <!-- </a>  -->
+                          </td>
+                    </tr>        
+                </tbody>
+    
+              <!-- <pagination-controls class="pagination" (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls> -->
+        </table>
+    </div>
+  </div>
+</div>
+
+
+ 
+
+<!-- 
+    <div class="row">
+          <div class="col s12">
+              <ul class="collection">
+              <li class="collection-item {{notification.color}} " style="padding:0px;" *ngFor= "let notification of NotificationsService.Notifications,   let i = index  "   >
+               <div class="inline">
+                  <td id="notification" class="notificationTitle" style="margin-top:0px;" > 
+                      {{notification.title}} 
+                  </td>
+                  <td  class="lastTd">
+                      <!-- <a  for="notification" class="detalles right" style="color:#37474f" (click)="checkNotification(notification._id)"> -->
+                        <!-- <a  for="notification" class="detalles" (click)="redirectNotification(notification.action, notification._id)">
+                            <i class="material-icons ">open_in_new</i>
+                        </a> 
+                  </td>
+               </div>         
+              </li> 
+            </ul>   
+           </div>
+       </div>  -->
+ 

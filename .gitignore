@@ -1,0 +1,9 @@
+*jpg
+*png
+node_modules
+/uploads/certificates
+/uploads/documents
+/uploads/photos
+amplify
+/app-lupaweb
+         

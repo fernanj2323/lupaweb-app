@@ -1,0 +1,2314 @@
+<div  [ngSwitch] = "tab" >
+         <!-- enabled -->
+       <div  *ngSwitchCase="0"  [ngSwitch] = "showServiceLine" class="col s12 m12 l12" >
+              <div *ngSwitchCase=" showServiceLine === 'fi'  ? showServiceLine : '' "  class="col s12 nav-wrapper blue accent-4" 
+              >
+                      <div class="col s12" >
+                          <a class="breadcrumb" style='color: #E7E6E6; font-size:85%' href="eservices-management/workpreparation/1/{{jpactivityService.selectedJpactivity._id}}/{{showServiceLine}}/0"> Información Preliminar del pozo </a>
+                          <a class="breadcrumb" style='color: #E7E6E6; font-size:85%' 
+                          href="eservices-management/workpreparation/2/{{jpactivityService.selectedJpactivity._id}}/{{showServiceLine}}/0">Evaluación de recursos criticos </a>
+                          <a class="breadcrumb" style='color: #E7E6E6; font-size:85%'  href="eservices-management/workpreparation/3/{{jpactivityService.selectedJpactivity._id}}/{{showServiceLine}}/0">Aseguramiento de temas criticos </a>
+                          <a class="breadcrumb" style='color: #A0FF5D; font-size:80%'><b> Transporte y equipo auxiliar </b> </a>
+                      </div>
+                      
+              </div>
+              <!-- <div *ngSwitchCase=" showServiceLine === 'wt'  || showServiceLine === 'wl' || showServiceLine === 'sl' || showServiceLine === 'ct'   ? showServiceLine : '' "  class="col s12 nav-wrapper blue accent-4" >
+                      <div class="col s12" >
+                          <a class="breadcrumb" style='color: #E7E6E6; font-size:85%' href="eservices-management/workpreparation/1/{{jpactivityService.selectedJpactivity._id}}/{{showServiceLine}}/0"> Factores claves </a>
+                          <a class="breadcrumb" style='color: #A0FF5D; font-size:85%'  > <b> Evaluación de recursos críticos  </b> </a>
+                          <a class="breadcrumb" style='color: #E7E6E6; font-size:85%' href="eservices-management/workpreparation/3/{{jpactivityService.selectedJpactivity._id}}/{{showServiceLine}}/0" > Inspecciones y calibraciones </a>
+                      </div>
+              </div>
+           -->
+          
+              <form #workForm = "ngForm" (ngSubmit)="saveWork(workForm)">
+                  <div  [ngSwitch] = "ifAdmin" class="col s12">
+                     <div *ngSwitchCase=" ifAdmin === '1'  ? ifAdmin : '' " > 
+                    
+                            <!-- luego vemos cual es el caso para saber cual linea de servicio mostrar -->
+                           <!-- mas detalles en validarion role in controller -->
+                           <div   [ngSwitch] = "selectCase" class="input-field inline col s5">
+                            <span>
+                              <br>
+                            </span>
+                  
+                            <div  *ngSwitchCase=" selectCase === '1'  ? selectCase : '' ">
+                                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                        <option [ngSwitch]='showWL'   value="wl">
+                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                        </option>
+                                   </select>   
+                            </div>   
+                
+                 
+        
+        
+                                <div  *ngSwitchCase=" selectCase === '2'  ? selectCase : '' ">
+                                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                        <option  [ngSwitch]='showSL'   value="sl">
+                                            <div *ngSwitchCase=true > Slickline </div>
+                                        </option>
+                                </select>   
+                                </div>  
+            
+                                <div  *ngSwitchCase=" selectCase === '3'  ? selectCase : '' ">
+                                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                        <option    [ngSwitch]='showSL'  value="sl">
+                                            <div *ngSwitchCase=true > Slickline </div>
+                                        </option>
+                                        <option [ngSwitch]='showWL'   value="wl">
+                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                        </option>
+                                </select>   
+                                </div>  
+        
+        
+                                <div  *ngSwitchCase=" selectCase === '4'  ? selectCase : '' ">
+                                        <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                            <option value="" disabled selected>Seleccione Linea de servicio...</option>
+            
+                                            <option [ngSwitch]='showCT'  value="ct">
+                                                <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                            </option>
+                                        </select>   
+                                    </div>
+        
+                                    <div  *ngSwitchCase=" selectCase === '5'  ? selectCase : '' ">
+                                            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                <option [ngSwitch]='showCT'  value="ct">
+                                                    <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                </option>
+                                                <option [ngSwitch]='showWL'   value="wl">
+                                                    <div *ngSwitchCase=true >      Well Login </div>       
+                                               </option>
+                                            </select>   
+                                    </div>
+                                    <div  *ngSwitchCase=" selectCase === '6'  ? selectCase : '' ">
+                                            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                <option   [ngSwitch]='showCT'   value="ct">
+                                                     <div *ngSwitchCase=true > Coiled tubing </div> 
+                                                </option>
+                                                <option [ngSwitch]='showSL'  value="sl">
+                                                     <div *ngSwitchCase=true > Slickline </div>
+                                                </option>
+                                            </select>   
+                                    </div>
+                                    <div  *ngSwitchCase=" selectCase === '7'  ? selectCase : '' ">
+                                            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                <option [ngSwitch]='showCT'  value="ct">
+                                                    <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                            </option>
+                                            <option [ngSwitch]='showSL'  value="sl">
+                                                <div *ngSwitchCase=true > Slickline </div>
+                                           </option>
+                                           <option [ngSwitch]='showWL'   value="wl">
+                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                    </option>
+                                            </select>   
+                                    </div>
+        
+        
+                                    <div  *ngSwitchCase=" selectCase === '8'  ? selectCase : '' ">
+                                            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                <option  [ngSwitch]='showFI'   value="fi">
+                                                    <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                </option>
+                                                <!-- <option  value="wl">
+                                                        Well Login
+                                               </option> -->
+                                            </select>   
+                                    </div>
+        
+                                    <div  *ngSwitchCase=" selectCase === '9'  ? selectCase : '' ">
+                                            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                <option [ngSwitch]='showWL'   value="wl">
+                                                    <div *ngSwitchCase=true >      Well Login </div>       
+                                            </option>
+                                                <option  [ngSwitch]='showCT'   value="fi">
+                                                    <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                </option>
+                                            </select>   
+                                    </div>
+        
+        
+                                    <div  *ngSwitchCase=" selectCase === '10'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '11'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                       <option [ngSwitch]='showWL'   value="wl">
+                                                        <div *ngSwitchCase=true >      Well Login </div>       
+                                                </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '12'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+                                    
+                                   <div  *ngSwitchCase=" selectCase === '13'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '14'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                    <option [ngSwitch]='showSL'  value="sl">
+                                                        <div *ngSwitchCase=true > Slickline </div>
+                                                   </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '15'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <option  value="sl">
+                                                               Slickline
+                                                        </option>
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '16'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option>
+                                                        <option  value="sl">
+                                                               Slickline
+                                                        </option>
+                                                        <option  value="wl">
+                                                               Well Loggin
+                                                        </option>
+                                                        <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '17'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option>
+                                                        <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '18'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '19'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '20'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '21'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '22'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                    <option [ngSwitch]='showSL'  value="sl">
+                                                        <div *ngSwitchCase=true > Slickline </div>
+                                                   </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '23'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                    <option [ngSwitch]='showSL'  value="sl">
+                                                        <div *ngSwitchCase=true > Slickline </div>
+                                                   </option>
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '24'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '25'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '26'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '27'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '28'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '29'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '30'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                    <option [ngSwitch]='showSL'  value="sl">
+                                                        <div *ngSwitchCase=true > Slickline </div>
+                                                   </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                            <div  *ngSwitchCase=" selectCase === '31'  ? selectCase : '' ">
+                                   <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                 <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                 <option [ngSwitch]='showCT'  value="ct">
+                                                    <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                            </option>
+                                            <option [ngSwitch]='showSL'  value="sl">
+                                                <div *ngSwitchCase=true > Slickline </div>
+                                           </option>
+                                                 <option [ngSwitch]='showWL'   value="wl">
+                                                    <div *ngSwitchCase=true >      Well Login </div>       
+                                            </option>
+                                                 <option  [ngSwitch]='showFI'   value="fi">
+                                                    <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                </option>
+                                                <option   [ngSwitch]='showWT'   value="wt">
+                                                    <div *ngSwitchCase=true > WellTesting </div>   
+                                                </option>
+                                   </select>   
+                            </div>
+                    </div>
+                            <div   class="input-field inline col s7">
+                                     <span>
+                                            Responsable 
+                                     </span>
+                                    <select (change)="notificationPhase1($event.target.value, 0)" class="browser-default"  name='responsable'  #responsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.responsable' ngModel required>
+                                            <option value="" disabled selected>Seleccione un Responsable...</option>
+                                            <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                            {{users.firstName}} {{users.lastName }}
+                                            </option> 
+                                     </select>  
+                            </div> 
+        
+                 
+                               
+                           
+                        </div>      
+                      
+          
+          
+                  </div>
+          
+          
+          
+          
+                  <!-- preguntas de fi -->
+                  <div *ngSwitchCase=" showServiceLine === 'fi'  ? showServiceLine : '' " class="tableleft col s12 blue accent-2 center"  style='color: #E7E6E6; padding:10px;'>    
+                      TRANPORTE  Y EQUIPO AUXILIAR
+                      <br>        
+                      Equipo auxiliar usado principlamente en proyectos donde se requiere filtrar agua
+                  </div>
+                       <!-- pregunta 1    -->
+                            <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                                   <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                      Camioneta
+                                   </div>
+                                   <div class=" input-field col s2" >                                       
+                                           <p>
+                                               <label>
+                                                      <input name="vanstatus"  #vanstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.vanstatus' type="checkbox" ngModel required />
+                                                      <span>Completado </span>
+                                               </label>
+                                           </p>  
+                                   </div>
+                               <div class="input-field1 inline col s9"    >                                       
+                                   <input id="text_inline" placeholder="observaciones" type="text" name="vanOb1"  #vanOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.vanOb1' class="validate"  ngModel required>
+                              </div>
+                            
+                               <!-- observaciones 2 -->
+                    
+                               <!--  fin observaciones 2 -->
+          
+                                 <!-- observaciones 3 -->
+                          
+                                <!--  fin observaciones 3 -->
+                                <div class="divider col s12"></div>
+                               <!-- responsable -->
+                               <div class="col s12">
+                                   <div class="col s6">
+                                            <span>
+                                                   Responsable
+                                            </span>
+                                           <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='vanresponsable'  #vanresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.vanresponsable' ngModel required>
+                                                   <option value="" disabled selected>Seleccione un Responsable...</option>
+                                                   <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                                   {{users.firstName}} {{users.lastName }}
+                                                   </option> 
+                                            </select>
+                                   </div>
+                               </div>
+                         </div>
+                       <!-- fin pregunta 1  -->
+          
+          
+                
+              <!-- pregunta 2    -->
+              <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                                   <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                      FRAC TANK 500 BLS
+                                   </div>
+                                   <div class=" input-field col s2" >                                       
+                                           <p>
+                                               <label>
+                                                      <input name="frackTankstatus"  #frackTankstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.frackTankstatus' type="checkbox" ngModel required />
+                                                      <span>Completado </span>
+                                               </label>
+                                           </p>  
+                                   </div>
+                               <div class="input-field1 inline col s9"    >                                       
+                                   <input id="text_inline" placeholder="observaciones" type="text" name="frackTankOb1"  #frackTankOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.frackTankOb1' class="validate"  ngModel required>
+                              </div>
+                          
+          
+                               <!-- observaciones 2 -->
+                          
+                               <!--  fin observaciones 2 -->
+          
+                                 <!-- observaciones 3 -->
+                            
+                                <!--  fin observaciones 3 -->
+                                <div class="divider col s12"></div>
+                               <!-- responsable -->
+                               <div class="col s12">
+                                   <div class="col s6">
+                                            <span>
+                                                   Responsable
+                                            </span>
+                                           <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='frackTankresponsable'  #frackTankresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.frackTankresponsable' ngModel required>
+                                                   <option value="" disabled selected>Seleccione un Responsable...</option>
+                                                   <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                                   {{users.firstName}} {{users.lastName }}
+                                                   </option> 
+                                            </select>
+                                   </div>
+                               </div>
+              </div>
+              <!-- fin pregunta 2  -->
+          
+          
+          
+          
+          
+          
+                 <!-- pregunta 3   -->
+                 <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                      TANQUE DE ABASTECIMIENTO DE COMBUSTIBLE X 3000 GL CON SISTEMA DE AUTOCONTENIDO
+                  </div>
+                  <div class=" input-field col s2" >                                       
+                          <p>
+                              <label>
+                                     <input name="cateringTankstatus"  #cateringTankstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.cateringTankstatus' type="checkbox" ngModel required />
+                                     <span>Completado </span>
+                              </label>
+                          </p>  
+                  </div>
+              <div class="input-field1 inline col s9"    >                                       
+                  <input id="text_inline" placeholder="observaciones" type="text" name="cateringTankOb1"  #cateringTankOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cateringTankOb1' class="validate"  ngModel required>
+             </div>
+           
+          
+   
+               <!--  fin observaciones 3 -->
+               <div class="divider col s12"></div>
+              <!-- responsable -->
+
+                </div>
+                <!-- fin pregunta 3  -->
+          
+          
+          
+                 <!-- pregunta 4   UNIDAD DE FILTRADO DUAL HI FLOW. FILTER BACK.  -->
+                 <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                      UNIDAD DE FILTRADO DUAL HI FLOW. FILTER BACK. 
+                  </div>
+                  <div class=" input-field col s2" >                                       
+                          <p>
+                              <label>
+                                     <input name="dualFilterstatus"  #dualFilterstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.dualFilterstatus' type="checkbox" ngModel required />
+                                     <span>Completado </span>
+                              </label>
+                          </p>  
+                  </div>
+              <div class="input-field1 inline col s9"    >                                       
+                  <input id="text_inline" placeholder="observaciones" type="text" name="dualFilterOb1"  #dualFilterOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.dualFilterOb1' class="validate"  ngModel required>
+             </div>
+          
+          
+      
+               <!--  fin observaciones 3 -->
+               <div class="divider col s12"></div>
+              <!-- responsable -->
+              <div class="col s12">
+                  <div class="col s6">
+                           <span>
+                                  Responsable
+                           </span>
+                          <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='dualFilterresponsable'  #dualFilterresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.dualFilterresponsable' ngModel required>
+                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                  {{users.firstName}} {{users.lastName }}
+                                  </option> 
+                           </select>
+                  </div>
+              </div>
+                </div>
+                 <!-- fin pregunta 4  -->
+          
+          
+          
+                 <!-- pregunta 5   4 FILTROS HI FLOW. CADA 24 HORAS. PRESION DISEÑO 150 PSI. .  -->
+                 <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                      4 FILTROS HI FLOW. CADA 24 HORAS. PRESION DISEÑO 150 PSI. 
+                  </div>
+                  <div class=" input-field col s2" >                                       
+                          <p>
+                              <label>
+                                     <input name="hiFlowstatus"  #hiFlowstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.hiFlowstatus' type="checkbox" ngModel required />
+                                     <span>Completado </span>
+                              </label>
+                          </p>  
+                  </div>
+              <div class="input-field1 inline col s9"    >                                       
+                  <input id="text_inline" placeholder="observaciones" type="text" name="hiFlowOb1"  #hiFlowOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.hiFlowOb1' class="validate"  ngModel required>
+             </div>
+           
+        
+               <!--  fin observaciones 3 -->
+               <div class="divider col s12"></div>
+              <!-- responsable -->
+              <div class="col s12">
+                  <div class="col s6">
+                           <span>
+                                  Responsable
+                           </span>
+                          <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='hiFlowresponsable'  #hiFlowresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.hiFlowresponsable' ngModel required>
+                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                  {{users.firstName}} {{users.lastName }}
+                                  </option> 
+                           </select>
+                  </div>
+              </div>
+                </div>
+                 <!-- fin pregunta 5  -->
+          
+          
+                 
+                 <!-- pregunta 6   DATA HEADER 3" CEDULA 40 TOMA MUESTRA DE 3" .  -->
+                 <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                      DATA HEADER 3" CEDULA 40 TOMA MUESTRA DE 3"
+                  </div>
+                  <div class=" input-field col s2" >                                       
+                          <p>
+                              <label>
+                                     <input name="dataHeaderstatus"  #dataHeaderstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.dataHeaderstatus' type="checkbox" ngModel required />
+                                     <span>Completado </span>
+                              </label>
+                          </p>  
+                  </div>
+              <div class="input-field1 inline col s9"    >                                       
+                  <input id="text_inline" placeholder="observaciones" type="text" name="dataHeaderOb1"  #dataHeaderOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.dataHeaderOb1' class="validate"  ngModel required>
+             </div>
+           
+          
+       
+               <!--  fin observaciones 3 -->
+               <div class="divider col s12"></div>
+              <!-- responsable -->
+              <div class="col s12">
+                  <div class="col s6">
+                           <span>
+                                  Responsable
+                           </span>
+                          <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='dataHeaderresponsable'  #dataHeaderresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.dataHeaderresponsable' ngModel required>
+                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                  {{users.firstName}} {{users.lastName }}
+                                  </option> 
+                           </select>
+                  </div>
+              </div>
+                </div>
+                 <!-- fin pregunta 6  -->
+          
+          
+                        
+                 <!-- pregunta 7  BARTON CON SOPORTE Y MANIFOLD DE PRESION ( REGISTRO DE PRESIÓN ) .  -->
+                 <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                      BARTON CON SOPORTE Y MANIFOLD DE PRESION ( REGISTRO DE PRESIÓN )
+                  </div>
+                  <div class=" input-field col s2" >                                       
+                          <p>
+                              <label>
+                                     <input name="bartonManifoldstatus"  #bartonManifoldstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.bartonManifoldstatus' type="checkbox" ngModel required />
+                                     <span>Completado </span>
+                              </label>
+                          </p>  
+                  </div>
+              <div class="input-field1 inline col s9"    >                                       
+                  <input id="text_inline" placeholder="observaciones" type="text" name="bartonManifoldOb1"  #bartonManifoldOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.bartonManifoldOb1' class="validate"  ngModel required>
+             </div>
+         
+          
+         
+               <!--  fin observaciones 3 -->
+               <div class="divider col s12"></div>
+              <!-- responsable -->
+              <div class="col s12">
+                  <div class="col s6">
+                           <span>
+                                  Responsable
+                           </span>
+                          <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='bartonManifoldresponsable'  #bartonManifoldresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.bartonManifoldresponsable' ngModel required>
+                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                  {{users.firstName}} {{users.lastName }}
+                                  </option> 
+                           </select>
+                  </div>
+              </div>
+                </div>
+                 <!-- fin pregunta 7  -->
+          
+          
+          
+                  <!-- pregunta 8  CASETA CON VENTANA AIRE ACONDICIONADO 10 FT PIZARRA , SILLAS CON DOBLE PUESTO DE TRABAJO. .  -->
+                  <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                          <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                              CASETA CON VENTANA AIRE ACONDICIONADO 10 FT PIZARRA , SILLAS CON DOBLE PUESTO DE TRABAJO.
+                          </div>
+                          <div class=" input-field col s2" >                                       
+                                  <p>
+                                      <label>
+                                             <input name="cabinstatus"  #cabinstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinstatus' type="checkbox" ngModel required />
+                                             <span>Completado </span>
+                                      </label>
+                                  </p>  
+                          </div>
+                      <div class="input-field1 inline col s9"    >                                       
+                          <input id="text_inline" placeholder="observaciones" type="text" name="cabinOb1"  #cabinOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinOb1' class="validate"  ngModel required>
+                     </div>
+                  
+                  
+             
+                       <!--  fin observaciones 3 -->
+                       <div class="divider col s12"></div>
+                      <!-- responsable -->
+                      <div class="col s12">
+                          <div class="col s6">
+                                   <span>
+                                          Responsable
+                                   </span>
+                                  <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='cabinresponsable'  #cabinresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinresponsable' ngModel required>
+                                          <option value="" disabled selected>Seleccione un Responsable...</option>
+                                          <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                          {{users.firstName}} {{users.lastName }}
+                                          </option> 
+                                   </select>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- fin pregunta 8  -->
+          
+          
+                  <!-- pregunta 9 TABLERO DE DISTRIBUCION ELECTRICO PARA CASETA, 3 BOMBAS DE 20 HP  .  -->
+                  <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                      TABLERO DE DISTRIBUCION ELECTRICO PARA CASETA, 3 BOMBAS DE 20 HP  . 
+                                  </div>
+                                  <div class=" input-field col s2" >                                       
+                                          <p>
+                                              <label>
+                                                     <input name="cabinBoardstatus"  #cabinBoardstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinBoardstatus' type="checkbox" ngModel required />
+                                                     <span>Completado </span>
+                                              </label>
+                                          </p>  
+                                  </div>
+                              <div class="input-field1 inline col s9"    >                                       
+                                  <input id="text_inline" placeholder="observaciones" type="text" name="cabinBoardOb1"  #cabinBoardOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinBoardOb1' class="validate"  ngModel required>
+                             </div>
+                           
+                    
+                               <!--  fin observaciones 3 -->
+                               <div class="divider col s12"></div>
+                              <!-- responsable -->
+                              <div class="col s12">
+                                  <div class="col s6">
+                                           <span>
+                                                  Responsable
+                                           </span>
+                                          <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='cabinBoardresponsable'  #cabinBoardresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinBoardresponsable' ngModel required>
+                                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                                  {{users.firstName}} {{users.lastName }}
+                                                  </option> 
+                                           </select>
+                                  </div>
+                              </div>
+                  </div>
+                  <!-- fin pregunta 9  -->
+          
+          
+          
+                  <!-- pregunta 10 BOMBA CENTRIFUGA SUMMIT 2196  30 HP 440 VOLT (PARA UNIDAD DE FILTRADO).  -->
+                  <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                          <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                              BOMBA CENTRIFUGA SUMMIT 2196  30 HP 440 VOLT (PARA UNIDAD DE FILTRADO)
+                          </div>
+                          <div class=" input-field col s2" >                                       
+                                  <p>
+                                      <label>
+                                             <input name="centrifigeBombstatus"  #centrifigeBombstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombstatus' type="checkbox" ngModel required />
+                                             <span>Completado </span>
+                                      </label>
+                                  </p>  
+                          </div>
+                      <div class="input-field1 inline col s9"    >                                       
+                          <input id="text_inline" placeholder="observaciones" type="text" name="centrifigeBombOb1"  #centrifigeBombOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombOb1' class="validate"  ngModel required>
+                     </div>
+                   
+                  
+               
+                       <!--  fin observaciones 3 -->
+                       <div class="divider col s12"></div>
+                      <!-- responsable -->
+                      <div class="col s12">
+                          <div class="col s6">
+                                   <span>
+                                          Responsable
+                                   </span>
+                                  <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='centrifigeBombresponsable'  #centrifigeBombresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombresponsable' ngModel required>
+                                          <option value="" disabled selected>Seleccione un Responsable...</option>
+                                          <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                          {{users.firstName}} {{users.lastName }}
+                                          </option> 
+                                   </select>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- fin pregunta 10  -->
+          
+          
+          
+                  <!-- pregunta 11 BOMBA CENTRIFUGA IHM   20 HP 440 VOLT (PARA TRASIEGO DE TANQUE)  -->
+                  <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                              <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                  BOMBA CENTRIFUGA IHM   20 HP 440 VOLT (PARA TRASIEGO DE TANQUE)
+                              </div>
+                              <div class=" input-field col s2" >                                       
+                                      <p>
+                                          <label>
+                                                 <input name="centrifigeBomb20status"  #centrifigeBomb20status='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBomb20status' type="checkbox" ngModel required />
+                                                 <span>Completado </span>
+                                          </label>
+                                      </p>  
+                              </div>
+                          <div class="input-field1 inline col s9"    >                                       
+                              <input id="text_inline" placeholder="observaciones" type="text" name="centrifigeBomb20Ob1"  #centrifigeBomb20Ob1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBomb20Ob1' class="validate"  ngModel required>
+                         </div>
+                       
+                  
+                           <!--  fin observaciones 3 -->
+                           <div class="divider col s12"></div>
+                          <!-- responsable -->
+                          <div class="col s12">
+                              <div class="col s6">
+                                       <span>
+                                              Responsable
+                                       </span>
+                                      <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='centrifigeBomb20responsable'  #centrifigeBomb20responsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBomb20responsable' ngModel required>
+                                              <option value="" disabled selected>Seleccione un Responsable...</option>
+                                              <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                              {{users.firstName}} {{users.lastName }}
+                                              </option> 
+                                       </select>
+                              </div>
+                          </div>
+                  </div>
+                  <!-- fin pregunta 11  -->
+          
+          
+                  <!-- pregunta 12 BOMBA CENTRIFUGA TIPO TORNILLO NEMO N70 1750 RPM 15 HP 440 VOLT   OPCION A (INYECCION DE BOMBA TRIPLEX)-->
+                  <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                              <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                  BOMBA CENTRIFUGA TIPO TORNILLO NEMO N70 1750 RPM 15 HP 440 VOLT   OPCION A (INYECCION DE BOMBA TRIPLEX)
+                              </div>
+                              <div class=" input-field col s2" >                                       
+                                      <p>
+                                          <label>
+                                              <input name="centrifigeBombN70status"  #centrifigeBombN70status='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombN70status' type="checkbox" ngModel required />
+                                              <span>Completado </span>
+                                          </label>
+                                      </p>  
+                              </div>
+                          <div class="input-field1 inline col s9"    >                                       
+                              <input id="text_inline" placeholder="observaciones" type="text" name="centrifigeBombN70Ob1"  #centrifigeBombN70Ob1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombN70Ob1' class="validate"  ngModel required>
+                      </div>
+                  
+                
+                          <!--  fin observaciones 3 -->
+                          <div class="divider col s12"></div>
+                          <!-- responsable -->
+                          <div class="col s12">
+                              <div class="col s6">
+                                      <span>
+                                              Responsable
+                                      </span>
+                                      <select  (change)="notificationPhase1($event.target.value, 1)" class="browser-default"  name='centrifigeBombN70responsable'  #centrifigeBombN70responsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombN70responsable' ngModel required>
+                                              <option value="" disabled selected>Seleccione un Responsable...</option>
+                                              <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                              {{users.firstName}} {{users.lastName }}
+                                              </option> 
+                                      </select>
+                              </div>
+                          </div>
+                  </div>
+                  <!-- fin pregunta 11  -->
+          
+          
+          
+          
+                  <td class="col s9" style="text-align: center;" >
+                      <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                      (click)="back()" title="Regresar"> Regresar </a>
+                  
+                      <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                      (click)="saveWork(workForm)" title="Guardar" > Guardar </a>
+          
+                      <a type="button" class="btn waves-effect yellow darken-3"   style="margin: 15px; color:white; "
+                      (click)="notBossLine(workForm, showServiceLine)" title="Continuar"> Finalizar </a> 
+                 </td> 
+          
+              </form>
+          
+       </div>
+        <!-- disabled -->
+        <div  *ngSwitchCase="1"  [ngSwitch] = "showServiceLine" class="col s12 m12 l12" >
+              <div *ngSwitchCase=" showServiceLine === 'fi'  ? showServiceLine : '' "  class="col s12 nav-wrapper blue accent-4" 
+              >
+                      <div class="col s12" >
+                          <a class="breadcrumb" style='color: #E7E6E6; font-size:85%' href="eservices-management/workpreparation/1/{{jpactivityService.selectedJpactivity._id}}/{{showServiceLine}}"> Información Preliminar del pozo </a>
+                          <a class="breadcrumb" style='color: #E7E6E6; font-size:85%' 
+                          href="eservices-management/workpreparation/2/{{jpactivityService.selectedJpactivity._id}}/{{showServiceLine}}">Evaluación de recursos criticos </a>
+                          <a class="breadcrumb" style='color: #E7E6E6; font-size:85%'  href="eservices-management/workpreparation/3/{{jpactivityService.selectedJpactivity._id}}/{{showServiceLine}}">Aseguramiento de temas criticos </a>
+                          <a class="breadcrumb" style='color: #A0FF5D; font-size:80%'><b> Transporte y equipo auxiliar </b> </a>
+                      </div>
+                      
+              </div>
+              <div *ngSwitchCase=" showServiceLine === 'wt'  || showServiceLine === 'wl' || showServiceLine === 'sl' || showServiceLine === 'ct'   ? showServiceLine : '' "  class="col s12 nav-wrapper blue accent-4" >
+                      <div class="col s12" >
+                          <a class="breadcrumb" style='color: #E7E6E6; font-size:85%' href="eservices-management/workpreparation/1/{{jpactivityService.selectedJpactivity._id}}/{{showServiceLine}}"> Factores claves </a>
+                          <a class="breadcrumb" style='color: #A0FF5D; font-size:85%'  > <b> Evaluación de recursos críticos  </b> </a>
+                          <a class="breadcrumb" style='color: #E7E6E6; font-size:85%' href="eservices-management/workpreparation/3/{{jpactivityService.selectedJpactivity._id}}/{{showServiceLine}}" > Inspecciones y calibraciones </a>
+                      </div>
+              </div>
+          
+          
+              <form #workForm = "ngForm" (ngSubmit)="saveWork(workForm)">
+                  <div  [ngSwitch] = "ifAdmin" class="col s12">
+                     <div *ngSwitchCase=" ifAdmin === '1'  ? ifAdmin : '' " > 
+                    
+                            <!-- luego vemos cual es el caso para saber cual linea de servicio mostrar -->
+                           <!-- mas detalles en validarion role in controller -->
+                           <div   [ngSwitch] = "selectCase" class="input-field inline col s5">
+                            <span>
+                              <br>
+                            </span>
+                  
+                            <div  *ngSwitchCase=" selectCase === '1'  ? selectCase : '' ">
+                                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                        <option [ngSwitch]='showWL'   value="wl">
+                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                        </option>
+                                   </select>   
+                            </div>   
+                
+                 
+        
+        
+                                <div  *ngSwitchCase=" selectCase === '2'  ? selectCase : '' ">
+                                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                        <option  [ngSwitch]='showSL'   value="sl">
+                                            <div *ngSwitchCase=true > Slickline </div>
+                                        </option>
+                                </select>   
+                                </div>  
+            
+                                <div  *ngSwitchCase=" selectCase === '3'  ? selectCase : '' ">
+                                    <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                        <option    [ngSwitch]='showSL'  value="sl">
+                                            <div *ngSwitchCase=true > Slickline </div>
+                                        </option>
+                                        <option [ngSwitch]='showWL'   value="wl">
+                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                        </option>
+                                </select>   
+                                </div>  
+        
+        
+                                <div  *ngSwitchCase=" selectCase === '4'  ? selectCase : '' ">
+                                        <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                            <option value="" disabled selected>Seleccione Linea de servicio...</option>
+            
+                                            <option [ngSwitch]='showCT'  value="ct">
+                                                <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                            </option>
+                                        </select>   
+                                    </div>
+        
+                                    <div  *ngSwitchCase=" selectCase === '5'  ? selectCase : '' ">
+                                            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                <option [ngSwitch]='showCT'  value="ct">
+                                                    <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                </option>
+                                                <option [ngSwitch]='showWL'   value="wl">
+                                                    <div *ngSwitchCase=true >      Well Login </div>       
+                                               </option>
+                                            </select>   
+                                    </div>
+                                    <div  *ngSwitchCase=" selectCase === '6'  ? selectCase : '' ">
+                                            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                <option   [ngSwitch]='showCT'   value="ct">
+                                                     <div *ngSwitchCase=true > Coiled tubing </div> 
+                                                </option>
+                                                <option [ngSwitch]='showSL'  value="sl">
+                                                     <div *ngSwitchCase=true > Slickline </div>
+                                                </option>
+                                            </select>   
+                                    </div>
+                                    <div  *ngSwitchCase=" selectCase === '7'  ? selectCase : '' ">
+                                            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                <option [ngSwitch]='showCT'  value="ct">
+                                                    <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                            </option>
+                                            <option [ngSwitch]='showSL'  value="sl">
+                                                <div *ngSwitchCase=true > Slickline </div>
+                                           </option>
+                                           <option [ngSwitch]='showWL'   value="wl">
+                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                    </option>
+                                            </select>   
+                                    </div>
+        
+        
+                                    <div  *ngSwitchCase=" selectCase === '8'  ? selectCase : '' ">
+                                            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                <option  [ngSwitch]='showFI'   value="fi">
+                                                    <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                </option>
+                                                <!-- <option  value="wl">
+                                                        Well Login
+                                               </option> -->
+                                            </select>   
+                                    </div>
+        
+                                    <div  *ngSwitchCase=" selectCase === '9'  ? selectCase : '' ">
+                                            <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                <option [ngSwitch]='showWL'   value="wl">
+                                                    <div *ngSwitchCase=true >      Well Login </div>       
+                                            </option>
+                                                <option  [ngSwitch]='showCT'   value="fi">
+                                                    <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                </option>
+                                            </select>   
+                                    </div>
+        
+        
+                                    <div  *ngSwitchCase=" selectCase === '10'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '11'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                       <option [ngSwitch]='showWL'   value="wl">
+                                                        <div *ngSwitchCase=true >      Well Login </div>       
+                                                </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '12'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+                                    
+                                   <div  *ngSwitchCase=" selectCase === '13'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '14'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                    <option [ngSwitch]='showSL'  value="sl">
+                                                        <div *ngSwitchCase=true > Slickline </div>
+                                                   </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '15'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <option  value="sl">
+                                                               Slickline
+                                                        </option>
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <!-- <option  value="wt">
+                                                               WellTesting
+                                                        </option> -->
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '16'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option>
+                                                        <option  value="sl">
+                                                               Slickline
+                                                        </option>
+                                                        <option  value="wl">
+                                                               Well Loggin
+                                                        </option>
+                                                        <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '17'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option>
+                                                        <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '18'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '19'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '20'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '21'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '22'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                    <option [ngSwitch]='showSL'  value="sl">
+                                                        <div *ngSwitchCase=true > Slickline </div>
+                                                   </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '23'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                    <option [ngSwitch]='showSL'  value="sl">
+                                                        <div *ngSwitchCase=true > Slickline </div>
+                                                   </option>
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <!-- <option  value="fi">
+                                                               Frente de inyección
+                                                        </option> -->
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '24'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '25'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '26'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '27'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <!-- <option  value="ct">
+                                                               Coiled tubing
+                                                        </option> -->
+                                                        <option [ngSwitch]='showSL'  value="sl">
+                                                            <div *ngSwitchCase=true > Slickline </div>
+                                                       </option>
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '28'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '29'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                        <!-- <option  value="sl">
+                                                               Slickline
+                                                        </option> -->
+                                                        <option [ngSwitch]='showWL'   value="wl">
+                                                            <div *ngSwitchCase=true >      Well Login </div>       
+                                                    </option>
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                                   <div  *ngSwitchCase=" selectCase === '30'  ? selectCase : '' ">
+                                          <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                        <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                        <option [ngSwitch]='showCT'  value="ct">
+                                                            <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                                    </option>
+                                                    <option [ngSwitch]='showSL'  value="sl">
+                                                        <div *ngSwitchCase=true > Slickline </div>
+                                                   </option>
+                                                        <!-- <option  value="wl">
+                                                               Well Loggin
+                                                        </option> -->
+                                                        <option  [ngSwitch]='showFI'   value="fi">
+                                                            <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                        </option>
+                                                        <option   [ngSwitch]='showWT'   value="wt">
+                                                            <div *ngSwitchCase=true > WellTesting </div>   
+                                                        </option>
+                                          </select>   
+                                   </div>
+        
+        
+                            <div  *ngSwitchCase=" selectCase === '31'  ? selectCase : '' ">
+                                   <select (change)="captureServiceSelected($event.target.value)" class="browser-default" name='well4' >
+                                                 <option value="" disabled selected>Seleccione Linea de servicio...</option>
+                                                 <option [ngSwitch]='showCT'  value="ct">
+                                                    <div *ngSwitchCase=true >       Coiled tubing </div>       
+                                            </option>
+                                            <option [ngSwitch]='showSL'  value="sl">
+                                                <div *ngSwitchCase=true > Slickline </div>
+                                           </option>
+                                                 <option [ngSwitch]='showWL'   value="wl">
+                                                    <div *ngSwitchCase=true >      Well Login </div>       
+                                            </option>
+                                                 <option  [ngSwitch]='showFI'   value="fi">
+                                                    <div *ngSwitchCase=true >       Frente de inyección </div>         
+                                                </option>
+                                                <option   [ngSwitch]='showWT'   value="wt">
+                                                    <div *ngSwitchCase=true > WellTesting </div>   
+                                                </option>
+                                   </select>   
+                            </div>
+                    </div>
+                            <div   class="input-field inline col s7">
+                                     <span>
+                                            Responsable 
+                                     </span>
+                                    <select (change)="notificationPhase1($event.target.value, 0)" class="browser-default"  name='responsable'  #responsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.responsable' ngModel required>
+                                            <option value="" disabled selected>Seleccione un Responsable...</option>
+                                            <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                            {{users.firstName}} {{users.lastName }}
+                                            </option> 
+                                     </select>  
+                            </div> 
+        
+                 
+                               
+                           
+                        </div>      
+                      
+          
+          
+                  </div>
+          
+          
+          
+          
+                  <!-- preguntas de fi -->
+                  <div *ngSwitchCase=" showServiceLine === 'fi'  ? showServiceLine : '' " class="tableleft col s12 blue accent-2 center"  style='color: #E7E6E6; padding:10px;'>    
+                      TRANPORTE  Y EQUIPO AUXILIAR
+                      <br>        
+                      Equipo auxiliar usado principlamente en proyectos donde se requiere filtrar agua
+                  </div>
+                       <!-- pregunta 1    -->
+                            <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                                   <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                      Camioneta
+                                   </div>
+                                   <div class=" input-field col s2" >                                       
+                                           <p>
+                                               <label>
+                                                      <input disabled  name="vanstatus"  #vanstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.vanstatus' type="checkbox" ngModel required />
+                                                      <span>Completado </span>
+                                               </label>
+                                           </p>  
+                                   </div>
+                               <div class="input-field1 inline col s9"    >                                       
+                                   <input disabled id="text_inline" placeholder="observaciones" type="text" name="vanOb1"  #vanOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.vanOb1' class="validate"  ngModel required>
+                              </div>
+                           
+          
+                      
+                                <!--  fin observaciones 3 -->
+                                <div class="divider col s12"></div>
+                               <!-- responsable -->
+                               <div class="col s12">
+                                   <div class="col s6">
+                                            <span>
+                                                   Responsable
+                                            </span>
+                                           <select disabled class="browser-default"  name='vanresponsable'  #vanresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.vanresponsable' ngModel required>
+                                                   <option value="" disabled selected>Seleccione un Responsable...</option>
+                                                   <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                                   {{users.firstName}} {{users.lastName }}
+                                                   </option> 
+                                            </select>
+                                   </div>
+                               </div>
+                         </div>
+                       <!-- fin pregunta 1  -->
+          
+          
+                
+              <!-- pregunta 2    -->
+              <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                                   <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                      FRAC TANK 500 BLS
+                                   </div>
+                                   <div class=" input-field col s2" >                                       
+                                           <p>
+                                               <label>
+                                                      <input  disabled name="frackTankstatus"  #frackTankstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.frackTankstatus' type="checkbox" ngModel required />
+                                                      <span>Completado </span>
+                                               </label>
+                                           </p>  
+                                   </div>
+                               <div class="input-field1 inline col s9"    >                                       
+                                   <input disabled id="text_inline" placeholder="observaciones" type="text" name="frackTankOb1"  #frackTankOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.frackTankOb1' class="validate"  ngModel required>
+                              </div>
+                             
+          
+                       
+                                <!--  fin observaciones 3 -->
+                                <div class="divider col s12"></div>
+                               <!-- responsable -->
+                               <div class="col s12">
+                                   <div class="col s6">
+                                            <span>
+                                                   Responsable
+                                            </span>
+                                           <select disabled  class="browser-default"  name='frackTankresponsable'  #frackTankresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.frackTankresponsable' ngModel required>
+                                                   <option value="" disabled selected>Seleccione un Responsable...</option>
+                                                   <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                                   {{users.firstName}} {{users.lastName }}
+                                                   </option> 
+                                            </select>
+                                   </div>
+                               </div>
+              </div>
+              <!-- fin pregunta 2  -->
+          
+          
+          
+          
+          
+          
+                 <!-- pregunta 3   -->
+                 <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                      TANQUE DE ABASTECIMIENTO DE COMBUSTIBLE X 3000 GL CON SISTEMA DE AUTOCONTENIDO
+                  </div>
+                  <div class=" input-field col s2" >                                       
+                          <p>
+                              <label>
+                                     <input disabled name="cateringTankstatus"  #cateringTankstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.cateringTankstatus' type="checkbox" ngModel required />
+                                     <span>Completado </span>
+                              </label>
+                          </p>  
+                  </div>
+                     <div class="input-field1 inline col s9"    >                                       
+                             <input disabled  id="text_inline" placeholder="observaciones" type="text" name="cateringTankOb1"  #cateringTankOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cateringTankOb1' class="validate"  ngModel required>
+                      </div>
+           
+          
+           
+               <!--  fin observaciones 3 -->
+               <div class="divider col s12"></div>
+              <!-- responsable -->
+              <div class="col s12">
+                  <div class="col s6">
+                           <span>
+                                  Responsable
+                           </span>
+                          <select disabled  class="browser-default"  name='cateringTankresponsable'  #cateringTankresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cateringTankresponsable' ngModel required>
+                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                  {{users.firstName}} {{users.lastName }}
+                                  </option> 
+                           </select>
+                  </div>
+              </div>
+                </div>
+                <!-- fin pregunta 3  -->
+          
+          
+          
+                 <!-- pregunta 4   UNIDAD DE FILTRADO DUAL HI FLOW. FILTER BACK.  -->
+                 <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                      UNIDAD DE FILTRADO DUAL HI FLOW. FILTER BACK. 
+                  </div>
+                  <div class=" input-field col s2" >                                       
+                          <p>
+                              <label>
+                                     <input disabled name="dualFilterstatus"  #dualFilterstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.dualFilterstatus' type="checkbox" ngModel required />
+                                     <span>Completado </span>
+                              </label>
+                          </p>  
+                  </div>
+              <div class="input-field1 inline col s9"    >                                       
+                  <input disabled  id="text_inline" placeholder="observaciones" type="text" name="dualFilterOb1"  #dualFilterOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.dualFilterOb1' class="validate"  ngModel required>
+             </div>
+            
+
+               <!--  fin observaciones 3 -->
+               <div class="divider col s12"></div>
+              <!-- responsable -->
+              <div class="col s12">
+                  <div class="col s6">
+                           <span>
+                                  Responsable
+                           </span>
+                          <select disabled class="browser-default"  name='dualFilterresponsable'  #dualFilterresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.dualFilterresponsable' ngModel required>
+                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                  {{users.firstName}} {{users.lastName }}
+                                  </option> 
+                           </select>
+                  </div>
+              </div>
+                </div>
+                 <!-- fin pregunta 4  -->
+          
+          
+          
+                 <!-- pregunta 5   4 FILTROS HI FLOW. CADA 24 HORAS. PRESION DISEÑO 150 PSI. .  -->
+                 <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                      4 FILTROS HI FLOW. CADA 24 HORAS. PRESION DISEÑO 150 PSI. 
+                  </div>
+                  <div class=" input-field col s2" >                                       
+                          <p>
+                              <label>
+                                     <input disabled  name="hiFlowstatus"  #hiFlowstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.hiFlowstatus' type="checkbox" ngModel required />
+                                     <span>Completado </span>
+                              </label>
+                          </p>  
+                  </div>
+              <div class="input-field1 inline col s9"    >                                       
+                  <input disabled id="text_inline" placeholder="observaciones" type="text" name="hiFlowOb1"  #hiFlowOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.hiFlowOb1' class="validate"  ngModel required>
+             </div>
+            
+          
+    
+               <!--  fin observaciones 3 -->
+               <div class="divider col s12"></div>
+              <!-- responsable -->
+              <div class="col s12">
+                  <div class="col s6">
+                           <span>
+                                  Responsable
+                           </span>
+                          <select disabled class="browser-default"  name='hiFlowresponsable'  #hiFlowresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.hiFlowresponsable' ngModel required>
+                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                  {{users.firstName}} {{users.lastName }}
+                                  </option> 
+                           </select>
+                  </div>
+              </div>
+                </div>
+                 <!-- fin pregunta 5  -->
+          
+          
+                 
+                 <!-- pregunta 6   DATA HEADER 3" CEDULA 40 TOMA MUESTRA DE 3" .  -->
+                 <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                      DATA HEADER 3" CEDULA 40 TOMA MUESTRA DE 3"
+                  </div>
+                  <div class=" input-field col s2" >                                       
+                          <p>
+                              <label>
+                                     <input disabled name="dataHeaderstatus"  #dataHeaderstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.dataHeaderstatus' type="checkbox" ngModel required />
+                                     <span>Completado </span>
+                              </label>
+                          </p>  
+                  </div>
+              <div class="input-field1 inline col s9"    >                                       
+                  <input disabled id="text_inline" placeholder="observaciones" type="text" name="dataHeaderOb1"  #dataHeaderOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.dataHeaderOb1' class="validate"  ngModel required>
+             </div>
+            
+          
+      
+               <!--  fin observaciones 3 -->
+               <div class="divider col s12"></div>
+              <!-- responsable -->
+              <div class="col s12">
+                  <div class="col s6">
+                           <span>
+                                  Responsable
+                           </span>
+                          <select disabled class="browser-default"  name='dataHeaderresponsable'  #dataHeaderresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.dataHeaderresponsable' ngModel required>
+                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                  {{users.firstName}} {{users.lastName }}
+                                  </option> 
+                           </select>
+                  </div>
+              </div>
+                </div>
+                 <!-- fin pregunta 6  -->
+          
+          
+                        
+                 <!-- pregunta 7  BARTON CON SOPORTE Y MANIFOLD DE PRESION ( REGISTRO DE PRESIÓN ) .  -->
+                 <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                      BARTON CON SOPORTE Y MANIFOLD DE PRESION ( REGISTRO DE PRESIÓN )
+                  </div>
+                  <div class=" input-field col s2" >                                       
+                          <p>
+                              <label>
+                                     <input disabled  name="bartonManifoldstatus"  #bartonManifoldstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.bartonManifoldstatus' type="checkbox" ngModel required />
+                                     <span>Completado </span>
+                              </label>
+                          </p>  
+                  </div>
+              <div class="input-field1 inline col s9"    >                                       
+                  <input disabled  id="text_inline" placeholder="observaciones" type="text" name="bartonManifoldOb1"  #bartonManifoldOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.bartonManifoldOb1' class="validate"  ngModel required>
+             </div>
+          
+           
+               <!--  fin observaciones 3 -->
+               <div class="divider col s12"></div>
+              <!-- responsable -->
+              <div class="col s12">
+                  <div class="col s6">
+                           <span>
+                                  Responsable
+                           </span>
+                          <select disabled class="browser-default"  name='bartonManifoldresponsable'  #bartonManifoldresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.bartonManifoldresponsable' ngModel required>
+                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                  {{users.firstName}} {{users.lastName }}
+                                  </option> 
+                           </select>
+                  </div>
+              </div>
+                </div>
+                 <!-- fin pregunta 7  -->
+          
+          
+          
+                  <!-- pregunta 8  CASETA CON VENTANA AIRE ACONDICIONADO 10 FT PIZARRA , SILLAS CON DOBLE PUESTO DE TRABAJO. .  -->
+                  <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                          <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                              CASETA CON VENTANA AIRE ACONDICIONADO 10 FT PIZARRA , SILLAS CON DOBLE PUESTO DE TRABAJO.
+                          </div>
+                          <div class=" input-field col s2" >                                       
+                                  <p>
+                                      <label>
+                                             <input disabled  name="cabinstatus"  #cabinstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinstatus' type="checkbox" ngModel required />
+                                             <span>Completado </span>
+                                      </label>
+                                  </p>  
+                          </div>
+                      <div class="input-field1 inline col s9"    >                                       
+                          <input disabled  id="text_inline" placeholder="observaciones" type="text" name="cabinOb1"  #cabinOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinOb1' class="validate"  ngModel required>
+                     </div>
+                   
+              
+                       <!--  fin observaciones 3 -->
+                       <div class="divider col s12"></div>
+                      <!-- responsable -->
+                      <div class="col s12">
+                          <div class="col s6">
+                                   <span>
+                                          Responsable
+                                   </span>
+                                  <select disabled class="browser-default"  name='cabinresponsable'  #cabinresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinresponsable' ngModel required>
+                                          <option value="" disabled selected>Seleccione un Responsable...</option>
+                                          <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                          {{users.firstName}} {{users.lastName }}
+                                          </option> 
+                                   </select>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- fin pregunta 8  -->
+          
+          
+                  <!-- pregunta 9 TABLERO DE DISTRIBUCION ELECTRICO PARA CASETA, 3 BOMBAS DE 20 HP  .  -->
+                  <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                                  <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                      TABLERO DE DISTRIBUCION ELECTRICO PARA CASETA, 3 BOMBAS DE 20 HP  . 
+                                  </div>
+                                  <div class=" input-field col s2" >                                       
+                                          <p>
+                                              <label>
+                                                     <input disabled name="cabinBoardstatus"  #cabinBoardstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinBoardstatus' type="checkbox" ngModel required />
+                                                     <span>Completado </span>
+                                              </label>
+                                          </p>  
+                                  </div>
+                              <div class="input-field1 inline col s9"    >                                       
+                                  <input disabled id="text_inline" placeholder="observaciones" type="text" name="cabinBoardOb1"  #cabinBoardOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinBoardOb1' class="validate"  ngModel required>
+                             </div>
+                            
+                          
+                       
+                               <!--  fin observaciones 3 -->
+                               <div class="divider col s12"></div>
+                              <!-- responsable -->
+                              <div class="col s12">
+                                  <div class="col s6">
+                                           <span>
+                                                  Responsable
+                                           </span>
+                                          <select disabled class="browser-default"  name='cabinBoardresponsable'  #cabinBoardresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.cabinBoardresponsable' ngModel required>
+                                                  <option value="" disabled selected>Seleccione un Responsable...</option>
+                                                  <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                                  {{users.firstName}} {{users.lastName }}
+                                                  </option> 
+                                           </select>
+                                  </div>
+                              </div>
+                  </div>
+                  <!-- fin pregunta 9  -->
+          
+          
+          
+                  <!-- pregunta 10 BOMBA CENTRIFUGA SUMMIT 2196  30 HP 440 VOLT (PARA UNIDAD DE FILTRADO).  -->
+                  <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                          <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                              BOMBA CENTRIFUGA SUMMIT 2196  30 HP 440 VOLT (PARA UNIDAD DE FILTRADO)
+                          </div>
+                          <div class=" input-field col s2" >                                       
+                                  <p>
+                                      <label>
+                                             <input disabled name="centrifigeBombstatus"  #centrifigeBombstatus='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombstatus' type="checkbox" ngModel required />
+                                             <span>Completado </span>
+                                      </label>
+                                  </p>  
+                          </div>
+                      <div class="input-field1 inline col s9"    >                                       
+                          <input disabled id="text_inline" placeholder="observaciones" type="text" name="centrifigeBombOb1"  #centrifigeBombOb1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombOb1' class="validate"  ngModel required>
+                     </div>
+                   
+              
+                       <!--  fin observaciones 3 -->
+                       <div class="divider col s12"></div>
+                      <!-- responsable -->
+                      <div class="col s12">
+                          <div class="col s6">
+                                   <span>
+                                          Responsable
+                                   </span>
+                                  <select disabled class="browser-default"  name='centrifigeBombresponsable'  #centrifigeBombresponsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombresponsable' ngModel required>
+                                          <option value="" disabled selected>Seleccione un Responsable...</option>
+                                          <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                          {{users.firstName}} {{users.lastName }}
+                                          </option> 
+                                   </select>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- fin pregunta 10  -->
+          
+          
+          
+                  <!-- pregunta 11 BOMBA CENTRIFUGA IHM   20 HP 440 VOLT (PARA TRASIEGO DE TANQUE)  -->
+                  <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                              <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                  BOMBA CENTRIFUGA IHM   20 HP 440 VOLT (PARA TRASIEGO DE TANQUE)
+                              </div>
+                              <div class=" input-field col s2" >                                       
+                                      <p>
+                                          <label>
+                                                 <input disabled name="centrifigeBomb20status"  #centrifigeBomb20status='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBomb20status' type="checkbox" ngModel required />
+                                                 <span>Completado </span>
+                                          </label>
+                                      </p>  
+                              </div>
+                          <div class="input-field1 inline col s9"    >                                       
+                              <input disabled id="text_inline" placeholder="observaciones" type="text" name="centrifigeBomb20Ob1"  #centrifigeBomb20Ob1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBomb20Ob1' class="validate"  ngModel required>
+                         </div>
+                       
+                      
+                     
+                           <!--  fin observaciones 3 -->
+                           <div class="divider col s12"></div>
+                          <!-- responsable -->
+                          <div class="col s12">
+                              <div class="col s6">
+                                       <span>
+                                              Responsable
+                                       </span>
+                                      <select disabled class="browser-default"  name='centrifigeBomb20responsable'  #centrifigeBomb20responsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBomb20responsable' ngModel required>
+                                              <option value="" disabled selected>Seleccione un Responsable...</option>
+                                              <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                              {{users.firstName}} {{users.lastName }}
+                                              </option> 
+                                       </select>
+                              </div>
+                          </div>
+                  </div>
+                  <!-- fin pregunta 11  -->
+          
+          
+                  <!-- pregunta 12 BOMBA CENTRIFUGA TIPO TORNILLO NEMO N70 1750 RPM 15 HP 440 VOLT   OPCION A (INYECCION DE BOMBA TRIPLEX)-->
+                  <div  *ngSwitchCase="showServiceLine === 'fi'   ? showServiceLine : '' "  class="col s12  card hoverable" style="border-style: solid; border-width: 0.2px;">
+                              <div   class="tableleft col s12 blue accent-2" style='color: #E7E6E6; '>    
+                                  BOMBA CENTRIFUGA TIPO TORNILLO NEMO N70 1750 RPM 15 HP 440 VOLT   OPCION A (INYECCION DE BOMBA TRIPLEX)
+                              </div>
+                              <div class=" input-field col s2" >                                       
+                                      <p>
+                                          <label>
+                                              <input disabled name="centrifigeBombN70status"  #centrifigeBombN70status='ngModel' [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombN70status' type="checkbox" ngModel required />
+                                              <span>Completado </span>
+                                          </label>
+                                      </p>  
+                              </div>
+                          <div class="input-field1 inline col s9"    >                                       
+                              <input disabled id="text_inline" placeholder="observaciones" type="text" name="centrifigeBombN70Ob1"  #centrifigeBombN70Ob1='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombN70Ob1' class="validate"  ngModel required>
+                      </div>
+                      
+                    
+                          <!--  fin observaciones 3 -->
+                          <div class="divider col s12"></div>
+                          <!-- responsable -->
+                          <div class="col s12">
+                              <div class="col s6">
+                                      <span>
+                                              Responsable
+                                      </span>
+                                      <select disabled class="browser-default"  name='centrifigeBombN70responsable'  #centrifigeBombN70responsable='ngModel'  [(ngModel)] ='jpactivityService.selectedWorkPreparation.centrifigeBombN70responsable' ngModel required>
+                                              <option value="" disabled selected>Seleccione un Responsable...</option>
+                                              <option *ngFor="let users of  UserService.Profiles " value="{{users._id}}">
+                                              {{users.firstName}} {{users.lastName }}
+                                              </option> 
+                                      </select>
+                              </div>
+                          </div>
+                  </div>
+                  <!-- fin pregunta 11  -->
+          
+          
+          
+          
+                  <td class="col s9" style="text-align: center;" >
+                      <a type="button" class="btn waves-effect green darken-3"   style="margin: 15px; color:white; "
+                      (click)="back()" title="Regresar"> Regresar </a>
+                  
+                      <a type="button" class="btn waves-effect blue darken-3"   style="margin: 15px; color:white; "
+                      (click)="saveWork(workForm)" title="Guardar" > Guardar </a>
+          
+                       <a type="button" class="btn waves-effect yellow darken-3"   style="margin: 15px; color:white; "
+                      (click)="notBossLine(workForm, showServiceLine)" title="Continuar"> Finalizar </a> 
+                 </td> 
+          
+              </form>
+          
+       </div>
+</div>
+
+
+
+
+
+<div>
+    <app-super-float-button></app-super-float-button>
+ </div>

@@ -1,0 +1,17 @@
+.card-panel {
+    text-align: center;
+    color: black;
+}
+
+.imgfooter{
+align-content: center;
+position: relative;
+left: 2px;
+z-index: 1;
+background-repeat: repeat;
+}
+
+.footer{ 
+    position: relative;
+    z-index: -3;
+}

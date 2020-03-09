@@ -1,0 +1,672 @@
+<div class=" col s12 m4 l3 "> 
+        <app-sidenav  class=" sidenavv"  title = 'eservices dashboard'>
+        </app-sidenav>
+</div>
+
+<div class="content1  col s12 m8 l9">
+    <br>
+        <div class="dashboard"  [ngSwitch]="tab" >
+                  
+<!-- ========================= -->
+<!-- INICIO DE TAB 4 COMERCIAL   -->
+<!-- ========================= -->
+
+                <div *ngSwitchCase='4'>
+                <h2 class="header">
+                    E-Services - Dashboard - {{name}}
+                </h2>
+                <body style="background:whitesmoke;  ">
+                    <div class="row ">
+                        <div class="container col s12">
+                            <div class="col s3 ">      
+                                 <div class="card-panel grey lighten-5 z-depth-1">
+                                         <div class="title"  style="text-align: center;">
+                                                <h6><b>
+                                                        Dashboard
+                                                </b></h6>
+                                         </div>
+                                         <div class="divider"></div>
+                                        
+                                         <br>
+                                            <div class="content">
+                                                 <a class="waves-effect  green lighten-1 btn"  href="../../eservices-management/start-management/1"><i class="material-icons right">forward</i>                                        
+                                                      Iniciar gestion                   
+                                                </a>
+                                            </div>
+                                            <br>
+                                            <div class="divider"></div>
+                                            <br>
+            
+                                            <div class="title"  style="text-align: center;">
+                                                <h6><b>
+                                                     Opciones de Filtrado
+                                                </b></h6>
+                                         </div>
+                                         <div class="divider"></div>
+            
+                                            <div class="input-field"  style="width:170px;  left:20px;" >
+                                                    <select  (click)="formSelect()"  name="filter"  >
+                                                      <option value="" disabled selected>Seleccione un estatus..</option>
+                                                      <option value="1">En proceso</option>
+                                                      <option value="2">Rechazadas</option>
+                                                      <option value="3">Aprobadas</option>
+                                                      <option value="4">Finalizadas</option>                                       
+                                                    </select>  
+                                            </div>  
+                                             <br>  
+                                      </div> 
+                                       <!-- modal activador -->
+                                       <button  class="btn modal-trigger" style=" position: relative; z-index: 5;" (click)="ngxSmartModalService.getModal('myModal').open()" >
+                                        Ayudas
+                                    </button>    
+                                <!-- modal activador -->
+            
+                                      <div class="card-panel2" style="align-content: center;"> 
+                                                                        
+                                            
+                                     </div>
+                          </div>
+<!--  Todas las Gestiones  -->
+                          <div class="col s9 ">                
+                                <div [ngSwitch]=minimized1 class="card-panel grey lighten-5 z-depth-1">
+                                        <div class="title2" style="text-align: center;">
+                                                <h6> <b>  Todas las Gestiones </b> </h6>
+                                        </div>
+                                   <!-- <i class="btn-floating enabled" style="left: -380px; top:-9px;" (click)="action()"><i class="material-icons">add</i></a> -->
+                                        <a  *ngSwitchCase="0" class="btn-floating indigo" style="left: 855px; top:-45px;" (click)="minimize(1)">
+                                                <i class="material-icons">arrow_drop_up</i>
+                                        </a>
+                                        <a  *ngSwitchCase="1" class="btn-floating red" style="left: 855px; top:-45px;" (click)="minimize(1)">
+                                                <i class="material-icons">arrow_drop_down</i>
+                                        </a>                     
+                                   <br> 
+                                   <div *ngSwitchCase="0" class="divider"></div>
+                                        <div *ngSwitchCase="0" class="content">
+                                         <table>
+                                          <thead>
+                                            <th>
+                                                #
+                                            </th>
+                                            <th>
+                                                Nombre
+                                            </th>
+                                            <th>
+                                                Detalles de servicio 
+                                            </th>
+                                            <th>
+                                               Linea Responsable
+                                            </th>
+                                            <th>
+                                                    Acciones
+                                                </th>
+                                          </thead>
+                                          <tbody>
+                                                <tr *ngFor="let activity of jpactivityService.Jpactivitys | paginate:  {itemsPerPage: 10, currentPage: pageActual};   let i = index  "  >
+                                                    <td> 
+                                                        {{i+1}}
+                                                    </td> 
+                                                    <td> 
+                                                        {{activity.name}}
+                                                    </td>
+                                                    <td> 
+                                                        {{activity.serviceDetail}}
+                                                    </td>
+                                                    <td> 
+                                                        {{activity.responsibleLine}}
+                                                    </td>
+                                                    <td>
+                                                            <!-- al dar click ejecutamos una funcion editEmployee, y le pasamos el array(employee) que estamos tomando del ngForm -->
+                                                            <!-- var url = (`./eservices-management/start-management/1/${id}`); -->
+                                                            <!-- <a routerLink='../../eservices-management/start-management/1/{{activity._id}}' >
+                                                                <i class="material-icons"> edit </i>
+                                                            </a>
+                                    
+                                                            <a (click)="deleteActivity(activity._id)" href="eservices/dashboard">
+                                                                    <i class="material-icons">delete</i>
+                                                            </a> -->
+                                                        </td>
+                                          </tbody>
+                                         </table>
+            
+                                            <pagination-controls
+                                                (pageChange)="pageActual = $event" 
+                                                previousLabel="Anterior"
+                                                nextLabel="Siguiente"
+                                            ></pagination-controls>
+                                        </div>
+                                </div>        
+                           </div>
+<!--  Todas las Gestiones  -->
+
+<!-- pendientes de licitacion  -->
+                            <div class="col s3">  
+                            </div>   
+                           <div class="col s9">                
+                            <div [ngSwitch]=minimized2 class="card-panel grey lighten-5 z-depth-1">
+                                    <div class="title2" style="text-align: center;">
+                                            <h6> <b>   Gestiones Pendientes de Asignación </b> </h6>
+
+                                                <a  *ngSwitchCase="0" class="btn-floating indigo" style="left: 450px; top:-45px;" (click)="minimize(2)">
+                                                        <i class="material-icons">arrow_drop_up</i>
+                                                </a>
+                                                <a  *ngSwitchCase="1" class="btn-floating red" style="left: 450px; top:-45px;" (click)="minimize(2)">
+                                                        <i class="material-icons">arrow_drop_down</i>
+                                                </a>                     
+                                    </div>
+                               <div *ngSwitchCase="0" class="divider"></div>
+                                    <div  *ngSwitchCase="0"  class="content">
+                                     <table>
+                                      <thead>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            Nombre
+                                        </th>
+                                        <th>
+                                            Detalles de servicio 
+                                        </th>
+                                        <th>
+                                           Linea Responsable
+                                        </th>
+                                        <th>
+                                                Acciones
+                                            </th>
+                                      </thead>
+                                      <tbody [ngSwitch]=activity.approved  *ngFor="let activity of jpactivityService.Jpactivitys | paginate:  {itemsPerPage: 10, currentPage: pageActual};   let i = index  " >
+                                            <tr  *ngSwitchCase="0"  >
+                                                <td> 
+                                                    {{i+1}}
+                                                </td> 
+                                                <td> 
+                                                    {{activity.name}}
+                                                </td>
+                                                <td> 
+                                                    {{activity.serviceDetail}}
+                                                </td>
+                                                <td> 
+                                                    {{activity.responsibleLine}}
+                                                </td>
+                                                <td>
+                                                        <!-- al dar click ejecutamos una funcion editEmployee, y le pasamos el array(employee) que estamos tomando del ngForm -->
+                                                        <!-- var url = (`./eservices-management/start-management/1/${id}`); -->
+                                                        <a routerLink='../../eservices-management/start-management/1/{{activity._id}}' >
+                                                            <i class="material-icons"> edit </i>
+                                                        </a>
+                                
+                                                        <a (click)="deleteActivity(activity._id)" href="eservices/dashboard">
+                                                                <i class="material-icons">delete</i>
+                                                        </a>
+                                                    </td>
+                                      </tbody>
+                                     </table>
+        
+                                        <pagination-controls
+                                            (pageChange)="pageActual = $event" 
+                                            previousLabel="Anterior"
+                                            nextLabel="Siguiente"
+                                        ></pagination-controls>
+                                    </div>
+                            </div> 
+                        </div>  
+
+
+<!-- pendientes de licitacion  -->
+
+<!-- gestiones licitadas  -->
+                        <!-- <div class="col s12">  -->
+
+                                <div class="col s3">   
+                                    <!-- esto solo es un espacio     -->
+                                    </div>
+                                        <div class="col s9">                
+                                            <div [ngSwitch]=minimized3 class="card-panel grey lighten-5 z-depth-1">
+                                               <div class="title2" style="text-align: center;">
+                                                      <h6> <b>  Gestiones Asignadas </b> </h6>
+                                                      <a  *ngSwitchCase="0" class="btn-floating indigo" style="left: 450px; top:-45px;" (click)="minimize(3)">
+                                                            <i class="material-icons">arrow_drop_up</i>
+                                                      </a>
+                                                      <a  *ngSwitchCase="1" class="btn-floating red" style="left: 450px; top:-45px;" (click)="minimize(3)">
+                                                            <i class="material-icons">arrow_drop_down</i>
+                                                      </a>                     
+                                               </div>
+                                               <div *ngSwitchCase="0" class="divider"></div>
+                                                    <div  *ngSwitchCase="0" class="content">
+                                                     <table>
+                                                      <thead>
+                                                        <th>
+                                                            #
+                                                        </th>
+                                                        <th>
+                                                            Nombre
+                                                        </th>
+                                                        <th>
+                                                            Detalles de servicio 
+                                                        </th>
+                                                        <th>
+                                                           Linea Responsable
+                                                        </th>
+                                                        <th>
+                                                                Acciones
+                                                            </th>
+                                                      </thead>
+                                                      <tbody   [ngSwitch]=activity.approved  *ngFor="let activity of jpactivityService.Jpactivitys | paginate:  {itemsPerPage: 10, currentPage: pageActual};   let i = index  " >
+                                                            <tr  *ngSwitchCase="1"  >
+                                                                <td> 
+                                                                    {{i+1}}
+                                                                </td> 
+                                                                <td> 
+                                                                    {{activity.name}}
+                                                                </td>
+                                                                <td> 
+                                                                    {{activity.serviceDetail}}
+                                                                </td>
+                                                                <td> 
+                                                                    {{activity.responsibleLine}}
+                                                                </td>
+                                                                <td>
+                                                                        <!-- al dar click ejecutamos una funcion editEmployee, y le pasamos el array(employee) que estamos tomando del ngForm -->
+                                                                        <!-- var url = (`./eservices-management/start-management/1/${id}`); -->
+                                                                        <!-- <a routerLink='../../eservices-management/start-management/1/{{activity._id}}' >
+                                                                            <i class="material-icons"> edit </i>
+                                                                        </a>
+                                                
+                                                                        <a (click)="deleteActivity(activity._id)" href="eservices/dashboard">
+                                                                                <i class="material-icons">delete</i>
+                                                                        </a> -->
+                                                                    </td>
+                                                      </tbody>
+                                                     </table>
+                        
+                                                        <pagination-controls
+                                                            (pageChange)="pageActual = $event" 
+                                                            previousLabel="Anterior"
+                                                            nextLabel="Siguiente"
+                                                        ></pagination-controls>
+                                                    </div>
+                                            </div>     
+                                        </div>
+                                  </div>      
+<!-- gestiones licitadas  -->                        
+
+                        <!-- </div> -->
+                           
+                         <!-- <button  class="btn modal-trigger" style="top:413px;left:28px; position: absolute; z-index: 5;" (click)="ngxSmartModalService.getModal('myModal').open()" 
+                         >Ayuda</button>     -->
+                       </div>   
+                         
+                </body>
+                
+            
+            </div>
+
+<!-- ========================= -->
+<!-- ========================= -->
+<!-- FIN DE TAB 4 COMERCIAL   -->
+<!-- ========================= -->
+<!-- ========================= -->
+
+<!-- ========================= -->
+<!-- ========================= -->
+<!-- inicio del tab 3 jefe de linea -->
+<!-- ========================= -->
+<!-- ========================= -->
+
+                   <div *ngSwitchCase='3'>
+                        <h2 class="header">
+                            E-Services - Dashboard - jefe de linea
+                        </h2>
+                        <body style="background:whitesmoke;  ">
+                            <div class="row ">
+                                <div class="container col s12">
+                                    <div class="col s3">      
+                                         <div class="card-panel grey lighten-5 z-depth-1">
+                                                 <div class="title"  style="text-align: center;">
+                                                        <h6><b>
+                                                                Dashboard
+                                                        </b></h6>
+                                                 </div>
+                                                 <div class="divider"></div>
+                                                 <br>
+                                                    <div class="content">
+                                                         <a class="waves-effect  green lighten-1 btn"  routerLink="../../eservices-management/start-management/1"><i class="material-icons right">forward</i>                                        
+                                                              Iniciar gestion
+                                                          
+                                                        </a>
+                                                    </div>
+                                                    <br>
+                                                    <div class="divider"></div>
+                                                    <br>
+                    
+                                                    <div class="title"  style="text-align: center;">
+                                                        <h6><b>
+                                                             Opciones de Filtrado
+                                                        </b></h6>
+                                                 </div>
+                                                 <div class="divider"></div>
+                    
+                                                    <div class="input-field"  style="width:170px;  left:20px;" >
+                                                            <select  (click)="formSelect()"  name="department"  >
+                                                              <option value="" disabled selected>Seleccione un estatus..</option>
+                                                              <option value="1">En proceso</option>
+                                                              <option value="2">Rechazadas</option>
+                                                              <option value="3">Aprobadas</option>
+                                                              <option value="4">Finalizadas</option>                                       
+                                                            </select>  
+                                                    </div>  
+                                                     <br>  
+                                              </div>
+                    
+                                              <div class="card-panel2" style="align-content: center;">         
+                                             </div>
+                                  </div>
+                                   
+                                  <div class="col s9">                
+                                        <div class="card-panel grey lighten-5 z-depth-1">
+                                           <div class="title" style="text-align: center;">
+                                                  <h6> <b>  Mis Gestiones </b> </h6>
+                                           </div>
+                                           <div class="divider"></div>
+                                                <div class="content">
+                                                 <table>
+                                                  <thead>
+                                                    <th>
+                                                        #
+                                                    </th>
+                                                    <th>
+                                                        Nombre
+                                                    </th>
+                                                    <th>
+                                                        Detalles de servicio 
+                                                    </th>
+                                                    <th>
+                                                       Linea Responsable
+                                                    </th>
+                                                    <th>
+                                                            Acciones
+                                                        </th>
+                                                  </thead>
+                                                  <tbody>
+                                                        <tr *ngFor="let activity of jpactivityService.Jpactivitys | paginate:  {itemsPerPage: 10, currentPage: pageActual};   let i = index  "  >
+                                                            <td> 
+                                                                {{i+1}}
+                                                            </td> 
+                                                            <td> 
+                                                                {{activity.name}}
+                                                            </td>
+                                                            <td> 
+                                                                {{activity.serviceDetail}}
+                                                            </td>
+                                                            <td> 
+                                                                {{activity.responsibleLine}}
+                                                            </td>
+                                                            <td>
+                                                                    <!-- al dar click ejecutamos una funcion editEmployee, y le pasamos el array(employee) que estamos tomando del ngForm -->
+                                                                    <!-- var url = (`./eservices-management/start-management/1/${id}`); -->
+                                                                    <a routerLink='../../eservices-management/start-management/4/{{activity._id}}' >
+                                                                        <i class="material-icons"> edit </i>
+                                                                    </a>
+                                            
+                                                                    <a (click)="deleteActivity(activity._id)" href="eservices/dashboard">
+                                                                            <i class="material-icons">delete</i>
+                                                                    </a>
+                                                                </td>
+                                                  </tbody>
+                                                 </table>
+                    
+                                                    <pagination-controls
+                                                        (pageChange)="pageActual = $event" 
+                                                        previousLabel="Anterior"
+                                                        nextLabel="Siguiente"
+                                                    ></pagination-controls>
+                                                </div>
+                                        </div>        
+                                   </div>
+                                 </div>      
+                                 <button  class="btn modal-trigger" style="top:413px;left:28px; position: absolute; z-index: 5;" (click)="ngxSmartModalService.getModal('myModal').open()" >
+                                     Ayuda
+                                    </button>    
+                               </div>                                   
+                        </body>     
+                    </div>
+ <!-- fin del tab 3 jefe de linea  -->
+
+<!-- inicio del tab  3.1 basico de linea   -->
+                   <div *ngSwitchCase='3.1'>
+                        <h2 class="header">
+                            E-Services - Dashboard - Jefe de Linea
+                        </h2>
+                        <body style="background:whitesmoke;  ">
+                            <div class="row ">
+                                <div class="container col s12">
+                                    <div class="col s3">      
+                                         <div class="card-panel grey lighten-5 z-depth-1">
+                                                 <div class="title"  style="text-align: center;">
+                                                        <h6><b>
+                                                                Dashboard
+                                                        </b></h6>
+                                                 </div>
+                                                 <div class="divider"></div>
+                                                 <br>
+                                                    <div class="content">
+                                                         <!-- <a class="waves-effect  green lighten-1 btn"  routerLink="../../eservices-management/start-management/1"><i class="material-icons right">forward</i>                                        
+                                                              Iniciar gestion
+                                                          
+                                                        </a> -->
+                                                    </div>
+                                                    <br>
+                                                    <div class="divider"></div>
+                                                    <br>
+                    
+                                                    <div class="title"  style="text-align: center;">
+                                                        <h6><b>
+                                                             Opciones de Filtrado
+                                                        </b></h6>
+                                                 </div>
+                                                 <div class="divider"></div>
+                    
+                                                    <div class="input-field"  style="width:170px;  left:20px;" >
+                                                            <select  (click)="formSelect()"  name="department"  >
+                                                              <option value="" disabled selected>Seleccione un estatus..</option>
+                                                              <option value="1">En proceso</option>
+                                                              <option value="2">Rechazadas</option>
+                                                              <option value="3">Aprobadas</option>
+                                                              <option value="4">Finalizadas</option>                                       
+                                                            </select>  
+                                                    </div>  
+                                                     <br>  
+                                              </div>
+                    
+                                              <div class="card-panel2" style="align-content: center;"> 
+                                             
+                                           
+                                                    
+                                             </div>
+                                  </div>
+                                   
+                                  <div class="col s9">                
+                                        <div class="card-panel grey lighten-5 z-depth-1">
+                                           <div class="title" style="text-align: center;">
+                                                  <h6> <b>  Mis Gestiones </b> </h6>
+                                           </div>
+                                           <div class="divider"></div>
+                                                <div class="content">
+                                                 <table>
+                                                  <thead>
+                                                    <th>
+                                                        #
+                                                    </th>
+                                                    <th>
+                                                        Nombre
+                                                    </th>
+                                                    <th>
+                                                        Detalles de servicio 
+                                                    </th>
+                                                    <th>
+                                                         Detalles
+                                                    </th>
+                                                    <th>
+                                                           Ejecutar
+                                                        </th>
+                                                  </thead>
+                                                 
+                                                    <tbody  [ngSwitch]=activity.approved  *ngFor="let activity of jpactivityService.Jpactivitys | paginate:  {itemsPerPage: 10, currentPage: pageActual};   let i = index  "  >
+                                                        <tr  *ngSwitchCase="1"  >
+                                                            <td> 
+                                                                {{i+1}}
+                                                            </td> 
+                                                            <td> 
+                                                                {{activity.name}}
+                                                            </td>
+                                                            <td> 
+                                                                {{activity.serviceDetail}}
+                                                            </td>
+                                                            <td> 
+                                                                   
+
+                                                                    <a  style='position: absolute; top:128px; z-index: 10;' routerLink='../../eservices-management/details-management/details-management' >
+                                                                    
+                                                                        <i class="material-icons"> format_line_spacing </i>
+                                                                    </a>
+                                                            </td>
+                                                            <td>
+                                                                
+                                                                   
+                                                                    <a routerLink='../../eservices-management/start-management/4/{{activity._id}}' >
+                                                                      
+                                                                        <i class="material-icons"> play_circle_outline </i>
+                                                                    </a>
+                                            
+                                                                 
+                                                            </td>
+
+                                                        </tr> 
+                                                  </tbody>
+                                                 </table>
+                    
+                                                    <pagination-controls
+                                                        (pageChange)="pageActual = $event" 
+                                                        previousLabel="Anterior"
+                                                        nextLabel="Siguiente"
+                                                    ></pagination-controls>
+                                                </div>
+                                        </div>        
+                                   </div>
+                                 </div>      
+                                 
+                               </div>                                   
+                        </body>     
+                    </div>
+ <!-- fin del tab 3.1 basico de linea  -->
+            
+            <!----------------->
+            <!-- MODAL SECTION -->
+            <!----------------->
+            
+            <!-- MODAL TRIGGER -->
+         
+            <!-- MODAL STRUCTURE -->
+           
+            <ngx-smart-modal  #myModal identifier="myModal">
+                    <div class="row">
+                            <div class="col s12 m6">
+                              <div class="card indigo">
+                  
+                            <div class="modal-header" style="align-items: center;
+                            justify-content: center;">
+                                    <h2 style="align-content: center">
+                                            Bienvenido a tu aplicación <b> E-Services </b>
+                                    </h2>  
+            
+                            
+            
+                            
+            
+            
+                        </div>
+                        <div class="modal-body indigo lighten-5">
+                                <div class="modal-content indigo lighten-5"> 
+                                         <br>
+                                              Aqui podrá iniciar una gestión, ver un Historial de las gestiones que has solicitado
+                                              asi como filtrar la lista por el estado de dicha gestión. 
+                                             
+                                        <br>
+                                        <br> 
+                                        <div class="divider"> </div> 
+                                        <br>
+                                             <b>
+                                                 iniciar gestion:  
+                                             </b> 
+                                           
+                                                Aqui podra iniciar una gestion, siguiendo los pasos debe llenar el formato de inicio de gestion hasta completar el formulario
+                                             <br>
+                                             <div class="divider"> </div> 
+                                     
+                                             <b> Realizadas: </b>
+                                           
+            
+                                            Aqui encontrá detalles sobre las gestiones realizadas.
+                                                podra ver las gestiones solicitadas por usted, su equipo o todos los departamentos, según su rol. 
+                                                
+                                             <br>
+                                             <div class="divider"> </div> 
+                                          
+                                             <b>
+                                                 En proceso:  
+                                             </b> 
+                                           
+                                             Aqui encontrá detalles sobre las gestiones en proceso.
+                                             podra ver las gestiones en proceso solicitadas por usted, su equipo o todos los departamentos, según su rol. 
+                                             <div class="divider"> </div> 
+                                         
+                                             <b>
+                                                 Rechazadas:  
+                                             </b> 
+                                            
+                                             Aqui encontrá detalles sobre las gestiones rechazadas.
+                                             podra ver las gestiones rechazadas solicitadas por usted, su equipo o todos los departamentos, según su rol. 
+                                             <div class="divider"> </div> 
+                                             <br>
+            
+                                             <b>Acerca de los Roles: </b>
+                                            
+                                                 <b>Basico: </b> Podrá ver solo gestiones que fueron solicitadas por usted.
+                                                 <br>
+                                                 <b> Lider: </b> Podrá ver gestiones solicitadas por usted y su equipo o departamento.
+                                                 <br>
+                                                 <b> Superior:  </b> Podrá ver todos las gestiones solicitadas, sin importar si pertenece a su equipo de trabajo o no. 
+                                                 <br>
+                                                 <div class="divider"> </div> 
+                                                 <br>
+                                            Recuerda que puedes enviarnos cualquier sugerencia en el entorno de esta aplicacion a traves de un ticket a soporte en el menu lateral ó a traves del siguiente enlace 
+                                           
+                                      <a routerLink="../../tickets/createTicket" >Crear Ticket </a> 
+                                                Para nosotros es importante que esta aplicacion sea intuitiva y facil de usar para los usuarios
+                                </div>
+                        </div>
+                        <div class="modal-footer" style="align-items: center;
+                        justify-content: center;">               
+                            <!-- MODAL CLOSE -->
+                            <button (click)="myModal.close()"  class="btn modal-close waves-green " >Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+             
+               
+              </ngx-smart-modal>
+              <div>
+                    <canvas id="canvas">
+                     {{chart}}    
+                    </canvas> 
+              </div>
+
+
+
+
+
+
+            </div> 
+
+
+</div>

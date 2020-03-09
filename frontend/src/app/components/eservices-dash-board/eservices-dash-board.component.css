@@ -1,0 +1,106 @@
+ngx-smart-modal{
+  position: relative; 
+  z-index: 7;
+   top: -420px; 
+  left: 450px;
+  width: 1000px;
+  height: 750px; 
+  opacity:0.8;
+  /* color: rgba(62, 62, 62, 0.775); */
+  color: whitesmoke;
+}
+
+.sidenavv {
+  position: fixed ;
+  z-index: 4;
+  top: 75px;
+  left: 2px; 
+  width: 23%; 
+  /* zoom: 0.8; */
+  }
+.card-panel{
+  padding: -30px;
+  margin-bottom: -5px;
+}
+.title2{
+  /* background-color: blue; */
+  background-repeat: repeat-y;
+  background-size: 200px;
+  /* padding: -170px; */
+  padding-bottom: -150px;
+  /* width: 135%;
+  height:160%; */
+ }
+ 
+
+.content1{
+ background: transparent;
+ background-repeat: repeat-y;
+ /* background-size: 200px;
+ width: 135%;
+ height:160%; */
+ z-index:10;
+}
+
+.header {
+    background: rgb(000,060,077);
+    padding: 20px;
+    font-size: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+  }
+
+  .dashboard{ 
+    /* zoom:110%;  */
+    background:whitesmoke;  
+     border-style: solid;
+    border-color:darkgrey; 
+    border-width: 1px;
+    border-radius: 10px;
+
+  }
+  .card-panel2{
+    padding: 0px;
+    margin: 0px;
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .title{
+      font-family: sans-serif;
+      color: rgba(62, 62, 62, 0.775);
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+    
+    .buttons{
+      font-family: sans-serif;
+      color: rgba(62, 62, 62, 0.775);
+      font-weight: 1000;
+      align-items: left;
+      text-align: left;
+      justify-content: left;
+      margin: 2px;
+    }
+
+
+    .buttonback{
+      width: -15px;
+      height: -22px;
+      margin-left: 2px;
+      align-items: center;
+      justify-content: center;
+      }
+
+    .modal-content{
+ color:grey;
+      }
+      

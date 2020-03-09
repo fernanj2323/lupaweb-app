@@ -1,0 +1,79 @@
+<div class='row'>
+    <div class='col s12'>
+        <div class="col s12 m4 l3">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header "  id='linkeable' >
+                            <a  routerLink='../../../../../eservices/home'  title="Adjuntar Archivo">
+                                <i class="material-icons">memory</i>DashBoard
+                            </a>
+                           
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header modal-trigger " href="#modal2"><i class="material-icons">reorder</i>Actividades Regulares</div>
+                    </li> 
+                    
+                    <li>
+                        <div class="collapsible-header  modal-trigger " href="#modal3" ><i class="material-icons">memory</i>Actividades en Proceso</div>
+                    </li> 
+                        
+                    <li>
+                        <div class="collapsible-header modal-trigger " href="#modal4" ><i class="material-icons">offline_pin</i>Actividades Finalizadas</div>
+                    </li>      
+              
+                    <!-- <li>
+                        <div class="collapsible-header"><i class="material-icons">apps</i>Ticketes y KPIS</div>
+                    </li> 
+                                             -->
+                </ul>
+        </div>
+        <div class='content col s12 m8 l9'  style="margin-top:-50px;"> 
+                    <div class="work-preparation" >
+                            <h2 class="header" style="text-align: center;">
+                                    <br> 
+                                    <!-- Preparación  -->
+                            </h2>
+                            <nav >
+                                    <!-- <div class="nav-wrapper blue accent-4">
+                                           <div class="col s12">
+                                                <a class="breadcrumb" style='color: #A0FF5D'> <b>Kick of Meeting </b></a>
+                                                <a  class="breadcrumb" style='color: #E7E6E6'>Requerimientos Claves</a>
+                                                <a href="#!" class="breadcrumb" style='color: #E7E6E6'>Preparación</a>
+                                           </div>
+                                    </div> -->
+                                  <app-breadcum-nav></app-breadcum-nav>
+                             </nav>
+             <!-- AQUI HACEMOS SWITHC ENTRE VER Y EDITAR  -->
+                            <body class="light-blue lighten-5" >
+                                    <div class="row" [ngSwitch] = "tab">
+                                            <div class="container col s12" *ngSwitchCase = '1'>                    
+                                                <!-- <app-phase1>
+                                                </app-phase1> -->
+                                                <app-work-phase1>
+                                                </app-work-phase1> 
+                                            </div>
+                                            <div class="container col s12" *ngSwitchCase = '2'>                    
+                                          
+                                                <app-work-phase2>
+                                                </app-work-phase2> 
+                                            </div>
+                                            <div class="container col s12" *ngSwitchCase = '3'>                    
+                                          
+                                                <app-work-phase3>
+                                                </app-work-phase3> 
+                                            </div>
+
+                                            <div class="container col s12" *ngSwitchCase = '4'>                    
+                                          
+                                                <app-work-phase4>
+                                                </app-work-phase4> 
+                                            </div>
+                                    </div> 
+                            </body> 
+                    </div>
+
+                    
+            </div> 
+    </div>
+</div>

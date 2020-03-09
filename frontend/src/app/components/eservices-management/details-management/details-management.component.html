@@ -1,0 +1,100 @@
+<div class=" col s12 m4 l3"> 
+        <div class="sidenavv">
+                <app-sidenav titulo = 'titulos'></app-sidenav>
+        </div>
+</div>
+
+<div class="details col s12 m8 l9">
+        <h2 class="header" style="text-align: center;">
+                <br> 
+                    Acta de Constitucion de Proyecto <!-- {{tab}} --> 
+        </h2>
+        <br> 
+        <!-- <div class="divider"></div> -->
+        <body class="indigo lighten-5">
+                <table>
+                        <thead>
+                        <tr>                                    
+                        <td class="col s12 " >
+                                <div class="tableleftname col s3">                                               
+                                        <b>  Nombre del proyecto  </b> 
+                                </div>                                           
+                                <div class="input-field1 inline col s9"  >        
+                                        <p>{{jpactivityService.selectedJpactivity.name}}</p>     
+                                        <div class="divider"></div>                       
+                                        <label for="text_inline">Titulo o nombre con el cual fué llamado el proyecto</label>                                                   
+                                </div>
+                        </td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                                <div class="col s12 indigo lighten-3" style="text-align: center; border-style: solid; border-radius: 3px; border-color:rgb(112, 81, 134);    border-width: 1px; ">
+                                        <b> Descripcion del proyecto </b> 
+                                        <br> 
+                                        ¿QUÉ, QUIÉN, CÓMO, CUÁNDO Y DÓNDE?                                     
+                                </div>
+                                <tr>
+                        <td class="col s12">   
+                                <div class="tableleft col s2 indigo lighten-3">                                                    
+                                        <b>  Detalles del servicio   </b>
+                                </div>
+                                <div class="input-field inline col s8">
+                                        <p>  jpactivityService.selectedJpactivity.serviceDetail </p>
+                                        <label for="text_inline">Qué</label>
+                                         
+                                </div>
+                                <div class="input-field3 inline col s2 indigo lighten-5">
+                                        <td>
+                                            Acciones y Adjuntos 
+                                        </td> 
+                                        <td>    
+                                            <a style="zoom:1.6; color:gray" title="Acciones y Adjuntos" href="#modal1" class="modal-trigger">  
+                                                <i class="material-icons">description</i>
+                                            </a>
+                                        </td> 
+                                        <!-- <div class="divider"></div>     -->
+                                </div> 
+                        </td>
+                        </tbody>
+                </table>
+        </body>
+</div>
+
+<!-- --------------------------------------------------------- -->
+<!-- MODALES  -->
+<!-- --------------------------------------------------------- -->
+<div id="modal1" class="modal modal-fixed-footer" style="z-index: 60;  background-color: transparent; ">
+  <div class="modal-content col s12 m12 l12" style="margin-bottom:50px; background-color: transparent;">
+        <div class="row"> 
+             <div class='card indigo lighten-5'> 
+                <div class="card-header col s12 indigo lighten-2" style="text-align: center">
+                     <h4>Imagenes Cargadas</h4>
+                </div> 
+                <table>
+                        <thead class="col s12">
+                                <th class="col s2 center">
+                                        item
+                                </th>
+                                <th class="col s8 center" >
+                                        Foto
+                                </th>
+                                <th class="col s2 center" >
+                                        Acción
+                                </th>
+                        </thead> 
+                        <div class="divider"></div>
+                        <tbody class="col s12" *ngFor="let photo of jpactivityService.Jpactivitys "  >
+                                <tr class="col s12"> 
+                                        <div class="col s2 center">
+                                                <p>   
+                                                    <!-- <b> #{{i+1}} </b> -->
+                                              </p>                                                
+                                        </div>          
+                                </tr> 
+                        </tbody> 
+                </table>
+             </div> 
+        </div> 
+  </div> 
+</div> 
+

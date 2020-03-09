@@ -1,0 +1,38 @@
+<nav>
+    <div class="nav-wrapper">
+      <div class="col s12 breadcrumb-top">
+        <a href="elerearning/dashboard" class="breadcrumb">Dashboard</a>
+        <a class="breadcrumb">Configuración de roles</a>
+      </div>
+    </div>
+</nav>
+
+<div class="container">
+    <p>
+        <a class="btn-floating btn-large waves-effect waves-light green" routerLink = "../../config/addrols" title="Crear cursos">
+            <i class="material-icons">add</i>
+        </a>
+    </p>
+    <table class="striped">
+        <caption><h3>Gestión de roles</h3></caption>
+        <thead>
+            <th>Nombre</th>
+            <th>Tipo de registro</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rolconfigs of rolConfigService.rolConfig | paginate: {id:'foo', itemsPerPage: 10, currentPage: pageActual, totalItems: total}; ">
+                <td>{{ rolconfigs.name }}</td>
+                <td>{{ rolconfigs.typeRol }}</td>
+                <td>
+                    <!-- <a routerLink="/config/editrol/{{rolconfigs._id}}" class = "href-pointer" (click)="editDepartment(department)" title="Editar">
+                        <i class="material-icons">edit</i>
+                    </a> -->
+                    <a class = "href-pointer-delete" (click)="deleteRol(rolconfigs._id)" title="Eliminar">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls class="center-align" id="foo" (pageChange)="pageActual = $event"></pagination-controls>
+</div>

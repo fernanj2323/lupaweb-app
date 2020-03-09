@@ -1,0 +1,72 @@
+<div class='row'>
+    
+        <!-- <div class=" col s12 m4 l3"> 
+            <div class="sidenavv">
+                    <app-sidenav titulo = 'titulos'></app-sidenav>
+            </div>
+        </div> -->
+        <div class='content col s12 m8 l12' >
+                <div class="header">
+                        <b>Lista de usuarios </b> 
+                        <br>
+                        <div class="divider"></div>
+                </div>
+                <!-- <div class="filters" [ngSwitch]="showFilters">
+                        <div class="input-field col s12 m12 l12" *ngSwitchCase='1' >
+                        
+                        </div>
+                </div> -->
+                
+                <table class="responsive-table solid"> 
+                        <thead class="blue-grey lighten-5">
+                                <tr> 
+                                        <th># </th>
+                                        <th> Nombres </th>
+                                        <th> Apellidos </th>
+                                        <th>Role</th>
+                                        <th> Departamento</th>
+                                        <!-- <th>Linea de Servicio</th> -->
+                                        <th>Acciones</th>
+                                </tr>
+                        </thead>
+                        <tbody  title="Detalles">
+                                <tr class="hoverable" *ngFor="let user of UserService.Profiles " > 
+<!--                                 
+                                        <td>
+                                            {{i+1}}
+                                        </td> -->
+                                        <td>
+                                            {{user.firstName}}
+                                        </td>
+                                        <td>
+                                            {{user.lastName}}
+                                        </td>
+                                        <td [ngSwitch]="user.role">
+                                                <div *ngSwitchCase= 1>
+                                                        Basico
+                                                </div>
+                                                <div *ngSwitchCase= 2>
+                                                        Lider
+                                                </div>
+                                                <div *ngSwitchCase= 3>
+                                                        Gerencia
+                                                </div>
+                                                <div *ngSwitchCase= 4>
+                                                        Administrador
+                                                </div>
+                                        </td>
+                                        <td>
+                                            {{user._id}}
+                                        </td>
+                                        <td>
+                                          <a title="editar" routerLink="/users/edit/{{user._id}}">
+                                           <i class="material-icons">arrow_forward</i>
+                                          </a>
+                                        </td>
+                                        
+                                </tr>
+                        </tbody>
+                </table>
+        </div>
+</div>
+        

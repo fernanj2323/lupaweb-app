@@ -1,0 +1,14 @@
+.modal-header{
+    background-color: #003C4D;
+    color: #ffffff;
+    padding: 2%;
+ }
+ .btn-floating.btn-large i {
+   transition: background-color 0.5s ease;
+ }
+ .btn-floating.btn-large i:hover{
+    background-color: #003C4D;
+ }
+.href-pointer{
+    cursor: pointer;
+ }
