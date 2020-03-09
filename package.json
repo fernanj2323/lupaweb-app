@@ -6,10 +6,10 @@
   "scripts": {
     "ng": "ng",
     "dev": "nodemon backend/index.js",
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm install",
     "build1": "cross-env NODE_ENV=production webpack --config build/webpack.config.js",
     "build2": "cd frontend && npm install && ng build --prod ",
-    "postinstall2": "npm run build --output-path angulara  --aot --prod",
+    "postinstall2": "npm run build --output-path angularapp  --aot --prod",
     "postinstall": "npm run build",
     "start": "node backend/index.js"
   },
@@ -30,7 +30,8 @@
     "express": "^4.17.1",
     "fs-extra": "^8.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.4.1",
+    "@angular/cli": "^1.0.1",
+    "@angular/compiler-cli": "^2.3.1",
     "mongoose": "^5.6.2",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
