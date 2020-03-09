@@ -6,11 +6,11 @@
   "scripts": {
     "ng": "ng",
     "dev": "nodemon backend/index.js",
-    "build": "cd frontend && ng build --prod",
+    "build": "cd frontend && ng build",
     "build1": "cross-env NODE_ENV=production webpack --config build/webpack.config.js",
     "build2": "cd frontend && npm install && ng build --prod ",
-    "postinstall": "npm run build --output-path angularapp  --aot --prod",
-    "postinstall2": "npm run build",
+    "postinstall2": "npm run build --output-path angulara  --aot --prod",
+    "postinstall": "npm run build",
     "start": "node backend/index.js"
   },
   "keywords": [],
