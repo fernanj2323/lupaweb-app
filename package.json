@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "dev": "nodemon backend/index.js",
-    "build": "cd frontend && ng build",
+    "build": "cd frontend && npm run build",
     "build1": "cross-env NODE_ENV=production webpack --config build/webpack.config.js",
     "build2": "cd frontend && npm install && ng build --prod ",
     "postinstall2": "npm run build --output-path angulara  --aot --prod",
